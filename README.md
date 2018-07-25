@@ -13,15 +13,15 @@ In WordPress it is possible to paste in an oembed url and watch as it turns into
 
 Each content service that supports omebed has an oembed endpoint. This endpoint returns information about how to embed a certain url when called.
 
-- [The oembed site](https://oembed.com/)
+* [The oembed site](https://oembed.com/)
 
 ### Examples
 
 #### YouTube
 
-- **Url to be embedded:** `https://www.youtube.com/watch?v=b2H7fWhQcdE`
-- **Endpoint:** `http://www.youtube.com/oembed?url=<url>&format=json`
-- **Request:** `http://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=b2H7fWhQcdE&format=json`
+* **Url to be embedded:** `https://www.youtube.com/watch?v=b2H7fWhQcdE`
+* **Endpoint:** `http://www.youtube.com/oembed?url=<url>&format=json`
+* **Request:** `http://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=b2H7fWhQcdE&format=json`
 
 **Result:**
 
@@ -45,9 +45,9 @@ Each content service that supports omebed has an oembed endpoint. This endpoint 
 
 #### Instagram
 
-- **Url to be embedded:** `https://www.instagram.com/p/BftIg_OFPFX/`
-- **Endpoint:** `https://api.instagram.com/oembed?url=<url>&format=json`
-- **Request:** `https://api.instagram.com/oembed?url=https://www.instagram.com/p/BftIg_OFPFX/&format=json`
+* **Url to be embedded:** `https://www.instagram.com/p/BftIg_OFPFX/`
+* **Endpoint:** `https://api.instagram.com/oembed?url=<url>&format=json`
+* **Request:** `https://api.instagram.com/oembed?url=https://www.instagram.com/p/BftIg_OFPFX/&format=json`
 
 **Result:**
 
@@ -84,19 +84,19 @@ Some sort of caching would be good, so multiple call to the same api with the sa
 # Pseudo code
 
 1.  Fetch the oembed provider list.
-2.  Find naked urls (or ones prepended with oembed:).
-3.  Match url to a ombed provider by checking against each providers url scheme.
-4.  Send a request to the matched provider's endpoint.
-5.  Replace naked url with the html content from the endpoint result.
+2.  Find link nodes in markdown structure that are on their own, not part of some other content.
+3.  Check if url matched any of the oembed url schemes.
+4.  Fetch the oembed response from the oembed provider.
+5.  Transform the link node into an html node using html value from the oembed response.
 
 # Relevant code/projects
 
-- [oembed-parser](https://github.com/ndaidong/oembed-parser): Oembed parser library. Has a hard copy of the provider list in its source.
-- [gatsby-remark-embed-youtube](https://github.com/ntwcklng/gatsby-remark-embed-youtube): Very simple plugin that replaces urls prepended with `youtube:` with hardcoded iframe html snippet.
-- [gatsby-remark-images](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-images): Created by the founder of GatsbyJS and used by almost all Gatsby-sites. So could be good point of reference.
+* [oembed-parser](https://github.com/ndaidong/oembed-parser): Oembed parser library. Has a hard copy of the provider list in its source.
+* [gatsby-remark-embed-youtube](https://github.com/ntwcklng/gatsby-remark-embed-youtube): Very simple plugin that replaces urls prepended with `youtube:` with hardcoded iframe html snippet.
+* [gatsby-remark-images](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-images): Created by the founder of GatsbyJS and used by almost all Gatsby-sites. So could be good point of reference.
 
 # Relevant documentation
 
-- [Plugin Authoring by GatsbyJS](https://next.gatsbyjs.org/docs/plugin-authoring/)
-  - Lets just start with supporting v2 coming out soon.
-- [Ombed official site](https://oembed.com/)
+* [Plugin Authoring by GatsbyJS](https://next.gatsbyjs.org/docs/plugin-authoring/)
+  * Lets just start with supporting v2 coming out soon.
+* [Ombed official site](https://oembed.com/)
