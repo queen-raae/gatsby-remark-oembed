@@ -81,7 +81,7 @@ It would be good to whitelist and/or blacklist providers. In WordPress it is pos
 
 Some sort of caching would be good, so multiple call to the same api with the same url does not need to be repeated multiple times in one build.
 
-# Psudo code
+# Pseudo code
 
 1.  Fetch the oembed provider list.
 2.  Find naked urls (or ones prepended with oembed:).
