@@ -8,6 +8,23 @@ exports.fetchOembedProviders = async () => {
   return response.data;
 };
 
+exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
+  let endpointUrl = false;
+
+  providers.forEach(provider => {
+    provider.endpoints.forEach(endpoint => {
+      endpoint.schemes.forEach(schema => {
+        const regExp = new RegExp(schema);
+        if (regExp.test(linkUrl)) {
+          endpointUrl = endpoint.url;
+        }
+      });
+    });
+  });
+
+  return endpointUrl;
+};
+
 exports.selectPossibleOembedLinks = markdownAST => {
   return select(markdownAST, "paragraph link:only-child");
 };

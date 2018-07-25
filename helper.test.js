@@ -1,5 +1,6 @@
 const {
   fetchOembedProviders,
+  getProviderEndpointUrlForLinkUrl,
   selectPossibleOembedLinks,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
@@ -20,6 +21,48 @@ describe("#fetchOembedProviders", () => {
     expect(data).toEqual(
       expect.arrayContaining([expect.objectContaining(provider)])
     );
+  });
+});
+
+describe("#getProviderEndpointUrlForLinkUrl", () => {
+  const providers = [
+    {
+      provider_name: "Instagram",
+      provider_url: "https://instagram.com",
+      endpoints: [
+        {
+          schemes: [
+            "http://instagram.com/p/*",
+            "http://instagr.am/p/*",
+            "http://www.instagram.com/p/*",
+            "http://www.instagr.am/p/*",
+            "https://instagram.com/p/*",
+            "https://instagr.am/p/*",
+            "https://www.instagram.com/p/*",
+            "https://www.instagr.am/p/*"
+          ],
+          url: "https://api.instagram.com/oembed",
+          formats: ["json"]
+        }
+      ]
+    }
+  ];
+
+  test("only urls matching one of the providers schemes return an endpoint url", () => {
+    // TODO: Figure out why some providers do not have schemes,
+    // and what to do about it.
+    expect(
+      getProviderEndpointUrlForLinkUrl(
+        "https://www.youtube.com/watch?v=b2H7fWhQcdE",
+        providers
+      )
+    ).toBeFalsy();
+    expect(
+      getProviderEndpointUrlForLinkUrl(
+        "https://www.instagram.com/p/BftIg_OFPFX/",
+        providers
+      )
+    ).toBe("https://api.instagram.com/oembed");
   });
 });
 
