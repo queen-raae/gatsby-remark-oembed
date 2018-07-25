@@ -1,6 +1,7 @@
 const {
   fetchOembedProviders,
   getProviderEndpointUrlForLinkUrl,
+  fetchOembed,
   selectPossibleOembedLinks,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
@@ -63,6 +64,19 @@ describe("#getProviderEndpointUrlForLinkUrl", () => {
         providers
       )
     ).toBe("https://api.instagram.com/oembed");
+  });
+});
+
+describe("#fetchOembed", () => {
+  test("return correctly formated response", async () => {
+    const data = await fetchOembed(
+      "https://www.instagram.com/p/BftIg_OFPFX/",
+      "https://api.instagram.com/oembed"
+    );
+    const response = {
+      html: expect.anything()
+    };
+    expect(data).toMatchObject(response);
   });
 });
 
