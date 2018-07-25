@@ -1,7 +1,27 @@
 const {
+  fetchOembedProviders,
   selectPossibleOembedLinks,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
+
+describe("#fetchOembedProviders", () => {
+  test("returns a list of providers", async () => {
+    const data = await fetchOembedProviders();
+    const endpoint = {
+      schemes: expect.arrayContaining([expect.anything()]),
+      url: expect.anything()
+    };
+    const provider = {
+      provider_name: expect.anything(),
+      provider_url: expect.anything(),
+      endpoints: expect.arrayContaining([endpoint])
+    };
+    expect(Array.isArray(data)).toBeTruthy();
+    expect(data).toEqual(
+      expect.arrayContaining([expect.objectContaining(provider)])
+    );
+  });
+});
 
 describe("#selectPossibleOembedLinks", () => {
   test("select only links that are the only child of a paragraph", () => {

@@ -4,6 +4,10 @@
   "description":
     "> A GatsbyJS Plugin that transforms oembed links into its corresponding embed code.",
   "main": "index.js",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
+  },
   "scripts": {
     "test": "jest"
   },
@@ -19,6 +23,7 @@
   },
   "homepage": "https://github.com/lillylabs/gatsby-remark-oembed#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "unist-util-select": "^1.5.0"
   },
   "devDependencies": {
