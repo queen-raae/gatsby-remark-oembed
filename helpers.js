@@ -25,6 +25,16 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   return endpointUrl;
 };
 
+exports.fetchOembed = async (linkUrl, endpointUrl) => {
+  const response = await axios.get(endpointUrl, {
+    params: {
+      format: "json",
+      url: linkUrl
+    }
+  });
+  return response.data;
+};
+
 exports.selectPossibleOembedLinks = markdownAST => {
   return select(markdownAST, "paragraph link:only-child");
 };
