@@ -3,20 +3,30 @@ const axios = require("axios");
 
 const OEMBED_PROVIDERS_URL = "https://oembed.com/providers.json";
 
-exports.fetchOembedProviders = async () => {
-  const response = await axios.get(OEMBED_PROVIDERS_URL);
-  return response.data;
+exports.fetchOembedProviders = () => {
+  return axios.get(OEMBED_PROVIDERS_URL).then(response => response.data);
 };
 
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
   providers.forEach(provider => {
-    provider.endpoints.forEach(endpoint => {
-      endpoint.schemes.forEach(schema => {
-        const regExp = new RegExp(schema);
-        if (regExp.test(linkUrl)) {
-          endpointUrl = endpoint.url;
+    const endpoints = provider.endpoints || [];
+    endpoints.forEach(endpoint => {
+      const schemes = endpoint.schemes || [];
+      schemes.forEach(schema => {
+        try {
+          const regExp = new RegExp(schema);
+          if (regExp.test(linkUrl)) {
+            endpointUrl = endpoint.url;
+          }
+        } catch (error) {
+          console.log(
+            "Regex problem with provider",
+            provider.provider_name,
+            schema,
+            error.message
+          );
         }
       });
     });
@@ -25,14 +35,15 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   return endpointUrl;
 };
 
-exports.fetchOembed = async (linkUrl, endpointUrl) => {
-  const response = await axios.get(endpointUrl, {
-    params: {
-      format: "json",
-      url: linkUrl
-    }
-  });
-  return response.data;
+exports.fetchOembed = (linkUrl, endpointUrl) => {
+  return axios
+    .get(endpointUrl, {
+      params: {
+        format: "json",
+        url: linkUrl
+      }
+    })
+    .then(response => response.data);
 };
 
 exports.selectPossibleOembedLinks = markdownAST => {

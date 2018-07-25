@@ -7,8 +7,7 @@ const {
 } = require("./helpers");
 
 describe("#fetchOembedProviders", () => {
-  test("returns a list of providers", async () => {
-    const data = await fetchOembedProviders();
+  test("returns a list of providers", () => {
     const endpoint = {
       schemes: expect.arrayContaining([expect.anything()]),
       url: expect.anything()
@@ -18,8 +17,7 @@ describe("#fetchOembedProviders", () => {
       provider_url: expect.anything(),
       endpoints: expect.arrayContaining([endpoint])
     };
-    expect(Array.isArray(data)).toBeTruthy();
-    expect(data).toEqual(
+    return expect(fetchOembedProviders()).resolves.toEqual(
       expect.arrayContaining([expect.objectContaining(provider)])
     );
   });
@@ -68,15 +66,16 @@ describe("#getProviderEndpointUrlForLinkUrl", () => {
 });
 
 describe("#fetchOembed", () => {
-  test("return correctly formated response", async () => {
-    const data = await fetchOembed(
-      "https://www.instagram.com/p/BftIg_OFPFX/",
-      "https://api.instagram.com/oembed"
-    );
+  test("return correctly formated response", () => {
     const response = {
       html: expect.anything()
     };
-    expect(data).toMatchObject(response);
+    return expect(
+      fetchOembed(
+        "https://www.instagram.com/p/BftIg_OFPFX/",
+        "https://api.instagram.com/oembed"
+      )
+    ).resolves.toMatchObject(response);
   });
 });
 
