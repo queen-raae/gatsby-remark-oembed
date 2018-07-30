@@ -13,9 +13,15 @@ To start we develop it like it would be a local plugin. Ie. we create a Gatsby s
 3.  Create a plugins folder `mkdir plugins`.
 4.  Move into the plugins foler `cd plugins`.
 5.  Clone this repo `git clone git@github.com:lillylabs/gatsby-remark-oembed.git``
-6.  Add a oembed link to one of the markdown posts (pages) on a line with an empty line above and below.
-7.  Serve up the page using `gatsby develop`.
-8.  Take a look at the post you added the oembed link to, and see it being transformed into something else.
+6. Add the following to the plugins property of the `gatsby-transformer-remark` plugin in `gatsby-config.js`:
+
+        {
+          resolve: `gatsby-remark-oembed`
+        },
+
+7.  Add a oembed link to one of the markdown posts (pages) on a line with an empty line above and below.
+8.  Serve up the page using `gatsby develop`.
+9.  Take a look at the post you added the oembed link to, and see it being transformed into something else.
 
 # Motivation
 
