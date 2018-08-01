@@ -1,7 +1,83 @@
 const {
+  fetchOembedProviders,
+  getProviderEndpointUrlForLinkUrl,
+  fetchOembed,
   selectPossibleOembedLinks,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
+
+describe("#fetchOembedProviders", () => {
+  test("returns a list of providers", () => {
+    const endpoint = {
+      schemes: expect.arrayContaining([expect.anything()]),
+      url: expect.anything()
+    };
+    const provider = {
+      provider_name: expect.anything(),
+      provider_url: expect.anything(),
+      endpoints: expect.arrayContaining([endpoint])
+    };
+    return expect(fetchOembedProviders()).resolves.toEqual(
+      expect.arrayContaining([expect.objectContaining(provider)])
+    );
+  });
+});
+
+describe("#getProviderEndpointUrlForLinkUrl", () => {
+  const providers = [
+    {
+      provider_name: "Instagram",
+      provider_url: "https://instagram.com",
+      endpoints: [
+        {
+          schemes: [
+            "http://instagram.com/p/*",
+            "http://instagr.am/p/*",
+            "http://www.instagram.com/p/*",
+            "http://www.instagr.am/p/*",
+            "https://instagram.com/p/*",
+            "https://instagr.am/p/*",
+            "https://www.instagram.com/p/*",
+            "https://www.instagr.am/p/*"
+          ],
+          url: "https://api.instagram.com/oembed",
+          formats: ["json"]
+        }
+      ]
+    }
+  ];
+
+  test("only urls matching one of the providers schemes return an endpoint url", () => {
+    // TODO: Figure out why some providers do not have schemes,
+    // and what to do about it.
+    expect(
+      getProviderEndpointUrlForLinkUrl(
+        "https://www.youtube.com/watch?v=b2H7fWhQcdE",
+        providers
+      )
+    ).toBeFalsy();
+    expect(
+      getProviderEndpointUrlForLinkUrl(
+        "https://www.instagram.com/p/BftIg_OFPFX/",
+        providers
+      )
+    ).toBe("https://api.instagram.com/oembed");
+  });
+});
+
+describe("#fetchOembed", () => {
+  test("return correctly formated response", () => {
+    const response = {
+      html: expect.anything()
+    };
+    return expect(
+      fetchOembed(
+        "https://www.instagram.com/p/BftIg_OFPFX/",
+        "https://api.instagram.com/oembed"
+      )
+    ).resolves.toMatchObject(response);
+  });
+});
 
 describe("#selectPossibleOembedLinks", () => {
   test("select only links that are the only child of a paragraph", () => {
