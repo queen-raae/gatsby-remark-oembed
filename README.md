@@ -12,7 +12,7 @@ To start we develop it like it would be a local plugin. Ie. we create a Gatsby s
 2.  Move into its directory `cd blog`.
 3.  Create a plugins folder `mkdir plugins`.
 4.  Move into the plugins foler `cd plugins`.
-5.  Clone this repo `git clone git@github.com:lillylabs/gatsby-remark-oembed.git``
+5.  Clone this repo `git clone git@github.com:lillylabs/gatsby-remark-oembed.git`
 6. Add the following to the plugins property of the `gatsby-transformer-remark` plugin in `gatsby-config.js`:
 
         {
