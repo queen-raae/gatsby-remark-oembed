@@ -14,9 +14,10 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
     const endpoints = provider.endpoints || [];
     for (endpoint of endpoints) {
       const schemes = endpoint.schemes || [];
+
       for (schema of schemes) {
         try {
-          const regExp = new RegExp(schema);
+          const regExp = new RegExp(schema.replace("*", ".*"));
           if (regExp.test(linkUrl)) {
             endpointUrl = endpoint.url;
           }
@@ -30,6 +31,10 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
         }
       }
     }
+  }
+
+  if (!endpointUrl) {
+    console.log("No enpoint url for", linkUrl);
   }
 
   return endpointUrl;
