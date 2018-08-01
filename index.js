@@ -16,10 +16,16 @@ module.exports = async ({ markdownAST }) => {
   // Step 2.  Find link nodes in markdown structure that are on their own, not part of some other content.
   const possibleOmbedUrlNodes = selectPossibleOembedLinkNodes(markdownAST);
 
-  // For each node this is the process
   return processNodes(possibleOmbedUrlNodes, providers);
 };
 
+const processNodes = (nodes, providers) => {
+  return Promise.all(
+    nodes.map(node => processNode(node, providers))
+  );
+};
+
+// For each node this is the process
 const processNode = async (node, providers) => {
 
   // Step 3.  Check if url matched any of the oembed url schemes.
@@ -34,10 +40,4 @@ const processNode = async (node, providers) => {
 
   // Step 5.  Transform the link node into an html node.
   return tranformsLinkNodeToOembedNode(node, oembedResponse);
-};
-
-const processNodes = (nodes, providers) => {
-  return Promise.all(
-    nodes.map(node => processNode(node, providers))
-  );
 };
