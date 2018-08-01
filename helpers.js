@@ -10,13 +10,14 @@ exports.fetchOembedProviders = () => {
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
-  providers.forEach(provider => {
+  for (provider of providers) {
     const endpoints = provider.endpoints || [];
-    endpoints.forEach(endpoint => {
+    for (endpoint of endpoints) {
       const schemes = endpoint.schemes || [];
-      schemes.forEach(schema => {
+
+      for (schema of schemes) {
         try {
-          const regExp = new RegExp(schema);
+          const regExp = new RegExp(schema.replace("*", ".*"));
           if (regExp.test(linkUrl)) {
             endpointUrl = endpoint.url;
           }
@@ -28,9 +29,13 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
             error.message
           );
         }
-      });
-    });
-  });
+      }
+    }
+  }
+
+  if (!endpointUrl) {
+    console.log("No enpoint url for", linkUrl);
+  }
 
   return endpointUrl;
 };
@@ -46,7 +51,7 @@ exports.fetchOembed = (linkUrl, endpointUrl) => {
     .then(response => response.data);
 };
 
-exports.selectPossibleOembedLinks = markdownAST => {
+exports.selectPossibleOembedLinkNodes = markdownAST => {
   return select(markdownAST, "paragraph link:only-child");
 };
 
