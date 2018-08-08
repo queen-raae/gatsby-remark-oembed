@@ -9,7 +9,6 @@ const {
 } = require("./helpers");
 
 module.exports = async ({ markdownAST }) => {
-
   // Step 1.  Fetch the oembed provider list.
   const providers = await fetchOembedProviders();
 
@@ -20,14 +19,11 @@ module.exports = async ({ markdownAST }) => {
 };
 
 const processNodes = (nodes, providers) => {
-  return Promise.all(
-    nodes.map(node => processNode(node, providers))
-  );
+  return Promise.all(nodes.map(node => processNode(node, providers)));
 };
 
 // For each node this is the process
 const processNode = async (node, providers) => {
-
   // Step 3.  Check if url matched any of the oembed url schemes.
   const endpointUrl = getProviderEndpointUrlForLinkUrl(node.url, providers);
 
