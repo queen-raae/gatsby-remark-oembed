@@ -3,8 +3,9 @@ const axios = require("axios");
 
 const OEMBED_PROVIDERS_URL = "https://oembed.com/providers.json";
 
-exports.fetchOembedProviders = () => {
-  return axios.get(OEMBED_PROVIDERS_URL).then(response => response.data);
+exports.fetchOembedProviders = async () => {
+  const response = await axios.get(OEMBED_PROVIDERS_URL);
+  return response.data;
 };
 
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
@@ -40,15 +41,14 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   return endpointUrl;
 };
 
-exports.fetchOembed = (linkUrl, endpointUrl) => {
-  return axios
-    .get(endpointUrl, {
-      params: {
-        format: "json",
-        url: linkUrl
-      }
-    })
-    .then(response => response.data);
+exports.fetchOembed = async (linkUrl, endpointUrl) => {
+  const response = await axios.get(endpointUrl, {
+    params: {
+      format: "json",
+      url: linkUrl
+    }
+  })
+  return response.data
 };
 
 exports.selectPossibleOembedLinkNodes = markdownAST => {
