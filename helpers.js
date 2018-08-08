@@ -47,8 +47,8 @@ exports.fetchOembed = async (linkUrl, endpointUrl) => {
       format: "json",
       url: linkUrl
     }
-  })
-  return response.data
+  });
+  return response.data;
 };
 
 exports.selectPossibleOembedLinkNodes = markdownAST => {
