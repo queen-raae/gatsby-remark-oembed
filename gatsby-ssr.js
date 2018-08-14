@@ -9,5 +9,9 @@ exports.onRenderBody = ({ setPostBodyComponents }) =>
     <script
       key={`gatsby-plugin-oembed-instagram`}
       src="https://www.instagram.com/embed.js"
+    />,
+    <script
+      key={`gatsby-plugin-oembed-flickr`}
+      src="https://embedr.flickr.com/assets/client-code.js"
     />
   ]);
