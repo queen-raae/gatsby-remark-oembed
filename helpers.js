@@ -11,16 +11,14 @@ exports.fetchOembedProviders = async () => {
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
-  for (provider of providers) {
-    const endpoints = provider.endpoints || [];
-    for (endpoint of endpoints) {
-      const schemes = endpoint.schemes || [];
-
-      for (schema of schemes) {
+  for (const provider of providers) {
+    for (const endpoint of provider.endpoints || []) {
+      for (let schema of endpoint.schemes || []) {
         try {
-          const regExp = new RegExp(schema.replace("*", ".*"));
+          schema = schema.replace("*", ".*");
+          const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
-            endpointUrl = endpoint.url;
+            endpointUrl = endpoint.url.replace("{format}", "json");
           }
         } catch (error) {
           console.log(
@@ -35,7 +33,7 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   }
 
   if (!endpointUrl) {
-    console.log("No enpoint url for", linkUrl);
+    console.log("No endpoint url for", linkUrl);
   }
 
   return endpointUrl;
