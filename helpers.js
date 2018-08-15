@@ -2,6 +2,18 @@ const select = require("unist-util-select");
 const axios = require("axios");
 
 const OEMBED_PROVIDERS_URL = "https://oembed.com/providers.json";
+const ENDPOINTS = {
+  YouTube: {
+    schemes: [
+      "http://*.youtube.com/watch*",
+      "http://*.youtube.com/v/*",
+      "http://youtu.be/*"
+    ],
+    url: "https://www.youtube.com/oembed"
+  }
+};
+
+const ADD_HTTPS = ["YouTube", "Flickr"];
 
 exports.fetchOembedProviders = async () => {
   const response = await axios.get(OEMBED_PROVIDERS_URL);
@@ -9,11 +21,31 @@ exports.fetchOembedProviders = async () => {
 };
 
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
+  const ammendEndpoints = (endpoints = [], providerName) => {
+    if (ENDPOINTS[providerName]) {
+      endpoints = endpoints.concat(ENDPOINTS[providerName]);
+    }
+    return endpoints;
+  };
+
+  const ammendSchemes = (schemes = [], providerName) => {
+    if (ADD_HTTPS.includes(providerName)) {
+      const httpsSchemes = [...schemes].map(scheme =>
+        scheme.replace("http", "https")
+      );
+      schemes = schemes.concat(httpsSchemes);
+    }
+    return schemes;
+  };
+
   let endpointUrl = false;
 
   for (const provider of providers) {
-    for (const endpoint of provider.endpoints || []) {
-      for (let schema of endpoint.schemes || []) {
+    const providerName = provider.provider_name;
+    const ammendedEndpoints = ammendEndpoints(provider.endpoints, providerName);
+    for (const endpoint of ammendedEndpoints) {
+      const ammendedSchemes = ammendSchemes(endpoint.schemes, providerName);
+      for (let schema of ammendedSchemes || []) {
         try {
           schema = schema.replace("*", ".*");
           const regExp = new RegExp(schema);
