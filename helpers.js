@@ -20,7 +20,7 @@ exports.fetchOembedProviders = async () => {
   return response.data;
 };
 
-exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
+exports.ammendProviders = providers => {
   const ammendEndpoints = (endpoints = [], providerName) => {
     if (ENDPOINTS[providerName]) {
       endpoints = endpoints.concat(ENDPOINTS[providerName]);
@@ -38,14 +38,25 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
     return schemes;
   };
 
+  return providers.map(provider => {
+    const providerName = provider.provider_name;
+    provider.endpoints = ammendEndpoints(provider.endpoints, providerName).map(
+      endpoint => {
+        endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
+        return endpoint;
+      }
+    );
+    return provider;
+  });
+};
+
+exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
   for (const provider of providers) {
-    const providerName = provider.provider_name;
-    const ammendedEndpoints = ammendEndpoints(provider.endpoints, providerName);
-    for (const endpoint of ammendedEndpoints) {
-      const ammendedSchemes = ammendSchemes(endpoint.schemes, providerName);
-      for (let schema of ammendedSchemes || []) {
+    console.log();
+    for (const endpoint of provider.endpoints) {
+      for (let schema of endpoint.schemes) {
         try {
           schema = schema.replace("*", ".*");
           const regExp = new RegExp(schema);
