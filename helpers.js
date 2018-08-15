@@ -33,7 +33,7 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   }
 
   if (!endpointUrl) {
-    console.log("No endpoint url for", linkUrl);
+    throw new Error(`No endpoint url for ${linkUrl}`);
   }
 
   return endpointUrl;
@@ -69,4 +69,6 @@ exports.tranformsLinkNodeToOembedNode = (node, oembedResult) => {
     `;
     delete node.children;
   }
+
+  return node;
 };
