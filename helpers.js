@@ -13,7 +13,8 @@ const ENDPOINTS = {
   }
 };
 
-const ADD_HTTPS = ["YouTube", "Flickr"];
+const ADD_HTTPS_TO_SCHEMES = ["amCharts Live Editor", "YouTube", "Flickr"];
+const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 
 exports.fetchOembedProviders = async () => {
   const response = await axios.get(OEMBED_PROVIDERS_URL);
@@ -29,7 +30,7 @@ exports.ammendProviders = providers => {
   };
 
   const ammendSchemes = (schemes = [], providerName) => {
-    if (ADD_HTTPS.includes(providerName)) {
+    if (ADD_HTTPS_TO_SCHEMES.includes(providerName)) {
       const httpsSchemes = [...schemes].map(scheme =>
         scheme.replace("http", "https")
       );
@@ -38,11 +39,20 @@ exports.ammendProviders = providers => {
     return schemes;
   };
 
+  const ammendEndpointUrl = (endpointUrl = "", providerName) => {
+    endpointUrl = endpointUrl.replace("{format}", "json");
+    if (ADD_HTTPS_TO_ENDPOINT_URL.includes(providerName)) {
+      endpointUrl = endpointUrl.replace("http", "https");
+    }
+    return endpointUrl;
+  };
+
   return providers.map(provider => {
     const providerName = provider.provider_name;
     provider.endpoints = ammendEndpoints(provider.endpoints, providerName).map(
       endpoint => {
         endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
+        endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
         return endpoint;
       }
     );
@@ -54,14 +64,13 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
   for (const provider of providers) {
-    console.log();
     for (const endpoint of provider.endpoints) {
       for (let schema of endpoint.schemes) {
         try {
           schema = schema.replace("*", ".*");
           const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
-            endpointUrl = endpoint.url.replace("{format}", "json");
+            endpointUrl = endpoint.url;
           }
         } catch (error) {
           console.log(
