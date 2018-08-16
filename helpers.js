@@ -10,10 +10,19 @@ const ENDPOINTS = {
       "http://youtu.be/*"
     ],
     url: "https://www.youtube.com/oembed"
+  },
+  Nasjonalbiblioteket: {
+    schemes: ["https://www.nb.no/items/*"],
+    url: "https://api.nb.no/catalog/v1/oembed"
   }
 };
 
-const ADD_HTTPS_TO_SCHEMES = ["amCharts Live Editor", "YouTube", "Flickr"];
+const ADD_HTTPS_TO_SCHEMES = [
+  "amCharts Live Editor",
+  "YouTube",
+  "Flickr",
+  "MixCloud"
+];
 const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 
 exports.fetchOembedProviders = async () => {
