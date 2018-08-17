@@ -9,6 +9,10 @@ const {
 } = require("./helpers");
 
 module.exports = async ({ markdownAST }) => {
+  // Let's see if this works
+  console.log(
+    "nå er jeg i plugins/Gatsby-remark-oembed index.js etter const endpointUrl"
+  );
   try {
     // Step 1.  Fetch the oembed provider list.
     const providers = await fetchOembedProviders();
