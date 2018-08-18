@@ -3,7 +3,8 @@ const {
   getProviderEndpointUrlForLinkUrl,
   fetchOembed,
   selectPossibleOembedLinkNodes,
-  tranformsLinkNodeToOembedNode
+  tranformsLinkNodeToOembedNode,
+  filterProviders
 } = require("./helpers");
 
 describe("#fetchOembedProviders", () => {
@@ -19,6 +20,40 @@ describe("#fetchOembedProviders", () => {
     };
     return expect(fetchOembedProviders()).resolves.toEqual(
       expect.arrayContaining([expect.objectContaining(provider)])
+    );
+  });
+});
+
+describe("#filterProviders", () => {
+  const kickstarter = {
+    provider_name: "Kickstarter"
+  };
+  const twitter = {
+    provider_name: "Twitter"
+  };
+
+  const instagram = {
+    provider_name: "Instagram"
+  };
+  test("returns a list of providers with only Instagram", () => {
+    expect(filterProviders(providers, ["Instagram"])).toEqual(
+      expect.not.arrayContaining([
+        expect.objectContaining(kickstarter),
+        expect.objectContaining(twitter)
+      ])
+    );
+    expect(filterProviders(providers, ["Instagram"])).toEqual(
+      expect.arrayContaining([expect.objectContaining(instagram)])
+    );
+  });
+
+  test("returns a list of providers with only Instagram and Twitter", () => {
+    expect(filterProviders(providers, ["Twitter", "Instagram"])).toEqual(
+      expect.not.arrayContaining([expect.objectContaining(kickstarter)])
+    );
+    expect(filterProviders(providers, ["Twitter", "Instagram"])).toEqual(
+      expect.arrayContaining([expect.objectContaining(instagram)]),
+      expect.arrayContaining([expect.objectContaining(twitter)])
     );
   });
 });
