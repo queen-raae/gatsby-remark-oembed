@@ -1,6 +1,7 @@
 const Promise = require("bluebird");
 
 const {
+  ammendProviders,
   fetchOembedProviders,
   fetchOembed,
   getProviderEndpointUrlForLinkUrl,
@@ -15,7 +16,8 @@ module.exports = async ({ markdownAST }) => {
   );
   try {
     // Step 1.  Fetch the oembed provider list.
-    const providers = await fetchOembedProviders();
+    let providers = await fetchOembedProviders();
+    providers = ammendProviders(providers);
 
     // Step 2.  Find link nodes in markdown structure that are on their own, not part of some other content.
     const possibleOmbedUrlNodes = selectPossibleOembedLinkNodes(markdownAST);

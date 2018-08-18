@@ -2,23 +2,84 @@ const select = require("unist-util-select");
 const axios = require("axios");
 
 const OEMBED_PROVIDERS_URL = "https://oembed.com/providers.json";
+const ENDPOINTS = {
+  YouTube: {
+    schemes: [
+      "http://*.youtube.com/watch*",
+      "http://*.youtube.com/v/*",
+      "http://youtu.be/*"
+    ],
+    url: "https://www.youtube.com/oembed"
+  },
+  Nasjonalbiblioteket: {
+    schemes: ["https://www.nb.no/items/*"],
+    url: "https://api.nb.no/catalog/v1/oembed"
+  }
+};
+
+const ADD_HTTPS_TO_SCHEMES = [
+  "amCharts Live Editor",
+  "YouTube",
+  "Flickr",
+  "MixCloud"
+];
+const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 
 exports.fetchOembedProviders = async () => {
   const response = await axios.get(OEMBED_PROVIDERS_URL);
   return response.data;
 };
 
+exports.ammendProviders = providers => {
+  const ammendEndpoints = (endpoints = [], providerName) => {
+    if (ENDPOINTS[providerName]) {
+      endpoints = endpoints.concat(ENDPOINTS[providerName]);
+    }
+    return endpoints;
+  };
+
+  const ammendSchemes = (schemes = [], providerName) => {
+    if (ADD_HTTPS_TO_SCHEMES.includes(providerName)) {
+      const httpsSchemes = [...schemes].map(scheme =>
+        scheme.replace("http", "https")
+      );
+      schemes = schemes.concat(httpsSchemes);
+    }
+    return schemes;
+  };
+
+  const ammendEndpointUrl = (endpointUrl = "", providerName) => {
+    endpointUrl = endpointUrl.replace("{format}", "json");
+    if (ADD_HTTPS_TO_ENDPOINT_URL.includes(providerName)) {
+      endpointUrl = endpointUrl.replace("http", "https");
+    }
+    return endpointUrl;
+  };
+
+  return providers.map(provider => {
+    const providerName = provider.provider_name;
+    provider.endpoints = ammendEndpoints(provider.endpoints, providerName).map(
+      endpoint => {
+        endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
+        endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
+        return endpoint;
+      }
+    );
+    return provider;
+  });
+};
+
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
   for (const provider of providers) {
-    for (const endpoint of provider.endpoints || []) {
-      for (let schema of endpoint.schemes || []) {
+    for (const endpoint of provider.endpoints) {
+      for (let schema of endpoint.schemes) {
         try {
           schema = schema.replace("*", ".*");
           const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
-            endpointUrl = endpoint.url.replace("{format}", "json");
+            endpointUrl = endpoint.url;
           }
         } catch (error) {
           console.log(
