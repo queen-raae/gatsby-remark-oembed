@@ -2,7 +2,7 @@ const {
   fetchOembedProviders,
   getProviderEndpointUrlForLinkUrl,
   fetchOembed,
-  selectPossibleOembedLinks,
+  selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
 
@@ -24,38 +24,17 @@ describe("#fetchOembedProviders", () => {
 });
 
 describe("#getProviderEndpointUrlForLinkUrl", () => {
-  const providers = [
-    {
-      provider_name: "Instagram",
-      provider_url: "https://instagram.com",
-      endpoints: [
-        {
-          schemes: [
-            "http://instagram.com/p/*",
-            "http://instagr.am/p/*",
-            "http://www.instagram.com/p/*",
-            "http://www.instagr.am/p/*",
-            "https://instagram.com/p/*",
-            "https://instagr.am/p/*",
-            "https://www.instagram.com/p/*",
-            "https://www.instagr.am/p/*"
-          ],
-          url: "https://api.instagram.com/oembed",
-          formats: ["json"]
-        }
-      ]
-    }
-  ];
-
   test("only urls matching one of the providers schemes return an endpoint url", () => {
     // TODO: Figure out why some providers do not have schemes,
     // and what to do about it.
-    expect(
+    expect(() => {
       getProviderEndpointUrlForLinkUrl(
         "https://www.youtube.com/watch?v=b2H7fWhQcdE",
         providers
-      )
-    ).toBeFalsy();
+      );
+    }).toThrowError(
+      "No endpoint url for https://www.youtube.com/watch?v=b2H7fWhQcdE"
+    );
     expect(
       getProviderEndpointUrlForLinkUrl(
         "https://www.instagram.com/p/BftIg_OFPFX/",
@@ -79,9 +58,9 @@ describe("#fetchOembed", () => {
   });
 });
 
-describe("#selectPossibleOembedLinks", () => {
+describe("#selectPossibleOembedLinkNodes", () => {
   test("select only links that are the only child of a paragraph", () => {
-    const possibleOembedLinks = selectPossibleOembedLinks(markdownAST);
+    const possibleOembedLinks = selectPossibleOembedLinkNodes(markdownAST);
     expect(possibleOembedLinks).toHaveLength(1);
     expect(possibleOembedLinks[0]).toMatchObject({
       type: "link",
@@ -302,3 +281,49 @@ const markdownAST = {
   },
   type: "root"
 };
+
+const providers = [
+  {
+    provider_name: "Instagram",
+    provider_url: "https://instagram.com",
+    endpoints: [
+      {
+        schemes: [
+          "http://instagram.com/p/*",
+          "http://instagr.am/p/*",
+          "http://www.instagram.com/p/*",
+          "http://www.instagr.am/p/*",
+          "https://instagram.com/p/*",
+          "https://instagr.am/p/*",
+          "https://www.instagram.com/p/*",
+          "https://www.instagr.am/p/*"
+        ],
+        url: "https://api.instagram.com/oembed",
+        formats: ["json"]
+      }
+    ]
+  },
+  {
+    provider_name: "Kickstarter",
+    provider_url: "http://www.kickstarter.com",
+    endpoints: [
+      {
+        schemes: ["http://www.kickstarter.com/projects/*"],
+        url: "http://www.kickstarter.com/services/oembed"
+      }
+    ]
+  },
+  {
+    provider_name: "Twitter",
+    provider_url: "http://www.twitter.com/",
+    endpoints: [
+      {
+        schemes: [
+          "https://twitter.com/*/status/*",
+          "https://*.twitter.com/*/status/*"
+        ],
+        url: "https://publish.twitter.com/oembed"
+      }
+    ]
+  }
+];
