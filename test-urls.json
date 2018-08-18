@@ -1,0 +1,170 @@
+// At least one url from each provider found on https://oembed.com/
+[
+  "http://www.23hq.com/ok67/photo/5274134",
+  // http://www.adways.com/ seems to be a log in servie
+  // https://alpha.app.net/ not in service
+  // https://www.altrulabs.com seems to be a log in service
+  "https://live.amcharts.com/czNjJ",
+  "http://live.amcharts.com/czNjJ",
+  // "http://www.animatron.com/project/6487dd52e5835971c6bec25d" Not working
+  // "http://animoto.com/play/JzwsBn5FRVxS0qoqcBP5zA" Not working
+  "https://www.audiomack.com/playlist/audiomack/just-chillin",
+  // "http://audiosnaps.com/k/d8wi/&format=json" Not working
+  // "https://www.beautiful.ai/deck/-L7QETWHKx_3vn8eIswg" Too large iframes
+  // "https://blackfire.io/profiles/ffcffdc1-50db-42bc-bcbb-dcfe86758e26/graph" Somethings wrong
+  // "http://movies.boxofficebuz.com/video/jack-reacher-never-go-back-tv-spot-hunting" Not working
+  // Buttondown (https://buttondown.email/) Not working
+  // http://cacoo.com/ Not working
+  "https://carbonhealth.com/practice/carbon-primary-care/carbon-financial-district/walkin",
+  "http://public.chartblocks.com/c/53f7702dc9a61d7935942613/",
+  "https://www.circuitlab.com/circuit/e38756/555-timer-as-astable-multivibrator-oscillator/",
+  // "http://www.clipland.com/v/1010" Not working
+  "http://clyp.it/zhwuptos",
+  "https://codepen.io/gingerdude/pen/JXwgdK",
+  "https://codepoints.net/U+00E4",
+  "https://codesandbox.io/s/new",
+  "http://www.collegehumor.com/video/3922232/prank-war-7-the-half-million-dollar-shot",
+  "https://commaful.com/play/rubixcube89201/dont-let-me-fall-in-love-with-you/",
+  "http://coub.com/view/um0um0",
+  // "http://crowdranking.com/rankings/t470g0--best-tea" Not in service
+  // "https://staging.cyranosystems.com/msg/#/guestPlayProgram/000181d4-2b11-8702-0035-45f0449eb025" Not working
+  "http://www.dailymotion.com/video/xoxulz_babysitter_animals",
+  "http://browse.deviantart.com/art/Vita-Brevis-379998342",
+  // "https://finchp.didacte.com/a/course/363?locale=fr" Not working,
+  "https://www.ultimedia.com/default/index/videogeneric/id/smxuxm",
+  // "www.dipity.com" Not in service
+  "https://www.docdroid.net/hptvUCe/example-document.docx.html",
+  "https://d.tube/v/benswann/zqd630em",
+  // "https://www.edumedia-sciences.com/fr/media/836" Not working
+  // "http://egliseinfo.catholique.fr/horaires/paris" Not working
+  // "http://embedarticles.com/article/101887/yemi~alade~ft.~selebobo~~na~gode/" Not working
+  "https://ethfiddle.com/Y8Iy49zDJ0",
+  "https://eyrie.io/board/747d351c00bc4f91ae7b95635942e685",
+  "https://www.facebook.com/facebook/videos/10153231379946729/", // Not rich, missing script
+  "https://faithlifetv.com/items/300027",
+  "https://flat.io/score/56ae21579a127715a02901a6",
+  // "http://flickr.com/photos/bees/2362225867/" Must be on short form https://flic.kr/p/4AK2sc
+  "https://public.flourish.studio/visualisation/47988/",
+  "https://catapult.fontself.com/MEdLOEq/gilbert-color-bold-preview4",
+  // "http://fiso.foxsports.com.au/isomorphic-widget/scoreboard/1.0.0/scoreboard.html" Might not be in service
+  // "https://framebuzz.com/v/tJjtJ3rN1usuqAeY/" Not in service
+  "http://www.funnyordie.com/videos/a7311134ac/patton-oswalt-in-heavy-metal",
+  "http://www.geograph.org.uk/photo/2928776",
+  "http://www.geograph.org.gg/photo/773",
+  "http://geo.hlipp.de/photo/20260",
+  // "http://gty.im/74917285" Needs script
+  "http://www.gfycat.com/RichPepperyFerret",
+  "https://giphy.com/gifs/cant-hardly-wait-kW8mnYSNkUYKc",
+  // "https://gloria.tv/video/FRqEWoz7GfGt1pfhD4krcgyqC" Not working
+  "https://gyazo.com/71e107d77e8495f0e54d2e5b6dc5d326",
+  // "http://huffduffer.com/jxpx777/125342" not in service
+  "http://www.hulu.com/watch/20807/late-night-with-conan-obrien-wed-may-21-2008",
+  // "http://www.ifixit.com/Teardown/iPhone-4-Teardown/3130/1" Not working
+  // "https://ifttt.com/recipes/107745" Not working
+  // "http://player.indacolive.com/player/jwp/clients/test/2016/9/pallacanestro_reggiana/" Not working
+  // "https://infogr.am/amazon-and-the-book-market" Needs script
+  "https://demo.infoveave.net/E/ZGVtb3wxfENIfDU2OTR8MjAxfHRydWV8dHJ1ZQ==|AP25RKrQl0t",
+  // "http://www.inoreader.com/article/3a9c6e7f31414b1c-how-to-prevent-spotify-from-wasting-disk-space" Not working
+  // "http://www.label.inphood.com/?query&user=test&label=-KeuRz0ubjnQVkJCmGDH" Not in service
+  "http://instagram.com/p/V8UMy0LjpX/",
+  // "http://www.isnare.com/?aid=1897753&ca=Marketing", Not in service
+  // "https://music.ivlis.kr/?artist=Justin%20Bieber&track=Sorry", Not in service
+  "http://www.kickstarter.com/projects/1115015686/help-support-the-kiggins-theatre-to-go-digital",
+  "https://www.kidoju.com/en/x/57c1c06430c6681900538352/57c1c06530c6681900538353",
+  "https://kit.com/YARNutopia/nintendo-nes-controller-pixel-blanket-crochet-supplies-kit",
+  // "http://www.kitchenbowl.com/recipe/NVsYg1R8ql/pork-and-shiitake-mushroom-dumplings" Needs script
+  // "https://jdr.knacki.info/meuh/desole;format=json" Not in service,
+  // "http://LearningApps.org/259" Not in service,
+  "https://app.ludus.one/fd01598e-5ed7-4edb-8d0e-cf75a36e0a07",
+  // "http://mathembed.com/latex?inputText=f(x)" Not working,
+  "https://me.me/i/3174471",
+  // "https://medienarchiv.zhdk.ch/entries/da88e9e6-6b53-447b-8113-637d885f8ab2" Not working,
+  "https://www.meetup.com/PHPColMeetup/photos/",
+  "https://www.mixcloud.com/Beatspeak/beatspeak-a-little-bit-deeper-005/",
+  "http://www.mobypicture.com/user/Henk_Voermans/view/15880044", // Had to add www, but without works
+  // "https://beta.modelo.io/embedded/PB4PgLTHJq", Not working
+  // "https://m-roll.morphcast.com/mroll/", Not working
+  "https://mybeweeg.com/w/NyWxXR7tb",
+  "https://nanoo.tv/link/v/zBNqdjLG",
+  "https://www.nb.no/items/512fe10f3e2fae3c6dd08338e47535f6", // Ser ræl ut
+  // "http://www.nfb.ca/film/aboriginality", Not working, outputs text
+  // "https://www.odds.com.au/odds/rugby-league/nrl/", Not working
+  // "http://official.fm/tracks/npTR", Not working
+  // "http://on.aol.com/video/plans-to-clone-john-lennon-using-one-of-his-teeth-517906689", Not working
+  // "http://www.ora.tv/thechargedlife", Not working
+  // "https://orbitvu.co/001/JJXNutMRq8DvjEQ8Sbv8WH/ov3601/3/view", Not working, works in Paw
+  // "https://www.oumy.com/v/0NmY0agdvcA7wlvIXbJaBzA", Not in service
+  // "https://www.pastery.net/hepwdy/" Not in service
+  // "https://beta.pingvp.com.kpnis.nl/v/index.php?v=anxXNrIi31", Not working
+  "https://store.pixdor.com/map/10/show",
+  // "http://polldaddy.com/ratings/39/", Not working
+  // "sellwithport.com", Not correct
+  // "https://portfolium.com/js/prod/portfolium.js", Needs script,
+  // "https://rapidengage.com", New domain, service
+  "https://www.reddit.com/r/aww/comments/4lwccv/someone_came_to_visit_woodchips_for_scale", // Needs script
+  "http://rwire.com/600742", // Needs script
+  // "http://repubhub.icopyright.net/" Not working
+  // "https://www.reverbnation.com/coralbones/song/4290057-rising-sand" Not working
+  // "https://www.riffreporter.de/was-ist-riffreporter/", Not working
+  // "http://roomshare.jp/en/post/137167", Not working
+  // "https://rumble.com/v30jzs-dog-dont-know-where-to-hide-her-bone.html" Not working, works in Paw
+  "http://videos.sapo.pt/dNbiosGa9YZHfLrhkA88",
+  "https://videosite.screen9.tv/media/u6txqFxdedOXiyg2lOUmTQ/crane",
+  // "http://www.screencast.com/t/JR3TiP5Dds", Not working, works in Paw
+  // "http://www.screenr.com/api/oembed.xml?url=http%3A%2F%2Fscreenr.com%2F3jns", Not working, works in Paw
+  "https://scribblemaps.com/maps/view/Saigon/JkFLCgwlGt",
+  "http://www.scribd.com/doc/110799637/Synthesis-of-Knowledge-Effects-of-Fire-and-Thinning-Treatments-on-Understory-Vegetation-in-Dry-U-S-Forests",
+  // "https://www.shortnote.jp/oembed/?url=https%3A%2F%2Fwww.shortnote.jp%2Fview%2Fnotes%2FATImFCFE", Not working
+  "http://shoudio.com/user/shoister/status/8122",
+  "https://showtheway.io/to/48.85837,2.294481?name=Eiffel%20Tower", // Needs script
+  "https://simplecast.com/oembed?url=https%3A%2F%2Fsimplecast.com%2Fs%2F7fe152f4",
+  "https://onsizzle.com/i/ten-kingiames-last-night-lebron-james-finally-got-that-ring-3174471",
+  // "https://sketchfab.com/sketchfab/folders/5ae73138e4a1477fb87b6f48d2bfccbe", Not working
+  "http://www.slideshare.net/haraldf/business-quotes-for-2011",
+  // "https://www.smugmug.com/popular/all#125787395_hQSj9", Not working
+  "https://www.socialexplorer.com/a9676d974c/explore",
+  "https://song.link/album/s/0K4pIOOsfJ9lK8OjrZfXzd",
+  "https://soundcloud.com/forss/flickermood",
+  "https://play.soundsgood.co/playlist/24h-avec-nuits-fauves",
+  "https://speakerdeck.com/wallat/why-backbone",
+  // "https://play.bespotful.com/3457", Not working, works in Paw
+  "https://open.spotify.com/track/2qToAcex0ruZfbEbAy9OhW",
+  "https://www.spreaker.com/show/risiko-radio",
+  "http://streamable.com/ifjh",
+  "https://content.streamonecloud.net/embed/account=2zhpQ4DUe5oB/item=OB5psqlNP0MR/tears-of-steel.html",
+  "https://www.sutori.com/story/our-story-8362",
+  "https://sway.com/making_of_wildcat_sculpture",
+  // "http://www.ted.com/talks/jill_bolte_taylor_s_powerful_stroke_of_insight.html", Not working
+  "https://www.nytimes.com/2016/03/10/us/politics/how-to-watch-democratic-debate.html",
+  // "https://theysaidso.com/i/13IGilhK08STqiDI5xGk_geF", Not working, works on Paw
+  "https://www.tickcounter.com/countdown/1/my-countdown",
+  "https://www.toornament.com/tournaments/435927046347886201/information",
+  // "http://topy.se/image/X9" Not working
+  "https://www.twitch.tv/riotgames/v/72749628",
+  "https://twitter.com/Interior/status/507185938620219395",
+  // "https://player.ubideo.com/myownusername", Not working, works in Paw
+  "https://mais.uol.com.br/view/qf3ks0vlifm7/15697800?types=A",
+  "http://www.ustream.tv/channel/americatv2oficial", // Must have flash
+  // "https://utposts.com/products/1", Not working
+  // "http://uttles.com/uttle/56b760264daebfd94ef293a2", Not working
+  "http://veer.tv/videos/fuzzy-beard-360-7514",
+  // "http://verse.com/embed/#/stories/112-connected-to-the-top", Not working
+  // "http://www.vevo.com/watch/katy-perry/Firework/USCA31000112", Not working
+  // "http://www.videojug.com/film/how-to-tie-a-knot-braid", Not working
+  "https://vidl.it/mBPb4A",
+  // "https://players.vidmizer.com/8582f97e-7c4f-49c7-be85-d61a95f4d8b3", Not working
+  "https://vimeo.com/76979871",
+  "http://viziosphere.com/3dphoto?ref=VZP0002",
+  "https://vlipsy.com/vlip/elf-i-love-you-i1ZZELDO",
+  "https://article.voxsnap.com/nirandfar/the-psychology-of-a-billion-dollar-enterprise-app",
+  // "http://www.wecandeo.com/", No urls
+  // "http://deckers.wiredrive.com/363254/851732644105a5a8b3fa14fe164452df", Not working
+  "https://app.wizer.me/preview/K6EKW",
+  // "http://www.wootled.com/wg/0SbDvPCAzpWEstt", Not working, works in Paw
+  // "http://matt.wordpress.com/2011/07/14/clouds-over-new-york/", Not working
+  "http://yesik.it/EP15",
+  // "http://yfrog.com/jukynnj", Not working
+  "http://www.youtube.com/watch?v=iwGFalTRHDA"
+  // "https://beta.znipe.tv/esl-genting-2018/stage?v=-L8UwcDwy8BFKXR6lLdj", Not working
+  // "https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1432535000000003002" Not working
+]
