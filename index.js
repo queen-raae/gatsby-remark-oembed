@@ -14,7 +14,7 @@ module.exports = async ({ markdownAST }) => {
     // Step 1.  Fetch the oembed provider list.
     let providers = await fetchOembedProviders();
     providers = ammendProviders(providers);
-
+    providers = filterProviders(providers, options.whitelist);
     // Step 2.  Find link nodes in markdown structure that are on their own, not part of some other content.
     const possibleOmbedUrlNodes = selectPossibleOembedLinkNodes(markdownAST);
 
