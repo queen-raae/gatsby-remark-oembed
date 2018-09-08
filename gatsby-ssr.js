@@ -15,7 +15,7 @@ exports.onRenderBody = ({ setPostBodyComponents }) =>
       src="https://embedr.flickr.com/assets/client-code.js"
     />,
     <script
-      key={`gatsby-plugin-oembed-flickr`}
+      key={`gatsby-plugin-oembed-redditmedia`}
       src="https://embed.redditmedia.com/widgets/platform.js"
     />
   ]);
