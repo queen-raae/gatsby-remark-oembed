@@ -69,6 +69,15 @@ exports.ammendProviders = providers => {
   });
 };
 
+exports.filterProviders = (providers, filter, exclude) => {
+  if (!filter) return providers;
+
+  return providers.filter(provider => {
+    const filterIncludes = filter.includes(provider.provider_name);
+    return exclude ? !filterIncludes : filterIncludes;
+  });
+};
+
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
   let endpointUrl = false;
 
