@@ -69,9 +69,12 @@ exports.ammendProviders = providers => {
   });
 };
 
-exports.filterProviders = (providers, whitelist) => {
+exports.filterProviders = (providers, filter, exclude) => {
+  if (!filter) return providers;
+
   return providers.filter(provider => {
-    return whitelist.includes(provider.provider_name);
+    const filterIncludes = filter.includes(provider.provider_name);
+    return exclude ? !filterIncludes : filterIncludes;
   });
 };
 

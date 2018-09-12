@@ -56,6 +56,12 @@ describe("#filterProviders", () => {
       expect.arrayContaining([expect.objectContaining(twitter)])
     );
   });
+
+  test("returns a list of providers without Instagram", () => {
+    expect(filterProviders(providers, ["Instagram"], true)).toEqual(
+      expect.not.arrayContaining([expect.objectContaining(instagram)])
+    );
+  });
 });
 
 describe("#getProviderEndpointUrlForLinkUrl", () => {
