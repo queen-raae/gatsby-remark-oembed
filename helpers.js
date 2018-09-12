@@ -70,8 +70,9 @@ exports.ammendProviders = providers => {
 };
 
 exports.filterProviders = (providers, whitelist) => {
-  console.log("Filter providers need to be implemented");
-  return providers;
+  return providers.filter(provider => {
+    return whitelist.includes(provider.provider_name);
+  });
 };
 
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {

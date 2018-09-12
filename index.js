@@ -2,6 +2,7 @@ const Promise = require("bluebird");
 
 const {
   ammendProviders,
+  filterProviders,
   fetchOembedProviders,
   fetchOembed,
   getProviderEndpointUrlForLinkUrl,
@@ -9,7 +10,7 @@ const {
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
 
-module.exports = async ({ markdownAST }) => {
+module.exports = async ({ markdownAST }, options) => {
   try {
     // Step 1.  Fetch the oembed provider list.
     let providers = await fetchOembedProviders();
