@@ -25,6 +25,19 @@ const ADD_HTTPS_TO_SCHEMES = [
 ];
 const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 
+const DEFAULT_OPTIONS = {
+  providers: {
+    include: undefined,
+    exclude: undefined
+  }
+};
+
+exports.ammendOptions = options => {
+  return {
+    providers: { ...DEFAULT_OPTIONS.providers, ...options.providers }
+  };
+};
+
 exports.fetchOembedProviders = async () => {
   const response = await axios.get(OEMBED_PROVIDERS_URL);
   return response.data;
@@ -69,13 +82,34 @@ exports.ammendProviders = providers => {
   });
 };
 
-exports.filterProviders = (providers, filter, exclude) => {
+exports.filterProviders = (providers, filter) => {
   if (!filter) return providers;
 
-  return providers.filter(provider => {
+  const filterFunc = (provider, filter, exclude) => {
+    if (!filter) return true;
+
     const filterIncludes = filter.includes(provider.provider_name);
     return exclude ? !filterIncludes : filterIncludes;
-  });
+  };
+
+  return providers
+    .filter(provider => filterFunc(provider, filter.include))
+    .filter(provider => filterFunc(provider, filter.exclude, true));
+};
+
+exports.filterProviderKeys = (keys, filter) => {
+  if (!filter) return keys;
+
+  const filterFunc = (key, filter, exclude) => {
+    if (!filter) return true;
+
+    const filterIncludes = filter.includes(key);
+    return exclude ? !filterIncludes : filterIncludes;
+  };
+
+  return keys
+    .filter(key => filterFunc(key, filter.include))
+    .filter(key => filterFunc(key, filter.exclude, true));
 };
 
 exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
