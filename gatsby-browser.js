@@ -14,7 +14,7 @@ const processInstagram = () => {
   if (
     typeof instgrm !== `undefined` &&
     instgrm.Embeds &&
-    typeof instgrm.Embeds.process() === `function`
+    typeof instgrm.Embeds.process === `function`
   ) {
     instgrm.Embeds.process();
   }
