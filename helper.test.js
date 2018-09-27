@@ -4,7 +4,8 @@ const {
   fetchOembed,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
-  filterProviders
+  filterProviders,
+  filterProviderKeys
 } = require("./helpers");
 
 describe("#fetchOembedProviders", () => {
@@ -35,31 +36,88 @@ describe("#filterProviders", () => {
   const instagram = {
     provider_name: "Instagram"
   };
+
+  const providers = [kickstarter, twitter, instagram];
+
+  test("do nothing to the list of providers", () => {
+    expect(filterProviders(providers, undefined)).toEqual(providers);
+    expect(filterProviders(providers, {})).toEqual(providers);
+  });
+
   test("returns a list of providers with only Instagram", () => {
-    expect(filterProviders(providers, ["Instagram"])).toEqual(
-      expect.not.arrayContaining([
-        expect.objectContaining(kickstarter),
-        expect.objectContaining(twitter)
-      ])
-    );
-    expect(filterProviders(providers, ["Instagram"])).toEqual(
-      expect.arrayContaining([expect.objectContaining(instagram)])
+    const filteredProviders = filterProviders(providers, {
+      include: ["Instagram", "Twitter"],
+      exclude: ["Twitter"]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining([expect.objectContaining(instagram)]),
+      expect.not.arrayContaining([kickstarter, twitter])
     );
   });
 
   test("returns a list of providers with only Instagram and Twitter", () => {
-    expect(filterProviders(providers, ["Twitter", "Instagram"])).toEqual(
-      expect.not.arrayContaining([expect.objectContaining(kickstarter)])
-    );
-    expect(filterProviders(providers, ["Twitter", "Instagram"])).toEqual(
-      expect.arrayContaining([expect.objectContaining(instagram)]),
-      expect.arrayContaining([expect.objectContaining(twitter)])
+    const filteredProviders = filterProviders(providers, {
+      include: ["Instagram", "Twitter"]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining([instagram, twitter]),
+      expect.not.arrayContaining([kickstarter])
     );
   });
 
-  test("returns a list of providers without Instagram", () => {
-    expect(filterProviders(providers, ["Instagram"], true)).toEqual(
-      expect.not.arrayContaining([expect.objectContaining(instagram)])
+  test("returns a list of providers without Instagram and Twitter, ie. only Kickstarter", () => {
+    const filteredProviders = filterProviders(providers, {
+      exclude: ["Instagram", "Twitter"]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining([kickstarter]),
+      expect.not.arrayContaining([instagram, twitter])
+    );
+  });
+});
+
+describe("#filterProviderKeys", () => {
+  const providers = ["Kickstarter", "Twitter", "Instagram"];
+
+  test("do nothing to the list of providers", () => {
+    expect(filterProviderKeys(providers, undefined)).toEqual(providers);
+    expect(filterProviderKeys(providers, {})).toEqual(providers);
+  });
+
+  test("returns a list of providers with only Instagram", () => {
+    const filteredProviders = filterProviderKeys(providers, {
+      include: ["Instagram", "Twitter"],
+      exclude: ["Twitter"]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining(["Instagram"]),
+      expect.not.arrayContaining(["Kickstarter", "Twitter"])
+    );
+  });
+
+  test("returns a list of providers with only Instagram and Twitter", () => {
+    const filteredProviders = filterProviderKeys(providers, {
+      include: ["Instagram", "Twitter"]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining(["Instagram", "Twitter"]),
+      expect.not.arrayContaining(["Kickstarter"])
+    );
+  });
+
+  test("returns a list of providers without Instagram and Twitter, ie. only Kickstarter", () => {
+    const filteredProviders = filterProviderKeys(providers, {
+      exclude: ["Instagram", "Twitter"]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining(["Kickstarter"]),
+      expect.not.arrayContaining(["Instagram", "Twitter"])
     );
   });
 });
