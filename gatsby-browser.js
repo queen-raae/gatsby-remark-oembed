@@ -1,3 +1,5 @@
+/*global twttr instgrm*/
+
 const loadTwitter = () => {
   if (
     typeof twttr !== `undefined` &&
