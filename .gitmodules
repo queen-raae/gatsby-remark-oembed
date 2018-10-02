@@ -1,0 +1,3 @@
+[submodule "plugins/gatsby-remark-oembed"]
+	path = plugins/gatsby-remark-oembed
+	url = git@github.com:raae/gatsby-remark-oembed.git
