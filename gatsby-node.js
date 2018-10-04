@@ -9,7 +9,7 @@ exports.onPreBootstrap = async ({ cache }, rawOptions) => {
   const options = ammendOptions(rawOptions);
   const rawProviders = await fetchOembedProviders();
   const providers = processProviders(rawProviders, options);
-  await cache.set("oembed-providers", providers);
+  await cache.set("remark-oembed-providers", providers);
 };
 
 const processProviders = (providers, options) => {

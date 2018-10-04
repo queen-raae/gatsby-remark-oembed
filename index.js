@@ -9,7 +9,7 @@ const {
 
 module.exports = async ({ markdownAST, cache }) => {
   try {
-    const providers = await cache.get("oembed-providers");
+    const providers = await cache.get("remark-oembed-providers");
     const nodes = selectPossibleOembedLinkNodes(markdownAST);
     await processNodes(nodes, providers);
   } catch (error) {
