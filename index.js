@@ -1,17 +1,13 @@
 const Promise = require("bluebird");
-// const rawProviders = require("./providers.json");
 
 const {
-  ammendOptions,
-  ammendProviders,
-  filterProviders,
   fetchOembed,
   getProviderEndpointUrlForLinkUrl,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
 
-module.exports = async ({ markdownAST, cache }, rawOptions) => {
+module.exports = async ({ markdownAST, cache }) => {
   try {
     const providers = await cache.get("oembed-providers");
     const nodes = selectPossibleOembedLinkNodes(markdownAST);
