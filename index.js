@@ -25,11 +25,11 @@ const processNodes = async (nodes, providers) => {
 const processNode = async (node, providers) => {
   try {
     console.log(`Process node ${node.url}`);
-    // Step 3.  Check if url matched any of the oembed url schemes.
+    // Check if url matched any of the oembed url schemes.
     const endpointUrl = getProviderEndpointUrlForLinkUrl(node.url, providers);
-    // Step 4.  Fetch the oembed response from the oembed provider.
+    // Fetch the oembed response from the oembed provider.
     const oembedResponse = await fetchOembed(node.url, endpointUrl);
-    // Step 5.  Transform the link node into an html node.
+    // Transform the link node into an html node.
     tranformsLinkNodeToOembedNode(node, oembedResponse);
   } catch (error) {
     console.log(error.message);
