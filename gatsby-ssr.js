@@ -9,11 +9,10 @@ const SCRIPTS = {
 };
 
 const createScriptTag = (key, scripts) => {
-  return (
-    <script
-      key={`gatsby-plugin-oembed-${key.toLowerCase()}`}
-      src={scripts[key]}
-    />
+  return React.createElement(
+    "script",
+    { src: scripts[key], key: `gatsby-plugin-oembed-${key.toLowerCase()}` },
+    null
   );
 };
 
