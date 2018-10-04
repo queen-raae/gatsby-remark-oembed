@@ -8,10 +8,10 @@ const SCRIPTS = {
   RedditMedia: "https://embed.redditmedia.com/widgets/platform.js"
 };
 
-const createScriptTag = (key, scripts) => {
+const createScriptTag = (key, scriptSrc) => {
   return React.createElement(
     "script",
-    { src: scripts[key], key: `gatsby-plugin-oembed-${key.toLowerCase()}` },
+    { src: scriptSrc, key: `gatsby-plugin-oembed-${key.toLowerCase()}` },
     null
   );
 };
@@ -24,6 +24,6 @@ exports.onRenderBody = ({ setPostBodyComponents }, options) => {
     options.providers
   );
 
-  const scripts = scriptKeys.map(key => createScriptTag(key, SCRIPTS));
+  const scripts = scriptKeys.map(key => createScriptTag(key, SCRIPTS[key]));
   setPostBodyComponents(scripts);
 };
