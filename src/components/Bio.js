@@ -14,25 +14,41 @@ class Bio extends React.Component {
         style={{
           display: 'flex',
           marginBottom: rhythm(2.5),
+          alignItems: 'center',
         }}
       >
         <img
           src={profilePic}
-          alt={`Kyle Mathews`}
+          alt={`Benedicte Raae`}
           style={{
             marginRight: rhythm(1 / 2),
             marginBottom: 0,
-            width: rhythm(2),
-            height: rhythm(2),
+            width: rhythm(4),
+            height: rhythm(4),
           }}
         />
-        <p>
-          Written by <strong>Kyle Mathews</strong> who lives and works in San
-          Francisco building useful things.{' '}
-          <a href="https://twitter.com/kylemathews">
-            You should follow him on Twitter
-          </a>
-        </p>
+        <div>
+          <p
+            style={{
+              marginBottom: rhythm(0.4),
+            }}
+          >
+            Example site created by <strong>Benedicte Raae</strong> to
+            demonstrate the{' '}
+            <a href="https://github.com/raae/gatsby-remark-oembed">
+              gatsby-remark-oembed plugin.
+            </a>{' '}
+          </p>
+          <p
+            style={{
+              marginBottom: 0,
+            }}
+          >
+            You should follow her on{' '}
+            <a href="https://twitter.com/raae">Twitter</a> or{' '}
+            <a href="https://instagram.com/raae.codes">Instagram</a>
+          </p>
+        </div>
       </div>
     )
   }
