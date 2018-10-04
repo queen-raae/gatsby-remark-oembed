@@ -36,14 +36,15 @@ plugins: [
           options: {
             providers: {
               // Important to exclude providers
-              // that adds js to the page if you do not need them.
-              exclude: ['Reddit']
+              // that adds js to the page.
+              // If you do not need them.
+              exclude: ["Reddit"]
             }
           }
-        },
-      ],
-    },
-  },
+        }
+      ]
+    }
+  }
 ]
 ```
 
