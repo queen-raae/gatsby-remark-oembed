@@ -26,6 +26,14 @@ module.exports = {
           },
           {
             resolve: `gatsby-remark-oembed`,
+            options: {
+              providers: {
+                // Important to exclude providers
+                // that adds js to the page.
+                // If you do not need them.
+                exclude: ['Reddit'],
+              },
+            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
