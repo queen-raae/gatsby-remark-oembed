@@ -26,7 +26,7 @@ class Template extends React.Component {
             }}
             to={'/'}
           >
-            Gatsby Starter Blog
+            gatsby-remark-oembed plugin example site
           </Link>
         </h1>
       )
@@ -47,7 +47,7 @@ class Template extends React.Component {
             }}
             to={'/'}
           >
-            Gatsby Starter Blog
+            gatsby-remark-oembed plugin example site
           </Link>
         </h3>
       )
