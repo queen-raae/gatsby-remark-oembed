@@ -1,9 +1,13 @@
-# gatsby-starter-blog
-Gatsby starter for creating a blog
+# gatsby-remark-oembed-example-site
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+This is an example site for the [gatsby-remark-oembed](https://github.com/raae/gatsby-remark-oembed) plugin.
 
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
+Based of the [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog).
+
+## Install
+
+`npm install`
 
 ## Running in development
+
 `gatsby develop`

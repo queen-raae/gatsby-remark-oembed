@@ -1,11 +1,8 @@
 {
-  "name": "gatsby-starter-blog",
-  "description": "Starter Gatsby Blog",
+  "name": "gatsby-remark-omebed-example-site",
+  "description": "Gatsby Remark Oembed Example",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby-starter-blog/issues"
-  },
+  "author": "Benedicte Raae (raae.codes)",
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
@@ -44,7 +41,7 @@
     "gh-pages": "^1.2.0",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/raae/gatsby-remark-oembed-example-site#readme",
   "keywords": [
     "gatsby"
   ],
@@ -52,7 +49,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "https://github.com/raae/gatsby-remark-oembed-example-site"
   },
   "scripts": {
     "dev": "rm -r -f .cache && gatsby develop",
