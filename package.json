@@ -15,8 +15,8 @@
     "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Benedicte Raae (raae.codes)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
   },
