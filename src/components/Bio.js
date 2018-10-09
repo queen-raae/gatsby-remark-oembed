@@ -1,20 +1,20 @@
-import React from 'react'
+import React from "react";
 
 // Import typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
+import "typeface-montserrat";
+import "typeface-merriweather";
 
-import profilePic from './profile-pic.jpg'
-import { rhythm } from '../utils/typography'
+import profilePic from "./profile-pic.jpg";
+import { rhythm } from "../utils/typography";
 
 class Bio extends React.Component {
   render() {
     return (
       <div
         style={{
-          display: 'flex',
+          display: "flex",
           marginBottom: rhythm(2.5),
-          alignItems: 'center',
+          alignItems: "center"
         }}
       >
         <img
@@ -24,34 +24,34 @@ class Bio extends React.Component {
             marginRight: rhythm(1 / 2),
             marginBottom: 0,
             width: rhythm(4),
-            height: rhythm(4),
+            height: rhythm(4)
           }}
         />
         <div>
           <p
             style={{
-              marginBottom: rhythm(0.4),
+              marginBottom: rhythm(0.4)
             }}
           >
             Example site created by <strong>Benedicte Raae</strong> to
-            demonstrate the{' '}
+            demonstrate the{" "}
             <a href="https://github.com/raae/gatsby-remark-oembed">
               gatsby-remark-oembed plugin.
-            </a>{' '}
+            </a>{" "}
           </p>
           <p
             style={{
-              marginBottom: 0,
+              marginBottom: 0
             }}
           >
-            You should follow her on{' '}
-            <a href="https://twitter.com/raae">Twitter</a> or{' '}
+            You should follow her on{" "}
+            <a href="https://twitter.com/raae">Twitter</a> or{" "}
             <a href="https://instagram.com/raae.codes">Instagram</a>
           </p>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Bio
+export default Bio;
