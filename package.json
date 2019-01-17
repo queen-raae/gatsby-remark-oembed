@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
-    "gatsby": "^2.0.17",
+    "gatsby": "^2.0.91",
     "gatsby-plugin-feed": "^2.0.5",
     "gatsby-plugin-google-analytics": "^2.0.5",
     "gatsby-plugin-manifest": "^2.0.2",
@@ -21,7 +21,7 @@
     "gatsby-remark-responsive-iframe": "^2.0.5",
     "gatsby-remark-smartypants": "^2.0.5",
     "gatsby-source-filesystem": "^2.0.1",
-    "gatsby-transformer-remark": "^2.1.1",
+    "gatsby-transformer-remark": "^2.2.0",
     "gatsby-transformer-sharp": "^2.1.1",
     "lodash": "^4.17.11",
     "prismjs": "^1.15.0",
