@@ -11,8 +11,8 @@ This is an early version of the plugin. Let me know if you have problems or ques
 ## Requirements
 
 - Node version 8 and up.
-- Gatsby version 2.
-  - Does not work in versions above 2.0.17 because of broken sub-plugin cache api, bug issue: https://github.com/gatsbyjs/gatsby/issues/8788. Hoping this will be fixed soon. If not I will look into a work around.
+- Gatsby version >=2.0.88
+- Gatsby Transformer Remark Plugin >=2.0.0
 
 ## Oembed support
 
