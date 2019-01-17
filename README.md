@@ -22,6 +22,10 @@ So far these providers are confirmed to be working: CodePen, Flickr, Instagram, 
 
 Twitter, Flickr, Instagram and Reddit requires external javascript to be added to every page. So make sure to exclude the ones you do not need.
 
+## Example site
+
+Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found on [Github](https://github.com/raae/gatsby-remark-oembed-example-site).
+
 ## How to use
 
 ### Configuration
