@@ -6,7 +6,7 @@ This is an early version of the plugin. Let me know if you have problems or ques
 
 ## Install
 
-`npm install raae/gatsby-remark-oembed`
+`npm install @raae/gatsby-remark-oembed`
 
 ## Requirements
 
