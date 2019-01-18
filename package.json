@@ -1,7 +1,29 @@
 {
-  "name": "gatsby-remark-oembed",
-  "version": "0.0.1",
+  "name": "@raae/gatsby-remark-oembed",
+  "version": "0.0.3",
   "description": "> A GatsbyJS Plugin that transforms oembed links into its corresponding embed code.",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "oembed",
+    "remark",
+    "youtube",
+    "twitter",
+    "codepen",
+    "vimeo",
+    "soundcloud",
+    "instagram"
+  ],
+  "author": "Benedicte Raae (raae.codes)",
+  "license": "MIT",
+  "homepage": "https://github.com/lillylabs/gatsby-remark-oembed#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
+  },
   "main": "index.js",
   "jest": {
     "verbose": true,
@@ -10,17 +32,6 @@
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
-  },
-  "keywords": [],
-  "author": "Benedicte Raae (raae.codes)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
-  },
-  "homepage": "https://github.com/lillylabs/gatsby-remark-oembed#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
