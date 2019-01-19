@@ -76,3 +76,9 @@ Links must be surrounded by empty lines.
 | ------------------- | ---------------------- | ----------------------------------------------------------- |
 | `providers.include` | Array of provider keys | Only links from providers on this list will be transformed. |
 | `providers.exclude` | Array of provider keys | Links from providers on this list will not be transformed.  |
+
+## Buy med a coffee? 
+
+It will encourage me to keep it going, fix whatever bugs you find and spend time making it better :D 
+
+[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/P5P4OZVX)
