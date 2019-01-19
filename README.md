@@ -38,7 +38,7 @@ plugins: [
     options: {
       plugins: [
         {
-          resolve: `gatsby-remark-oembed`,
+          resolve: `@raae/gatsby-remark-oembed`,
           options: {
             providers: {
               // Important to exclude providers
