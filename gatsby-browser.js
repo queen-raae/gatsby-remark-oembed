@@ -24,3 +24,8 @@ exports.onRouteUpdate = () => {
   loadTwitter();
   processInstagram();
 };
+
+exports.onInitialClientRender = () => {
+  loadTwitter();
+  processInstagram();
+};
