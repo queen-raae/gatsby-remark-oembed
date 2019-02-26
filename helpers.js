@@ -147,11 +147,22 @@ exports.fetchOembed = async (linkUrl, endpointUrl) => {
   const response = await axios.get(endpointUrl, {
     params: {
       format: "json",
-      url: linkUrl
+      url: linkUrl,
+      // Demo for Twitter
+
+      // cards: 'hidden', // Didn’t seem to work
+      conversation: 'none', // Didn’t seem to work
+      theme: 'dark',
+      link_color: '#897391',
+      omit_script: true, // Might only be for timeline?
+      maxwidth: 1000, // Might only be for timelines?
+      hide_media: true, // Works
+      dnt: true, // Do not track, difficult to tell if it really works 
     }
   });
   return response.data;
 };
+
 
 exports.selectPossibleOembedLinkNodes = markdownAST => {
   return select(markdownAST, "paragraph link:only-child");
