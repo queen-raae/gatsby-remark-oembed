@@ -88,8 +88,28 @@ exports.filterProviders = (providers, filter) => {
   const filterFunc = (provider, filter, exclude) => {
     if (!filter) return true;
 
-    const filterIncludes = filter.includes(provider.provider_name);
-    return exclude ? !filterIncludes : filterIncludes;
+    let filterIncludes = []
+    let filterExcludes = []
+
+    filter.forEach((providerConfig) => {
+      if (typeof providerConfig === 'string') {
+        if (providerConfig.includes(providerConfig)) {
+          filterIncludes.push(providerConfig)
+        } else {
+          filterExcludes.push(providerConfig)          
+        }
+      } else if (typeof providerConfig === 'object') {
+        // Handles includes/excludes where there are
+        // config objects for the provider
+        if (providerConfig.name.includes(provider.provider_name)) {
+          filterIncludes.push(providerConfig);
+        } else {
+          filterExcludes.push(providerConfig);
+        }
+      }
+    })
+    
+    return exclude ? filterExcludes : filterIncludes;
   };
 
   return providers
