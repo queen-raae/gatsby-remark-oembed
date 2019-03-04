@@ -82,39 +82,36 @@ exports.ammendProviders = providers => {
   });
 };
 
-exports.filterProviders = (providers, filter) => {
-  if (!filter) return providers;
+exports.filterProviders = (providers, listConfig) => {
+  if (!listConfig) return providers;
 
   const filterFunc = (provider, filter, exclude) => {
     if (!filter) return true;
-
-    let filterIncludes = []
-    let filterExcludes = []
-
-    filter.forEach((providerConfig) => {
-      if (typeof providerConfig === 'string') {
-        if (providerConfig.includes(providerConfig)) {
-          filterIncludes.push(providerConfig)
-        } else {
-          filterExcludes.push(providerConfig)          
-        }
-      } else if (typeof providerConfig === 'object') {
-        // Handles includes/excludes where there are
-        // config objects for the provider
-        if (providerConfig.name.includes(provider.provider_name)) {
-          filterIncludes.push(providerConfig);
-        } else {
-          filterExcludes.push(providerConfig);
-        }
-      }
-    })
-    
-    return exclude ? filterExcludes : filterIncludes;
+  
+    const filterIncludes = filter.includes(provider.provider_name);
+    return exclude ? !filterIncludes : filterIncludes;
   };
+  
+  const formatFunc = (list) => {
+    if (list && list.length >= 1) {
+      console.log('list', list)
+      list = list.map((item) => {
+        if (typeof item === 'object' && item.name) {
+          console.log('item', item)
+          return item.name
+        }
+        
+        return item
+      })
+    }
+    return list
+  }
+  
+  let result = providers
+    .filter(provider => filterFunc(provider, formatFunc(listConfig.include)))
+    .filter(provider => filterFunc(provider, formatFunc(listConfig.exclude), true));
 
-  return providers
-    .filter(provider => filterFunc(provider, filter.include))
-    .filter(provider => filterFunc(provider, filter.exclude, true));
+  return result
 };
 
 exports.filterProviderKeys = (keys, filter) => {
