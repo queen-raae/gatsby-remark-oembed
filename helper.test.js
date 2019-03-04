@@ -36,7 +36,7 @@ describe("#filterProviders", () => {
   const instagram = {
     provider_name: "Instagram"
   };
-
+  
   const providers = [kickstarter, twitter, instagram];
 
   test("do nothing to the list of providers", () => {
@@ -75,6 +75,37 @@ describe("#filterProviders", () => {
     expect(filteredProviders).toEqual(
       expect.arrayContaining([kickstarter]),
       expect.not.arrayContaining([instagram, twitter])
+    );
+  });
+  
+  test("returns a list with Instagram, from extra provider config", () => {
+    const filteredProviders = filterProviders(providers, {
+      include: [{
+        name: 'Instagram',
+        hidecaption: true,
+        omitscript: true
+      }]
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining([instagram]),
+      expect.not.arrayContaining([twitter, kickstarter])
+    );
+  });
+  
+  test("returns a list with Twitter and Instagram, from extra and regular config", () => {
+    const filteredProviders = filterProviders(providers, {
+      include: [{
+        name: 'Instagram',
+        hidecaption: true,
+        omitscript: true
+      },
+      'Twitter']
+    });
+
+    expect(filteredProviders).toEqual(
+      expect.arrayContaining([instagram, twitter]),
+      expect.not.arrayContaining([kickstarter])
     );
   });
 });
