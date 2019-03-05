@@ -170,7 +170,7 @@ describe("#getProviderEndpointUrlForLinkUrl", () => {
         "https://www.instagram.com/p/BftIg_OFPFX/",
         providers
       )
-    ).toBe("https://api.instagram.com/oembed");
+    ).toEqual({ url: "https://api.instagram.com/oembed", params: {} });
   });
 });
 
@@ -182,7 +182,7 @@ describe("#fetchOembed", () => {
     return expect(
       fetchOembed(
         "https://www.instagram.com/p/BftIg_OFPFX/",
-        "https://api.instagram.com/oembed"
+        { url: "https://api.instagram.com/oembed", params: {} }
       )
     ).resolves.toMatchObject(response);
   });
