@@ -78,36 +78,39 @@ describe("#filterProviders", () => {
     );
   });
   
-  test("returns a list with Instagram, from extra provider config", () => {
-    const filteredProviders = filterProviders(providers, {
-      include: [{
-        name: 'Instagram',
-        hidecaption: true,
-        omitscript: true
-      }]
-    });
-
-    expect(filteredProviders).toEqual(
-      expect.arrayContaining([instagram]),
-      expect.not.arrayContaining([twitter, kickstarter])
-    );
-  });
-  
-  test("returns a list with Twitter and Instagram, from extra and regular config", () => {
-    const filteredProviders = filterProviders(providers, {
-      include: [{
-        name: 'Instagram',
-        hidecaption: true,
-        omitscript: true
-      },
-      'Twitter']
-    });
-
-    expect(filteredProviders).toEqual(
-      expect.arrayContaining([instagram, twitter]),
-      expect.not.arrayContaining([kickstarter])
-    );
-  });
+  // This gets converted before it gets to filterProviders
+  // test("returns a list with Instagram, from extra provider config", () => {
+  //   const filteredProviders = filterProviders(providers, {
+  //     include: [{
+  //       name: 'Instagram',
+  //       hidecaption: true,
+  //       omitscript: true
+  //     }]
+  //   });
+  // 
+  //   expect(filteredProviders).toEqual(
+  //     expect.arrayContaining([instagram]),
+  //     expect.not.arrayContaining([twitter, kickstarter])
+  //   );
+  // });
+  // 
+  // test("returns a list with Twitter and Instagram, from extra and regular config", () => {
+  //   const filteredProviders = filterProviders(providers, {
+  //     include: [
+  //       {
+  //         name: 'Instagram',
+  //         hidecaption: true,
+  //         omitscript: true
+  //       },
+  //       'Twitter'
+  //     ]
+  //   });
+  // 
+  //   expect(filteredProviders).toEqual(
+  //     expect.arrayContaining([instagram, twitter]),
+  //     expect.not.arrayContaining([kickstarter])
+  //   );
+  // });
 });
 
 describe("#filterProviderKeys", () => {
