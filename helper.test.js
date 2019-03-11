@@ -5,7 +5,9 @@ const {
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
   filterProviders,
-  filterProviderKeys
+  filterProviderKeys,
+  ammendOptions,
+  ammendProviders,
 } = require("./helpers");
 
 describe("#fetchOembedProviders", () => {
@@ -77,40 +79,51 @@ describe("#filterProviders", () => {
       expect.not.arrayContaining([instagram, twitter])
     );
   });
+});
+
+// This tests the verbose config you’d write in gatsby-node.js,
+// and whether it is correctly formatted into an array of
+// strings to be used in the existing functions,
+// like filterProviders
+describe("#ammendProviders", () => {
+  test("returns a list with Instagram, from extra provider config", () => {
+    let expectedResult = [{"endpoints": [{"formats": ["json"], "params": {}, "schemes": ["http://instagram.com/p/*", "http://instagr.am/p/*", "http://www.instagram.com/p/*", "http://www.instagr.am/p/*", "https://instagram.com/p/*", "https://instagr.am/p/*", "https://www.instagram.com/p/*", "https://www.instagr.am/p/*"], "url": "https://api.instagram.com/oembed"}], "params": {"hidecaption": true, "name": "Instagram", "omitscript": true}, "provider_name": "Instagram", "provider_url": "https://instagram.com"}, {"endpoints": [{"params": {}, "schemes": ["http://www.kickstarter.com/projects/*"], "url": "http://www.kickstarter.com/services/oembed"}], "provider_name": "Kickstarter", "provider_url": "http://www.kickstarter.com"}, {"endpoints": [{"params": {}, "schemes": ["https://twitter.com/*/status/*", "https://*.twitter.com/*/status/*"],"url": "https://publish.twitter.com/oembed"}], "provider_name": "Twitter", "provider_url": "http://www.twitter.com/"}]
+    let verboseInstagramConfig = {
+      name: 'Instagram',
+      hidecaption: true,
+      omitscript: true
+    }
+
+    const result = ammendProviders(providers, {
+      include: [verboseInstagramConfig]
+    });
+    
+    console.log(result[0].provider_name, result[1].endpoints.params)
+    expect(result).toEqual(
+      expect.arrayContaining(expectedResult),
+    );
+  });
   
-  // This gets converted before it gets to filterProviders
-  // test("returns a list with Instagram, from extra provider config", () => {
-  //   const filteredProviders = filterProviders(providers, {
-  //     include: [{
-  //       name: 'Instagram',
-  //       hidecaption: true,
-  //       omitscript: true
-  //     }]
-  //   });
-  // 
-  //   expect(filteredProviders).toEqual(
-  //     expect.arrayContaining([instagram]),
-  //     expect.not.arrayContaining([twitter, kickstarter])
-  //   );
-  // });
-  // 
-  // test("returns a list with Twitter and Instagram, from extra and regular config", () => {
-  //   const filteredProviders = filterProviders(providers, {
-  //     include: [
-  //       {
-  //         name: 'Instagram',
-  //         hidecaption: true,
-  //         omitscript: true
-  //       },
-  //       'Twitter'
-  //     ]
-  //   });
-  // 
-  //   expect(filteredProviders).toEqual(
-  //     expect.arrayContaining([instagram, twitter]),
-  //     expect.not.arrayContaining([kickstarter])
-  //   );
-  // });
+  test("returns a list with Twitter and Instagram, from extra and regular config", () => {
+    let expectedResult = [{"endpoints": [{"formats": ["json"], "params": {}, "schemes": ["http://instagram.com/p/*", "http://instagr.am/p/*", "http://www.instagram.com/p/*", "http://www.instagr.am/p/*", "https://instagram.com/p/*", "https://instagr.am/p/*", "https://www.instagram.com/p/*", "https://www.instagr.am/p/*"], "url": "https://api.instagram.com/oembed"}], "params": {"hidecaption": true, "name": "Instagram", "omitscript": true}, "provider_name": "Instagram", "provider_url": "https://instagram.com"}, {"endpoints": [{"params": {}, "schemes": ["http://www.kickstarter.com/projects/*"], "url": "http://www.kickstarter.com/services/oembed"}], "provider_name": "Kickstarter", "provider_url": "http://www.kickstarter.com"}, {"endpoints": [{"params": {}, "schemes": ["https://twitter.com/*/status/*", "https://*.twitter.com/*/status/*"],"url": "https://publish.twitter.com/oembed"}], "provider_name": "Twitter", "provider_url": "http://www.twitter.com/"}]
+    let verboseInstagramConfig = {
+      name: 'Instagram',
+      hidecaption: true,
+      omitscript: true
+    }
+
+    const result = ammendProviders(providers, {
+      include: [verboseInstagramConfig, 'Twitter']
+    });
+  
+    console.log(result[0].provider_name, result[1].endpoints.params)
+    expect(result).toEqual(
+      expect.arrayContaining(expectedResult),
+    );
+  
+  });
+});
+
 });
 
 describe("#filterProviderKeys", () => {
