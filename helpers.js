@@ -68,8 +68,8 @@ exports.fetchOembedProviders = async () => {
 exports.ammendProviders = (providers, rawOptions) => {
   let includedProvidersWithConfig = {}
 
-  if (rawOptions.providers && rawOptions.providers.include && rawOptions.providers.include.length >= 1) {
-    rawOptions.providers.include.forEach(config => {
+  if (rawOptions && rawOptions.include && rawOptions.include.length >= 1) {
+    rawOptions.include.forEach(config => {
       if (typeof config === 'object' && config.name) {
         let { name, ...urlParams } = config
         includedProvidersWithConfig[name] = urlParams
@@ -115,12 +115,12 @@ exports.ammendProviders = (providers, rawOptions) => {
     const providerName = provider.provider_name;
     provider.endpoints = ammendEndpoints(provider.endpoints, providerName).map(
       endpoint => {
-        endpoint.params = ammendParamsFromOptions(providerName);
         endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
         endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
         return endpoint;
       }
     );
+    provider.params = ammendParamsFromOptions(providerName);
     return provider;
   });
 };
@@ -166,7 +166,7 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
           const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
             endpointObj = {
-              params: endpoint.params || {},
+              params: provider.params || {},
               url: endpoint.url
             }
           }
