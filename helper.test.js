@@ -196,7 +196,7 @@ describe("#ammendOptions", () => {
   test("returns extended provider config as array of strings", () => {
     let result = ammendOptions({
       providers: {
-        include: [{ name: 'Twitter', darkTheme: true }],
+        include: [{ name: 'Twitter', theme: 'dark' }],
         exclude: [{ name: 'Instagram', showComments: false }]
       }
     })
