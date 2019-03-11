@@ -34,9 +34,10 @@ const DEFAULT_OPTIONS = {
 
 exports.ammendOptions = options => {
   const formatFunc = (list) => {
-    let result = []
+    let result = undefined
 
     if (list && list.length >= 1) {
+      result = []
       list.forEach((item) => {
         if (typeof item === 'object' && item.name) {
           result.push(item.name)
