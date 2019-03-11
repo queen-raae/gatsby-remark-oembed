@@ -124,6 +124,57 @@ describe("#ammendProviders", () => {
   });
 });
 
+describe("#ammendOptions", () => {
+  test("returns plain provider config unchanged", () => {
+    let result = ammendOptions({
+      providers: {
+        include: ['Twitter'],
+        exclude: ['Instagram']
+      }
+    })
+    
+    expect(result).toEqual({
+      providers: {
+        include: ['Twitter'],
+        exclude: ['Instagram']
+      }
+    })
+  })
+  
+  test("returns extended provider config as array of strings", () => {
+    let result = ammendOptions({
+      providers: {
+        include: [{ name: 'Twitter', darkTheme: true }],
+        exclude: [{ name: 'Instagram', showComments: false }]
+      }
+    })
+    
+    expect(result).toEqual({
+      providers: {
+        include: ['Twitter'],
+        exclude: ['Instagram']
+      }
+    })
+  })
+  
+  test("returns mixed provider config as array of strings", () => {
+    let result = ammendOptions({
+      providers: {
+        include: [
+          'Kickstarter',
+          'Instagram',
+          { name: 'Twitter', darkTheme: true }
+        ],
+      }
+    })
+    
+    expect(result).toEqual({
+      providers: {
+        include: ['Kickstarter', 'Instagram', 'Twitter'],
+        exclude: undefined
+      }
+    })
+  })
 });
 
 describe("#filterProviderKeys", () => {
