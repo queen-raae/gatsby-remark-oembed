@@ -51,7 +51,34 @@ plugins: [
       ]
     }
   }
-]
+];
+```
+
+#### Optional `settings` for providers
+
+Many oEmbed providers offer additional options for configure the display of the embed.
+
+For example, for Instagram see [Instagram – Embedding for Developers](https://www.instagram.com/developer/embedding/), which describes the additional oEmbed parameters you might want to change for the embed.
+
+```js
+// …
+{
+  resolve: `@raae/gatsby-remark-oembed`,
+  options: {
+    providers: {
+      include: [
+        'Twitter',
+        'Instagram',
+      ]
+      settings: {
+        // Ex. Show all Twitter embeds with the dark theme
+        Twitter: { theme: 'dark' },
+        // Ex. Hide all Instagram comments by default
+        Instagram: { showcomments: false },
+      },
+    },
+  },
+}
 ```
 
 ### Content
