@@ -99,10 +99,11 @@ Links must be surrounded by empty lines.
 
 ## Options
 
-| Name                | Type                   | Description                                                 |
-| ------------------- | ---------------------- | ----------------------------------------------------------- |
-| `providers.include` | Array of provider keys | Only links from providers on this list will be transformed. |
-| `providers.exclude` | Array of provider keys | Links from providers on this list will not be transformed.  |
+| Name                 | Type                        | Description                                                 |
+| -------------------- | --------------------------- | ----------------------------------------------------------- |
+| `providers.include`  | Array of provider keys      | Only links from providers on this list will be transformed. |
+| `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
+| `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
 ## Buy med a coffee? 
 
