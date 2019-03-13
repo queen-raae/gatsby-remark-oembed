@@ -30,7 +30,7 @@ Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netli
 
 ### Configuration
 
-```
+```js
 // In your gatsby-config.js
 plugins: [
   {
