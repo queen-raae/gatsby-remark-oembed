@@ -1,14 +1,17 @@
+const _ = require("lodash");
+
 const {
   fetchOembedProviders,
-  getProviderEndpointUrlForLinkUrl,
+  getProviderEndpointForLinkUrl,
   fetchOembed,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
   filterProviders,
   filterProviderKeys,
-  ammendOptions,
-  ammendProviders,
+  ammendProviders
 } = require("./helpers");
+
+const { MARKDOWN_AST, PROVIDERS } = require("./helper.test.data");
 
 describe("#fetchOembedProviders", () => {
   test("returns a list of providers", () => {
@@ -38,7 +41,7 @@ describe("#filterProviders", () => {
   const instagram = {
     provider_name: "Instagram"
   };
-  
+
   const providers = [kickstarter, twitter, instagram];
 
   test("do nothing to the list of providers", () => {
@@ -81,152 +84,40 @@ describe("#filterProviders", () => {
   });
 });
 
-// This tests the verbose config you’d write in gatsby-node.js,
-// and whether it is correctly formatted into an array of
-// strings to be used in the existing functions,
-// like filterProviders
 describe("#ammendProviders", () => {
-  let expectedResult = [
-    {
-      "endpoints":[
-        {
-          "formats":[
-            "json"
-          ],
-          "schemes":[
-            "http://instagram.com/p/*",
-            "http://instagr.am/p/*",
-            "http://www.instagram.com/p/*",
-            "http://www.instagr.am/p/*",
-            "https://instagram.com/p/*",
-            "https://instagr.am/p/*",
-            "https://www.instagram.com/p/*",
-            "https://www.instagr.am/p/*"
-          ],
-          "url":"https://api.instagram.com/oembed"
-        }
-      ],
-      "params":{
-        "hidecaption":true,
-        "omitscript":true
-      },
-      "provider_name":"Instagram",
-      "provider_url":"https://instagram.com"
+  const providerSettings = {
+    Twitter: {
+      theme: "dark"
     },
-    {
-      "endpoints":[
-        {
-          "schemes":[
-            "http://www.kickstarter.com/projects/*"
-          ],
-          "url":"http://www.kickstarter.com/services/oembed"
-        }
-      ],
-      "params": {},
-      "provider_name":"Kickstarter",
-      "provider_url":"http://www.kickstarter.com"
-    },
-    {
-      "endpoints":[
-        {
-          "schemes":[
-            "https://twitter.com/*/status/*",
-            "https://*.twitter.com/*/status/*"
-          ],
-          "url":"https://publish.twitter.com/oembed"
-        }
-      ],
-      "params": {},
-      "provider_name":"Twitter",
-      "provider_url":"http://www.twitter.com/"
-    }
-  ]
-
-  test("returns a list with Instagram, from extra provider config", () => {
-    let verboseInstagramConfig = {
-      name: 'Instagram',
+    Instagram: {
       hidecaption: true,
       omitscript: true
     }
+  };
 
-    const result = ammendProviders(providers.slice(0), {
-      include: [verboseInstagramConfig]
-    });
-    
-    expect(result).toEqual(
-      expect.arrayContaining(expectedResult),
-    );
+  const ammendedProviders = ammendProviders(PROVIDERS, providerSettings);
+
+  const ammendedTwitter = ammendedProviders.find(
+    provider => provider.provider_name === "Twitter"
+  );
+  const ammendedInstagram = ammendedProviders.find(
+    provider => provider.provider_name === "Instagram"
+  );
+  const ammendedKickstarter = ammendedProviders.find(
+    provider => provider.provider_name === "Kickstarter"
+  );
+
+  test("ammended Twitter has added params", () => {
+    expect(ammendedTwitter.params).toEqual(providerSettings["Twitter"]);
   });
-  
-  test("returns a list with Twitter and Instagram, from extra and regular config", () => {
-    let verboseInstagramConfig = {
-      name: 'Instagram',
-      hidecaption: true,
-      omitscript: true
-    }
 
-    const result = ammendProviders(providers.slice(0), {
-      include: [verboseInstagramConfig, 'Twitter']
-    });
-  
-    expect(result).toEqual(
-      expect.arrayContaining(expectedResult),
-    );
-  
+  test("ammended Instagram has added params", () => {
+    expect(ammendedInstagram.params).toEqual(providerSettings["Instagram"]);
   });
-});
 
-describe("#ammendOptions", () => {
-  test("returns plain provider config unchanged", () => {
-    let result = ammendOptions({
-      providers: {
-        include: ['Twitter'],
-        exclude: ['Instagram']
-      }
-    })
-    
-    expect(result).toEqual({
-      providers: {
-        include: ['Twitter'],
-        exclude: ['Instagram']
-      }
-    })
-  })
-  
-  test("returns extended provider config as array of strings", () => {
-    let result = ammendOptions({
-      providers: {
-        include: [{ name: 'Twitter', theme: 'dark' }],
-        exclude: [{ name: 'Instagram', showComments: false }]
-      }
-    })
-    
-    expect(result).toEqual({
-      providers: {
-        include: ['Twitter'],
-        exclude: ['Instagram']
-      }
-    })
-  })
-  
-  test("returns mixed provider config as array of strings", () => {
-    let result = ammendOptions({
-      providers: {
-        include: [
-          'Kickstarter',
-          'Instagram',
-          { name: 'Twitter', darkTheme: true }
-        ],
-      }
-    })
-    
-    expect(result).toEqual({
-      providers: {
-        include: ['Kickstarter', 'Instagram', 'Twitter'],
-        exclude: undefined
-      }
-    })
-  })
+  test("ammended Kickstarter has empty params", () => {
+    expect(ammendedKickstarter.params).toEqual({});
+  });
 });
 
 describe("#filterProviderKeys", () => {
@@ -272,24 +163,27 @@ describe("#filterProviderKeys", () => {
   });
 });
 
-describe("#getProviderEndpointUrlForLinkUrl", () => {
-  test("only urls matching one of the providers schemes return an endpoint url", () => {
+describe("#getProviderEndpointForLinkUrl", () => {
+  test("only urls matching one of the providers schemes return an endpoint", () => {
     // TODO: Figure out why some providers do not have schemes,
     // and what to do about it.
     expect(() => {
-      getProviderEndpointUrlForLinkUrl(
+      getProviderEndpointForLinkUrl(
         "https://www.youtube.com/watch?v=b2H7fWhQcdE",
-        providers
+        PROVIDERS
       );
     }).toThrowError(
-      "No endpoint url for https://www.youtube.com/watch?v=b2H7fWhQcdE"
+      "No endpoint for https://www.youtube.com/watch?v=b2H7fWhQcdE"
     );
     expect(
-      getProviderEndpointUrlForLinkUrl(
+      getProviderEndpointForLinkUrl(
         "https://www.instagram.com/p/BftIg_OFPFX/",
-        providers
+        PROVIDERS
       )
-    ).toEqual({ url: "https://api.instagram.com/oembed", params: {} });
+    ).toEqual({
+      url: "https://api.instagram.com/oembed",
+      params: { url: "https://www.instagram.com/p/BftIg_OFPFX/" }
+    });
   });
 });
 
@@ -299,17 +193,19 @@ describe("#fetchOembed", () => {
       html: expect.anything()
     };
     return expect(
-      fetchOembed(
-        "https://www.instagram.com/p/BftIg_OFPFX/",
-        { url: "https://api.instagram.com/oembed", params: {} }
-      )
+      fetchOembed({
+        url: "https://api.instagram.com/oembed",
+        params: {
+          url: "https://www.instagram.com/p/BftIg_OFPFX/"
+        }
+      })
     ).resolves.toMatchObject(response);
   });
 });
 
 describe("#selectPossibleOembedLinkNodes", () => {
   test("select only links that are the only child of a paragraph", () => {
-    const possibleOembedLinks = selectPossibleOembedLinkNodes(markdownAST);
+    const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST);
     expect(possibleOembedLinks).toHaveLength(1);
     expect(possibleOembedLinks[0]).toMatchObject({
       type: "link",
@@ -350,229 +246,3 @@ describe("#tranformsLinkNodeToOembedNode", () => {
     );
   });
 });
-
-const markdownAST = {
-  children: [
-    {
-      position: {
-        end: {
-          column: 4,
-          line: 4,
-          offset: 62
-        },
-        indent: [1, 1, 1],
-        start: {
-          column: 1,
-          line: 1,
-          offset: 0
-        }
-      },
-      type: "yaml",
-      value: 'title: New Beginnings\ndate: "2015-05-28T22:40:32.169Z"'
-    },
-    {
-      children: [
-        {
-          children: [
-            {
-              position: {
-                end: {
-                  column: 44,
-                  line: 6,
-                  offset: 107
-                },
-                indent: [],
-                start: {
-                  column: 1,
-                  line: 6,
-                  offset: 64
-                }
-              },
-              type: "text",
-              value: "https://www.youtube.com/watch?v=b2H7fWhQcdE"
-            }
-          ],
-          position: {
-            end: {
-              column: 44,
-              line: 6,
-              offset: 107
-            },
-            indent: [],
-            start: {
-              column: 1,
-              line: 6,
-              offset: 64
-            }
-          },
-          title: null,
-          type: "link",
-          url: "https://www.youtube.com/watch?v=b2H7fWhQcdE"
-        }
-      ],
-      position: {
-        end: {
-          column: 44,
-          line: 6,
-          offset: 107
-        },
-        indent: [],
-        start: {
-          column: 1,
-          line: 6,
-          offset: 64
-        }
-      },
-      type: "paragraph"
-    },
-    {
-      children: [
-        {
-          position: {
-            end: {
-              column: 29,
-              line: 9,
-              offset: 213
-            },
-            indent: [1],
-            start: {
-              column: 1,
-              line: 8,
-              offset: 109
-            }
-          },
-          type: "text",
-          value:
-            "Far far away, behind the word mountains, far from the countries Vokalia and\nConsonantia, there live the "
-        },
-        {
-          children: [
-            {
-              position: {
-                end: {
-                  column: 41,
-                  line: 9,
-                  offset: 225
-                },
-                indent: [],
-                start: {
-                  column: 30,
-                  line: 9,
-                  offset: 214
-                }
-              },
-              type: "text",
-              value: "blind texts"
-            }
-          ],
-          position: {
-            end: {
-              column: 62,
-              line: 9,
-              offset: 246
-            },
-            indent: [],
-            start: {
-              column: 29,
-              line: 9,
-              offset: 213
-            }
-          },
-          title: null,
-          type: "link",
-          url: "http://example.com"
-        },
-        {
-          position: {
-            end: {
-              column: 102,
-              line: 9,
-              offset: 286
-            },
-            indent: [],
-            start: {
-              column: 62,
-              line: 9,
-              offset: 246
-            }
-          },
-          type: "text",
-          value: ". Separated they live in Bookmarksgrove."
-        }
-      ],
-      position: {
-        end: {
-          column: 102,
-          line: 9,
-          offset: 286
-        },
-        indent: [1],
-        start: {
-          column: 1,
-          line: 8,
-          offset: 109
-        }
-      },
-      type: "paragraph"
-    }
-  ],
-  position: {
-    end: {
-      column: 1,
-      line: 10,
-      offset: 287
-    },
-    start: {
-      column: 1,
-      line: 1,
-      offset: 0
-    }
-  },
-  type: "root"
-};
-
-const providers = [
-  {
-    provider_name: "Instagram",
-    provider_url: "https://instagram.com",
-    endpoints: [
-      {
-        schemes: [
-          "http://instagram.com/p/*",
-          "http://instagr.am/p/*",
-          "http://www.instagram.com/p/*",
-          "http://www.instagr.am/p/*",
-          "https://instagram.com/p/*",
-          "https://instagr.am/p/*",
-          "https://www.instagram.com/p/*",
-          "https://www.instagr.am/p/*"
-        ],
-        url: "https://api.instagram.com/oembed",
-        formats: ["json"]
-      }
-    ]
-  },
-  {
-    provider_name: "Kickstarter",
-    provider_url: "http://www.kickstarter.com",
-    endpoints: [
-      {
-        schemes: ["http://www.kickstarter.com/projects/*"],
-        url: "http://www.kickstarter.com/services/oembed"
-      }
-    ]
-  },
-  {
-    provider_name: "Twitter",
-    provider_url: "http://www.twitter.com/",
-    endpoints: [
-      {
-        schemes: [
-          "https://twitter.com/*/status/*",
-          "https://*.twitter.com/*/status/*"
-        ],
-        url: "https://publish.twitter.com/oembed"
-      }
-    ]
-  }
-];

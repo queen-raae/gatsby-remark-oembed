@@ -28,35 +28,14 @@ const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 const DEFAULT_OPTIONS = {
   providers: {
     include: undefined,
-    exclude: undefined
+    exclude: undefined,
+    settings: []
   }
 };
 
 exports.ammendOptions = options => {
-  const formatFunc = (list) => {
-    let result = undefined
-
-    if (list && list.length >= 1) {
-      result = []
-      list.forEach((item) => {
-        if (typeof item === 'object' && item.name) {
-          result.push(item.name)
-        } else if (typeof item === 'string') {
-          result.push(item)
-        }
-      })
-    }
-
-    return result
-  }
-  
-  let opt = {
-    include: formatFunc(options.providers.include),
-    exclude: formatFunc(options.providers.exclude)
-  }
-
   return {
-    providers: { ...DEFAULT_OPTIONS.providers, ...opt }
+    providers: { ...DEFAULT_OPTIONS.providers, ...options.providers }
   };
 };
 
@@ -65,34 +44,14 @@ exports.fetchOembedProviders = async () => {
   return response.data;
 };
 
-exports.ammendProviders = (providers, rawOptions) => {
-  let includedProvidersWithConfig = {}
-
-  if (rawOptions && rawOptions.include && rawOptions.include.length >= 1) {
-    rawOptions.include.forEach(config => {
-      if (typeof config === 'object' && config.name) {
-        let { name, ...urlParams } = config
-        includedProvidersWithConfig[name] = urlParams
-      }
-    })
-  }
-    
+exports.ammendProviders = (providers = [], providerSettings = {}) => {
   const ammendEndpoints = (endpoints = [], providerName) => {
     if (ENDPOINTS[providerName]) {
       endpoints = endpoints.concat(ENDPOINTS[providerName]);
     }
     return endpoints;
   };
-    
-  const ammendParamsFromOptions = (providerName) => {
-    if (includedProvidersWithConfig[providerName]) {
-      optionConfig = includedProvidersWithConfig[providerName]
-      return optionConfig
-    }
-    
-    return {}
-  };
-  
+
   const ammendSchemes = (schemes = [], providerName) => {
     if (ADD_HTTPS_TO_SCHEMES.includes(providerName)) {
       const httpsSchemes = [...schemes].map(scheme =>
@@ -110,31 +69,43 @@ exports.ammendProviders = (providers, rawOptions) => {
     }
     return endpointUrl;
   };
-    
+
+  const ammendParams = (params = {}, providerName) => {
+    if (!providerSettings[providerName]) return params;
+
+    return {
+      ...params,
+      ...providerSettings[providerName]
+    };
+  };
+
   return providers.map(provider => {
     const providerName = provider.provider_name;
-    provider.endpoints = ammendEndpoints(provider.endpoints, providerName).map(
-      endpoint => {
-        endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
-        endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
-        return endpoint;
-      }
-    );
-    provider.params = ammendParamsFromOptions(providerName);
-    return provider;
+
+    return {
+      ...provider,
+      endpoints: ammendEndpoints(provider.endpoints, providerName).map(
+        endpoint => {
+          endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
+          endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
+          return endpoint;
+        }
+      ),
+      params: ammendParams(provider.params, providerName)
+    };
   });
 };
 
 exports.filterProviders = (providers, listConfig) => {
   if (!listConfig) return providers;
-  
+
   const filterFunc = (provider, filter, exclude) => {
     if (!filter) return true;
 
     const filterIncludes = filter.includes(provider.provider_name);
     return exclude === true ? !filterIncludes : filterIncludes;
   };
-  
+
   return providers
     .filter(provider => filterFunc(provider, listConfig.include))
     .filter(provider => filterFunc(provider, listConfig.exclude, true));
@@ -155,8 +126,8 @@ exports.filterProviderKeys = (keys, filter) => {
     .filter(key => filterFunc(key, filter.exclude, true));
 };
 
-exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
-  let endpointObj = false;
+exports.getProviderEndpointForLinkUrl = (linkUrl, providers) => {
+  let transformedEndpoint = {};
 
   for (const provider of providers) {
     for (const endpoint of provider.endpoints) {
@@ -165,10 +136,11 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
           schema = schema.replace("*", ".*");
           const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
-            endpointObj = {
-              params: provider.params || {},
-              url: endpoint.url
-            }
+            transformedEndpoint.url = endpoint.url;
+            transformedEndpoint.params = {
+              url: linkUrl,
+              ...provider.params
+            };
           }
         } catch (error) {
           console.log(
@@ -182,28 +154,22 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
     }
   }
 
-  if (!endpointObj || !endpointObj.url) {
-    throw new Error(`No endpoint url for ${linkUrl}`);
+  if (!transformedEndpoint.url) {
+    throw new Error(`No endpoint for ${linkUrl}`);
   }
 
-  return endpointObj;
+  return transformedEndpoint;
 };
 
-exports.fetchOembed = async (linkUrl, endpointObj) => {
-  console.log('fetch', linkUrl)
-  console.log('🤐 endpointObj', endpointObj)
-
-  const response = await axios.get(endpointObj.url, {
+exports.fetchOembed = async endpoint => {
+  const response = await axios.get(endpoint.url, {
     params: {
-      url: linkUrl,
       format: "json",
-      ...endpointObj.params
+      ...endpoint.params
     }
   });
-
   return response.data;
 };
-
 
 exports.selectPossibleOembedLinkNodes = markdownAST => {
   return select(markdownAST, "paragraph link:only-child");

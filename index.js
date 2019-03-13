@@ -2,7 +2,7 @@ const Promise = require("bluebird");
 
 const {
   fetchOembed,
-  getProviderEndpointUrlForLinkUrl,
+  getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
@@ -26,9 +26,10 @@ const processNode = async (node, providers) => {
   try {
     console.log(`Process node ${node.url}`);
     // Check if url matched any of the oembed url schemes.
-    const endpointUrl = getProviderEndpointUrlForLinkUrl(node.url, providers);
+    const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
+    console.log(`With oembed request ${JSON.stringify(endpoint)}`);
     // Fetch the oembed response from the oembed provider.
-    const oembedResponse = await fetchOembed(node.url, endpointUrl);
+    const oembedResponse = await fetchOembed(endpoint);
     // Transform the link node into an html node.
     tranformsLinkNodeToOembedNode(node, oembedResponse);
   } catch (error) {
