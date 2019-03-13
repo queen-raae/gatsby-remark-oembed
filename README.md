@@ -74,7 +74,7 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
         // Ex. Show all Twitter embeds with the dark theme
         Twitter: { theme: 'dark' },
         // Ex. Hide all Instagram comments by default
-        Instagram: { hidecaption: false },
+        Instagram: { hidecaption: true },
       },
     },
   },
