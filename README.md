@@ -105,8 +105,8 @@ Links must be surrounded by empty lines.
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
-## Buy med a coffee? 
+## Buy me a coffee?
 
-It will encourage me to keep it going, fix whatever bugs you find and spend time making it better :D 
+It will encourage me to keep it going, fix whatever bugs you find and spend time making it better :D
 
 [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/P5P4OZVX)
