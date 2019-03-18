@@ -25,7 +25,7 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-oembed`,
+            resolve: `@raae/gatsby-remark-oembed`,
             options: {
               providers: {
                 settings: {
