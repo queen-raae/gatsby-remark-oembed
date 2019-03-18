@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Benedicte Raae (raae.codes)",
   "dependencies": {
-    "@raae/gatsby-remark-oembed": "0.0.4",
+    "@raae/gatsby-remark-oembed": "0.0.5",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "gatsby": "^2.0.91",
