@@ -30,7 +30,7 @@ Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netli
 
 ### Configuration
 
-```
+```js
 // In your gatsby-config.js
 plugins: [
   {
@@ -51,7 +51,34 @@ plugins: [
       ]
     }
   }
-]
+];
+```
+
+#### Optional `settings` for providers
+
+Many oEmbed providers offer additional options for configure the display of the embed.
+
+For example, for Instagram see [Instagram – Embedding for Developers](https://www.instagram.com/developer/embedding/), which describes the additional oEmbed parameters you might want to change for the embed.
+
+```js
+// …
+{
+  resolve: `@raae/gatsby-remark-oembed`,
+  options: {
+    providers: {
+      include: [
+        'Twitter',
+        'Instagram',
+      ]
+      settings: {
+        // Ex. Show all Twitter embeds with the dark theme
+        Twitter: { theme: 'dark' },
+        // Ex. Hide all Instagram comments by default
+        Instagram: { hidecaption: true },
+      },
+    },
+  },
+}
 ```
 
 ### Content
@@ -72,10 +99,11 @@ Links must be surrounded by empty lines.
 
 ## Options
 
-| Name                | Type                   | Description                                                 |
-| ------------------- | ---------------------- | ----------------------------------------------------------- |
-| `providers.include` | Array of provider keys | Only links from providers on this list will be transformed. |
-| `providers.exclude` | Array of provider keys | Links from providers on this list will not be transformed.  |
+| Name                 | Type                        | Description                                                 |
+| -------------------- | --------------------------- | ----------------------------------------------------------- |
+| `providers.include`  | Array of provider keys      | Only links from providers on this list will be transformed. |
+| `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
+| `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
 ## Buy med a coffee? 
 

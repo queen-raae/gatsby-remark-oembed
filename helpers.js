@@ -28,7 +28,8 @@ const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 const DEFAULT_OPTIONS = {
   providers: {
     include: undefined,
-    exclude: undefined
+    exclude: undefined,
+    settings: []
   }
 };
 
@@ -43,7 +44,7 @@ exports.fetchOembedProviders = async () => {
   return response.data;
 };
 
-exports.ammendProviders = providers => {
+exports.ammendProviders = (providers = [], providerSettings = {}) => {
   const ammendEndpoints = (endpoints = [], providerName) => {
     if (ENDPOINTS[providerName]) {
       endpoints = endpoints.concat(ENDPOINTS[providerName]);
@@ -69,32 +70,45 @@ exports.ammendProviders = providers => {
     return endpointUrl;
   };
 
+  const ammendParams = (params = {}, providerName) => {
+    if (!providerSettings[providerName]) return params;
+
+    return {
+      ...params,
+      ...providerSettings[providerName]
+    };
+  };
+
   return providers.map(provider => {
     const providerName = provider.provider_name;
-    provider.endpoints = ammendEndpoints(provider.endpoints, providerName).map(
-      endpoint => {
-        endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
-        endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
-        return endpoint;
-      }
-    );
-    return provider;
+
+    return {
+      ...provider,
+      endpoints: ammendEndpoints(provider.endpoints, providerName).map(
+        endpoint => {
+          endpoint.schemes = ammendSchemes(endpoint.schemes, providerName);
+          endpoint.url = ammendEndpointUrl(endpoint.url, providerName);
+          return endpoint;
+        }
+      ),
+      params: ammendParams(provider.params, providerName)
+    };
   });
 };
 
-exports.filterProviders = (providers, filter) => {
-  if (!filter) return providers;
+exports.filterProviders = (providers, listConfig) => {
+  if (!listConfig) return providers;
 
   const filterFunc = (provider, filter, exclude) => {
     if (!filter) return true;
 
     const filterIncludes = filter.includes(provider.provider_name);
-    return exclude ? !filterIncludes : filterIncludes;
+    return exclude === true ? !filterIncludes : filterIncludes;
   };
 
   return providers
-    .filter(provider => filterFunc(provider, filter.include))
-    .filter(provider => filterFunc(provider, filter.exclude, true));
+    .filter(provider => filterFunc(provider, listConfig.include))
+    .filter(provider => filterFunc(provider, listConfig.exclude, true));
 };
 
 exports.filterProviderKeys = (keys, filter) => {
@@ -112,8 +126,8 @@ exports.filterProviderKeys = (keys, filter) => {
     .filter(key => filterFunc(key, filter.exclude, true));
 };
 
-exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
-  let endpointUrl = false;
+exports.getProviderEndpointForLinkUrl = (linkUrl, providers) => {
+  let transformedEndpoint = {};
 
   for (const provider of providers) {
     for (const endpoint of provider.endpoints) {
@@ -122,7 +136,11 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
           schema = schema.replace("*", ".*");
           const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
-            endpointUrl = endpoint.url;
+            transformedEndpoint.url = endpoint.url;
+            transformedEndpoint.params = {
+              url: linkUrl,
+              ...provider.params
+            };
           }
         } catch (error) {
           console.log(
@@ -136,18 +154,18 @@ exports.getProviderEndpointUrlForLinkUrl = (linkUrl, providers) => {
     }
   }
 
-  if (!endpointUrl) {
-    throw new Error(`No endpoint url for ${linkUrl}`);
+  if (!transformedEndpoint.url) {
+    throw new Error(`No endpoint for ${linkUrl}`);
   }
 
-  return endpointUrl;
+  return transformedEndpoint;
 };
 
-exports.fetchOembed = async (linkUrl, endpointUrl) => {
-  const response = await axios.get(endpointUrl, {
+exports.fetchOembed = async endpoint => {
+  const response = await axios.get(endpoint.url, {
     params: {
       format: "json",
-      url: linkUrl
+      ...endpoint.params
     }
   });
   return response.data;
