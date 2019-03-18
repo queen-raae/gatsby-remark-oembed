@@ -25,7 +25,19 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-oembed`
+            resolve: `gatsby-remark-oembed`,
+            options: {
+              providers: {
+                settings: {
+                  Twitter: {
+                    theme: "dark" // Use the Twitter dark theme
+                  },
+                  Instagram: {
+                    hidecaption: true
+                  }
+                }
+              }
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
