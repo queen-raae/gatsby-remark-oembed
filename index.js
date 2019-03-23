@@ -1,24 +1,35 @@
 const Promise = require("bluebird");
+const visit = require("async-unist-util-visit");
 
 const {
   fetchOembed,
   getProviderEndpointForLinkUrl,
-  selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
 
 module.exports = async ({ markdownAST, cache }) => {
   try {
+    // Adding promises
+    let promises = []
     const providers = await cache.get("remark-oembed-providers");
-    const nodes = selectPossibleOembedLinkNodes(markdownAST);
-    await processNodes(nodes, providers);
-  } catch (error) {
+
+    // Get query for inline code
+    await visit(markdownAST, "inlineCode", async node => {
+      // Reject if not start with oembed:
+      if (!node.value.startsWith("oembed:")) return;
+
+      // Extract URL
+      node.url = node.value.substring(7);
+
+      // Push to promise
+      promises.push(processNode(node, providers))
+    })
+    // Wait for all Promises to complete
+    await Promise.all(promises)
+  }
+  catch (error) {
     console.log(`Remark oembed plugin error: ${error.message}`);
   }
-};
-
-const processNodes = async (nodes, providers) => {
-  return Promise.all(nodes.map(node => processNode(node, providers)));
 };
 
 // For each node this is the process

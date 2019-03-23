@@ -88,11 +88,11 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
 
 Check it out! I can use oembed links in my markdown.
 
-https://twitter.com/raae/status/1045394833001652225
+`oembed: https://twitter.com/raae/status/1045394833001652225`
 
 Its pretty cool :D
 
-https://www.instagram.com/p/Bof9WhgBmY2/
+`oembed: https://www.instagram.com/p/Bof9WhgBmY2/`
 ```
 
 Links must be surrounded by empty lines.

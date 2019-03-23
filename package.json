@@ -33,6 +33,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "async-unist-util-visit": "^1.0.0",
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "unist-util-select": "^1.5.0"
