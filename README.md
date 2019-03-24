@@ -65,6 +65,7 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
 {
   resolve: `@raae/gatsby-remark-oembed`,
   options: {
+    newFilter: true,
     providers: {
       include: [
         'Twitter',
