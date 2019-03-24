@@ -4,30 +4,31 @@ const visit = require("async-unist-util-visit");
 const {
   fetchOembed,
   getProviderEndpointForLinkUrl,
+  selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
 
-module.exports = async ({ markdownAST, cache }) => {
+module.exports = async ({ markdownAST, cache }, rawOptions) => {
   try {
-    // Adding promises
-    let promises = []
+    const {newFilter = false} = rawOptions
     const providers = await cache.get("remark-oembed-providers");
 
-    // Get query for inline code
-    await visit(markdownAST, "inlineCode", async node => {
-      // Reject if not start with oembed:
-      if (!node.value.startsWith("oembed:")) return;
+    const nodes = selectPossibleOembedLinkNodes(markdownAST, newFilter);
 
-      // Extract URL
-      node.url = node.value.substring(7);
-
-      // Push to promise
-      promises.push(processNode(node, providers))
-    })
-    // Wait for all Promises to complete
-    await Promise.all(promises)
-  }
-  catch (error) {
+    if (newFilter === true) {
+      console.log(nodes)
+      let promises = []
+      nodes.map(node => {
+        if (!node.value.startsWith("oembed:")) return;
+        node.url = node.value.substring(7);
+        promises.push(processNode(node, providers))
+      })
+      await Promise.all(promises)
+    } else {
+      const nodes = selectPossibleOembedLinkNodes(markdownAST, newFilter);
+      await Promise.all(nodes.map(node => processNode(node, providers)));
+    }
+  } catch (error) {
     console.log(`Remark oembed plugin error: ${error.message}`);
   }
 };

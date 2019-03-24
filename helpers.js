@@ -171,8 +171,11 @@ exports.fetchOembed = async endpoint => {
   return response.data;
 };
 
-exports.selectPossibleOembedLinkNodes = markdownAST => {
-  return select(markdownAST, "paragraph link:only-child");
+exports.selectPossibleOembedLinkNodes = (markdownAST, newFilter = false) => {
+  if (newFilter)
+    return select(markdownAST, "inlineCode");
+  else
+    return select(markdownAST, "paragraph link:only-child");
 };
 
 exports.tranformsLinkNodeToOembedNode = (node, oembedResult) => {
