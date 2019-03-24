@@ -1,5 +1,4 @@
 const Promise = require("bluebird");
-const visit = require("async-unist-util-visit");
 
 const {
   fetchOembed,
