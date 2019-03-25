@@ -9,24 +9,12 @@ const {
 
 module.exports = async ({ markdownAST, cache }, rawOptions) => {
   try {
-    const {newFilter = false} = rawOptions
+    const {usePrefix = false} = rawOptions;
     const providers = await cache.get("remark-oembed-providers");
 
-    const nodes = selectPossibleOembedLinkNodes(markdownAST, newFilter);
+    const nodes = selectPossibleOembedLinkNodes(markdownAST, usePrefix);
 
-    if (newFilter === true) {
-      console.log(nodes)
-      let promises = []
-      nodes.map(node => {
-        if (!node.value.startsWith("oembed:")) return;
-        node.url = node.value.substring(7);
-        promises.push(processNode(node, providers))
-      })
-      await Promise.all(promises)
-    } else {
-      const nodes = selectPossibleOembedLinkNodes(markdownAST, newFilter);
-      await Promise.all(nodes.map(node => processNode(node, providers)));
-    }
+    await Promise.all(nodes.map(node => processNode(node, providers)));
   } catch (error) {
     console.log(`Remark oembed plugin error: ${error.message}`);
   }
