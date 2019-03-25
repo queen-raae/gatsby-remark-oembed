@@ -126,7 +126,7 @@ exports.filterProviderKeys = (keys, filter) => {
     .filter(key => filterFunc(key, filter.exclude, true));
 };
 
-exports.getProviderEndpointForLinkUrl = (linkUrl, providers) => {
+exports.getProviderEndpointForLinkUrl = (linkUrl, providers, reporter) => {
   let transformedEndpoint = {};
 
   for (const provider of providers) {
@@ -143,7 +143,7 @@ exports.getProviderEndpointForLinkUrl = (linkUrl, providers) => {
             };
           }
         } catch (error) {
-          console.log(
+          reporter.error(
             "Regex problem with provider",
             provider.provider_name,
             schema,

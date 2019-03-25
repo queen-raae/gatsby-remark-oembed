@@ -7,31 +7,31 @@ const {
   tranformsLinkNodeToOembedNode
 } = require("./helpers");
 
-module.exports = async ({ markdownAST, cache }, rawOptions) => {
+module.exports = async ({ markdownAST, cache, reporter }, rawOptions) => {
   try {
     const {usePrefix = false} = rawOptions;
     const providers = await cache.get("remark-oembed-providers");
 
     const nodes = selectPossibleOembedLinkNodes(markdownAST, usePrefix);
 
-    await Promise.all(nodes.map(node => processNode(node, providers)));
+    await Promise.all(nodes.map(node => processNode(node, providers, reporter)));
   } catch (error) {
-    console.log(`Remark oembed plugin error: ${error.message}`);
+    reporter.info(`Remark oembed plugin error: ${error.message}`);
   }
 };
 
 // For each node this is the process
-const processNode = async (node, providers) => {
+const processNode = async (node, providers, reporter) => {
   try {
-    console.log(`Process node ${node.url}`);
+    reporter.info(`Process node ${node.url}`);
     // Check if url matched any of the oembed url schemes.
-    const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
-    console.log(`With oembed request ${JSON.stringify(endpoint)}`);
+    const endpoint = getProviderEndpointForLinkUrl(node.url, providers, reporter);
+    reporter.info(`With oembed request ${JSON.stringify(endpoint)}`);
     // Fetch the oembed response from the oembed provider.
     const oembedResponse = await fetchOembed(endpoint);
     // Transform the link node into an html node.
     tranformsLinkNodeToOembedNode(node, oembedResponse);
   } catch (error) {
-    console.log(error.message);
+    reporter.error(error.message);
   }
 };
