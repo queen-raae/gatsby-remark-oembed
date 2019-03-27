@@ -126,7 +126,7 @@ exports.filterProviderKeys = (keys, filter) => {
     .filter(key => filterFunc(key, filter.exclude, true));
 };
 
-exports.getProviderEndpointForLinkUrl = (linkUrl, providers) => {
+exports.getProviderEndpointForLinkUrl = (linkUrl, providers, reporter) => {
   let transformedEndpoint = {};
 
   for (const provider of providers) {
@@ -143,7 +143,7 @@ exports.getProviderEndpointForLinkUrl = (linkUrl, providers) => {
             };
           }
         } catch (error) {
-          console.log(
+          reporter.error(
             "Regex problem with provider",
             provider.provider_name,
             schema,
@@ -171,8 +171,20 @@ exports.fetchOembed = async endpoint => {
   return response.data;
 };
 
-exports.selectPossibleOembedLinkNodes = markdownAST => {
-  return select(markdownAST, "paragraph link:only-child");
+exports.selectPossibleOembedLinkNodes = (markdownAST, usePrefix = false) => {
+  if (usePrefix === true) {
+    const nodes = select(markdownAST, "inlineCode");
+    var res = [];
+    nodes.map(node => {
+      if (!node.value.startsWith("oembed:")) return;
+      node.url = node.value.substring(7);
+      res.push(node)
+    })
+    return res;
+  }
+  else {
+    return select(markdownAST, "paragraph link:only-child");
+  }
 };
 
 exports.tranformsLinkNodeToOembedNode = (node, oembedResult) => {
