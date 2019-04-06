@@ -40,6 +40,7 @@ plugins: [
         {
           resolve: `@raae/gatsby-remark-oembed`,
           options: {
+            usePrefix: true,
             providers: {
               // Important to exclude providers
               // that adds js to the page.
@@ -65,7 +66,7 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
 {
   resolve: `@raae/gatsby-remark-oembed`,
   options: {
-    newFilter: true,
+    usePrefix: true,
     providers: {
       include: [
         'Twitter',
