@@ -1,6 +1,6 @@
 {
   "name": "@raae/gatsby-remark-oembed",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "> A GatsbyJS Plugin that transforms oembed links into its corresponding embed code.",
   "keywords": [
     "gatsby",
