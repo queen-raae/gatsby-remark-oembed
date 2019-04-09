@@ -1,181 +1,129 @@
 exports.MARKDOWN_AST = {
+  type: "root",
   children: [
     {
-      position: {
-        end: {
-          column: 4,
-          line: 4,
-          offset: 62
-        },
-        indent: [1, 1, 1],
-        start: {
-          column: 1,
-          line: 1,
-          offset: 0
-        }
-      },
-      type: "yaml",
-      value: 'title: New Beginnings\ndate: "2015-05-28T22:40:32.169Z"'
-    },
-    {
+      type: "paragraph",
       children: [
         {
-          children: [
-            {
-              position: {
-                end: {
-                  column: 44,
-                  line: 6,
-                  offset: 107
-                },
-                indent: [],
-                start: {
-                  column: 1,
-                  line: 6,
-                  offset: 64
-                }
-              },
-              type: "text",
-              value: "https://www.youtube.com/watch?v=b2H7fWhQcdE"
-            }
-          ],
+          type: "text",
+          value: "Take a look at a day in my life as a web developer.",
           position: {
-            end: {
-              column: 44,
-              line: 6,
-              offset: 107
-            },
-            indent: [],
-            start: {
-              column: 1,
-              line: 6,
-              offset: 64
-            }
-          },
-          title: null,
-          type: "link",
-          url: "https://www.youtube.com/watch?v=b2H7fWhQcdE"
+            start: { line: 2, column: 1, offset: 1 },
+            end: { line: 2, column: 52, offset: 52 },
+            indent: []
+          }
         }
       ],
       position: {
-        end: {
-          column: 44,
-          line: 6,
-          offset: 107
-        },
-        indent: [],
-        start: {
-          column: 1,
-          line: 6,
-          offset: 64
-        }
-      },
-      type: "paragraph"
+        start: { line: 2, column: 1, offset: 1 },
+        end: { line: 2, column: 52, offset: 52 },
+        indent: []
+      }
     },
     {
+      type: "paragraph",
       children: [
         {
-          position: {
-            end: {
-              column: 29,
-              line: 9,
-              offset: 213
-            },
-            indent: [1],
-            start: {
-              column: 1,
-              line: 8,
-              offset: 109
-            }
-          },
-          type: "text",
-          value:
-            "Far far away, behind the word mountains, far from the countries Vokalia and\nConsonantia, there live the "
-        },
-        {
+          type: "link",
+          title: null,
+          url: "https://www.instagram.com/p/Bof9WhgBmY2",
           children: [
             {
-              position: {
-                end: {
-                  column: 41,
-                  line: 9,
-                  offset: 225
-                },
-                indent: [],
-                start: {
-                  column: 30,
-                  line: 9,
-                  offset: 214
-                }
-              },
               type: "text",
-              value: "blind texts"
+              value: "https://www.instagram.com/p/Bof9WhgBmY2",
+              position: {
+                start: { line: 4, column: 1, offset: 54 },
+                end: { line: 4, column: 40, offset: 93 },
+                indent: []
+              }
             }
           ],
           position: {
-            end: {
-              column: 62,
-              line: 9,
-              offset: 246
-            },
-            indent: [],
-            start: {
-              column: 29,
-              line: 9,
-              offset: 213
-            }
-          },
-          title: null,
-          type: "link",
-          url: "http://example.com"
-        },
-        {
-          position: {
-            end: {
-              column: 102,
-              line: 9,
-              offset: 286
-            },
-            indent: [],
-            start: {
-              column: 62,
-              line: 9,
-              offset: 246
-            }
-          },
-          type: "text",
-          value: ". Separated they live in Bookmarksgrove."
+            start: { line: 4, column: 1, offset: 54 },
+            end: { line: 4, column: 40, offset: 93 },
+            indent: []
+          }
         }
       ],
       position: {
-        end: {
-          column: 102,
-          line: 9,
-          offset: 286
+        start: { line: 4, column: 1, offset: 54 },
+        end: { line: 4, column: 40, offset: 93 },
+        indent: []
+      }
+    },
+    {
+      type: "paragraph",
+      children: [
+        {
+          type: "text",
+          value: "Follow me for more code fun at ",
+          position: {
+            start: { line: 6, column: 1, offset: 95 },
+            end: { line: 6, column: 32, offset: 126 },
+            indent: []
+          }
         },
-        indent: [1],
-        start: {
-          column: 1,
-          line: 8,
-          offset: 109
+        {
+          type: "link",
+          title: null,
+          url: "https://raae.codes",
+          children: [
+            {
+              type: "text",
+              value: "raae.codes",
+              position: {
+                start: { line: 6, column: 33, offset: 127 },
+                end: { line: 6, column: 43, offset: 137 },
+                indent: []
+              }
+            }
+          ],
+          position: {
+            start: { line: 6, column: 32, offset: 126 },
+            end: { line: 6, column: 64, offset: 158 },
+            indent: []
+          }
+        },
+        {
+          type: "text",
+          value: ".",
+          position: {
+            start: { line: 6, column: 64, offset: 158 },
+            end: { line: 6, column: 65, offset: 159 },
+            indent: []
+          }
         }
-      },
-      type: "paragraph"
+      ],
+      position: {
+        start: { line: 6, column: 1, offset: 95 },
+        end: { line: 6, column: 65, offset: 159 },
+        indent: []
+      }
+    },
+    {
+      type: "paragraph",
+      children: [
+        {
+          type: "inlineCode",
+          value: "oembed:https://twitter.com/raae/status/1045394833001652225",
+          position: {
+            start: { line: 8, column: 1, offset: 161 },
+            end: { line: 8, column: 62, offset: 222 },
+            indent: []
+          }
+        }
+      ],
+      position: {
+        start: { line: 8, column: 1, offset: 161 },
+        end: { line: 8, column: 62, offset: 222 },
+        indent: []
+      }
     }
   ],
   position: {
-    end: {
-      column: 1,
-      line: 10,
-      offset: 287
-    },
-    start: {
-      column: 1,
-      line: 1,
-      offset: 0
-    }
-  },
-  type: "root"
+    start: { line: 1, column: 1, offset: 0 },
+    end: { line: 9, column: 1, offset: 223 }
+  }
 };
 
 exports.PROVIDERS = [
