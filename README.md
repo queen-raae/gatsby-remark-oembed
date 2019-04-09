@@ -127,6 +127,14 @@ Links must be surrounded by empty lines.
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
+## Release routines
+
+Make sure you have checked out and updated master.
+
+- Run `npm version patch|minor|major`
+- Run `npm publish`
+- Create a [release on Github](https://github.com/raae/gatsby-remark-oembed/releases/new).
+
 ## Buy me a coffee?
 
 It will encourage me to keep it going, fix whatever bugs you find and spend time making it better :D
