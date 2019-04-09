@@ -84,42 +84,6 @@ describe("#filterProviders", () => {
   });
 });
 
-describe("#ammendProviders", () => {
-  const providerSettings = {
-    Twitter: {
-      theme: "dark"
-    },
-    Instagram: {
-      hidecaption: true,
-      omitscript: true
-    }
-  };
-
-  const ammendedProviders = ammendProviders(PROVIDERS, providerSettings);
-
-  const ammendedTwitter = ammendedProviders.find(
-    provider => provider.provider_name === "Twitter"
-  );
-  const ammendedInstagram = ammendedProviders.find(
-    provider => provider.provider_name === "Instagram"
-  );
-  const ammendedKickstarter = ammendedProviders.find(
-    provider => provider.provider_name === "Kickstarter"
-  );
-
-  test("ammended Twitter has added params", () => {
-    expect(ammendedTwitter.params).toEqual(providerSettings["Twitter"]);
-  });
-
-  test("ammended Instagram has added params", () => {
-    expect(ammendedInstagram.params).toEqual(providerSettings["Instagram"]);
-  });
-
-  test("ammended Kickstarter has empty params", () => {
-    expect(ammendedKickstarter.params).toEqual({});
-  });
-});
-
 describe("#filterProviderKeys", () => {
   const providers = ["Kickstarter", "Twitter", "Instagram"];
 
@@ -163,10 +127,44 @@ describe("#filterProviderKeys", () => {
   });
 });
 
+describe("#ammendProviders", () => {
+  const providerSettings = {
+    Twitter: {
+      theme: "dark"
+    },
+    Instagram: {
+      hidecaption: true,
+      omitscript: true
+    }
+  };
+
+  const ammendedProviders = ammendProviders(PROVIDERS, providerSettings);
+
+  const ammendedTwitter = ammendedProviders.find(
+    provider => provider.provider_name === "Twitter"
+  );
+  const ammendedInstagram = ammendedProviders.find(
+    provider => provider.provider_name === "Instagram"
+  );
+  const ammendedKickstarter = ammendedProviders.find(
+    provider => provider.provider_name === "Kickstarter"
+  );
+
+  test("ammended Twitter has added params", () => {
+    expect(ammendedTwitter.params).toEqual(providerSettings["Twitter"]);
+  });
+
+  test("ammended Instagram has added params", () => {
+    expect(ammendedInstagram.params).toEqual(providerSettings["Instagram"]);
+  });
+
+  test("ammended Kickstarter has empty params", () => {
+    expect(ammendedKickstarter.params).toEqual({});
+  });
+});
+
 describe("#getProviderEndpointForLinkUrl", () => {
   test("only urls matching one of the providers schemes return an endpoint", () => {
-    // TODO: Figure out why some providers do not have schemes,
-    // and what to do about it.
     expect(() => {
       getProviderEndpointForLinkUrl(
         "https://www.youtube.com/watch?v=b2H7fWhQcdE",
@@ -209,7 +207,24 @@ describe("#selectPossibleOembedLinkNodes", () => {
     expect(possibleOembedLinks).toHaveLength(1);
     expect(possibleOembedLinks[0]).toMatchObject({
       type: "link",
-      url: "https://www.youtube.com/watch?v=b2H7fWhQcdE"
+      url: "https://www.instagram.com/p/Bof9WhgBmY2"
+    });
+  });
+
+  test("select only links that inline code and prefixed with 'oembed:'", () => {
+    const possibleOembedLinks = selectPossibleOembedLinkNodes(
+      MARKDOWN_AST,
+      true
+    );
+    expect(possibleOembedLinks).toHaveLength(2);
+    expect(possibleOembedLinks[0]).toMatchObject({
+      type: "inlineCode",
+      url: "https://twitter.com/raae/status/1045394833001652225"
+    });
+    // allow space after 'omembed:'
+    expect(possibleOembedLinks[1]).toMatchObject({
+      type: "inlineCode",
+      url: "https://www.instagram.com/p/Bof9WhgBmY2"
     });
   });
 });
