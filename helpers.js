@@ -177,12 +177,11 @@ exports.selectPossibleOembedLinkNodes = (markdownAST, usePrefix = false) => {
     var res = [];
     nodes.map(node => {
       if (!node.value.startsWith("oembed:")) return;
-      node.url = node.value.substring(7);
-      res.push(node)
-    })
+      node.url = node.value.substring(7).trim();
+      res.push(node);
+    });
     return res;
-  }
-  else {
+  } else {
     return select(markdownAST, "paragraph link:only-child");
   }
 };
