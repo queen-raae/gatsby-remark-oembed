@@ -211,15 +211,20 @@ describe("#selectPossibleOembedLinkNodes", () => {
     });
   });
 
-  test("select only links that inline code and prefixed with oembed:", () => {
+  test("select only links that inline code and prefixed with 'oembed:'", () => {
     const possibleOembedLinks = selectPossibleOembedLinkNodes(
       MARKDOWN_AST,
       true
     );
-    expect(possibleOembedLinks).toHaveLength(1);
+    expect(possibleOembedLinks).toHaveLength(2);
     expect(possibleOembedLinks[0]).toMatchObject({
       type: "inlineCode",
       url: "https://twitter.com/raae/status/1045394833001652225"
+    });
+    // allow space after 'omembed:'
+    expect(possibleOembedLinks[1]).toMatchObject({
+      type: "inlineCode",
+      url: "https://www.instagram.com/p/Bof9WhgBmY2"
     });
   });
 });

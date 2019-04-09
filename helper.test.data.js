@@ -105,7 +105,7 @@ exports.MARKDOWN_AST = {
       children: [
         {
           type: "inlineCode",
-          value: "oembed:https://twitter.com/raae/status/1045394833001652225",
+          value: "oembed: https://twitter.com/raae/status/1045394833001652225",
           position: {
             start: { line: 8, column: 1, offset: 161 },
             end: { line: 8, column: 62, offset: 222 },
@@ -118,11 +118,30 @@ exports.MARKDOWN_AST = {
         end: { line: 8, column: 62, offset: 222 },
         indent: []
       }
+    },
+    {
+      type: "paragraph",
+      children: [
+        {
+          type: "inlineCode",
+          value: "oembed:https://www.instagram.com/p/Bof9WhgBmY2",
+          position: {
+            start: { line: 10, column: 1, offset: 224 },
+            end: { line: 10, column: 49, offset: 272 },
+            indent: []
+          }
+        }
+      ],
+      position: {
+        start: { line: 10, column: 1, offset: 224 },
+        end: { line: 10, column: 49, offset: 272 },
+        indent: []
+      }
     }
   ],
   position: {
     start: { line: 1, column: 1, offset: 0 },
-    end: { line: 9, column: 1, offset: 223 }
+    end: { line: 11, column: 1, offset: 273 }
   }
 };
 
