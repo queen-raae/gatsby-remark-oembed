@@ -40,6 +40,8 @@ plugins: [
         {
           resolve: `@raae/gatsby-remark-oembed`,
           options: {
+            // defaults to false
+            usePrefix: true,
             providers: {
               // Important to exclude providers
               // that adds js to the page.
@@ -65,7 +67,7 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
 {
   resolve: `@raae/gatsby-remark-oembed`,
   options: {
-    newFilter: true,
+    usePrefix: true,
     providers: {
       include: [
         'Twitter',
@@ -84,7 +86,9 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
 
 ### Content
 
-```
+#### With setting `usePrefix: true`
+
+```md
 // In your markdown file
 
 Check it out! I can use oembed links in my markdown.
@@ -98,13 +102,38 @@ Its pretty cool :D
 
 Links must be surrounded by empty lines.
 
+#### With setting `usePrefix: false`
+
+```md
+// In your markdown file
+
+Check it out! I can use oembed links in my markdown.
+
+https://twitter.com/raae/status/1045394833001652225
+
+Its pretty cool :D
+
+https://www.instagram.com/p/Bof9WhgBmY2/
+```
+
+Links must be surrounded by empty lines.
+
 ## Options
 
 | Name                 | Type                        | Description                                                 |
 | -------------------- | --------------------------- | ----------------------------------------------------------- |
+| `usePrefix`          | Boolean                     | See above section on content                                |
 | `providers.include`  | Array of provider keys      | Only links from providers on this list will be transformed. |
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
+
+## Release routines
+
+Make sure you have checked out and updated master.
+
+- Run `npm version patch|minor|major`
+- Run `npm publish`
+- Create a [release on Github](https://github.com/raae/gatsby-remark-oembed/releases/new).
 
 ## Buy me a coffee?
 
