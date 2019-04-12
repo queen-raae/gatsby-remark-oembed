@@ -7,7 +7,7 @@ const fetchOembed = async endpoint => {
       ...endpoint.params
     }
   });
-  return response.data;
+  return response.data
 };
 
 module.exports = fetchOembed

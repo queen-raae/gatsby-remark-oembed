@@ -11,13 +11,13 @@ const ENDPOINTS = {
     schemes: ["https://www.nb.no/items/*"],
     url: "https://api.nb.no/catalog/v1/oembed"
   }
-};
+}
 
 const ammendEndpoints = (endpoints = [], providerName) => {
   if (ENDPOINTS[providerName]) {
-    endpoints = endpoints.concat(ENDPOINTS[providerName]);
+    endpoints = endpoints.concat(ENDPOINTS[providerName])
   }
-  return endpoints;
-};
+  return endpoints
+}
 
 module.exports = ammendEndpoints

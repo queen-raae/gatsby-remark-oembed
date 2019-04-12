@@ -7,7 +7,7 @@ const DEFAULT_OPTIONS = {
 };
 
 const ammendOptions = options => ({
-  providers: { ...DEFAULT_OPTIONS.providers, ...options.providers }
+  providers: {...DEFAULT_OPTIONS.providers, ...options.providers}
 })
 
 module.exports = ammendOptions
