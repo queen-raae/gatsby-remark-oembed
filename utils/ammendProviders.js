@@ -16,7 +16,7 @@ const ammendProviders = (providers = [], providerSettings = {}) => {
           return endpoint
         }
       ),
-      params: ammendParams(provider.params, providerName)
+      params: ammendParams(provider.params, providerName, providerSettings)
     }
   })
 }
