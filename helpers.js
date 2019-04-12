@@ -17,4 +17,3 @@ exports.getProviderEndpointForLinkUrl = getProviderEndpointForLinkUrl
 exports.fetchOembed = fetchOembed
 exports.selectPossibleOembedLinkNodes = selectPossibleOembedLinkNodes
 exports.tranformsLinkNodeToOembedNode = tranformsLinkNodeToOembedNode
-
