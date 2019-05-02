@@ -30,6 +30,7 @@
     "testEnvironment": "node"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "jest"
   },
   "dependencies": {
@@ -38,6 +39,8 @@
     "unist-util-select": "^1.5.0"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-jest": "^22.5.1",
     "jest": "^23.6.0"
   }
 }
