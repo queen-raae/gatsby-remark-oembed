@@ -30,6 +30,7 @@
     "testEnvironment": "node"
   },
   "scripts": {
+    "dev": "jest --watch",
     "lint": "eslint .",
     "prettier": "prettier \"**/*.+(js|json|yml)\"",
     "format": "npm run prettier -- --write",
@@ -47,6 +48,7 @@
     "unist-util-select": "^1.5.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.16.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-jest": "^22.5.1",
