@@ -36,6 +36,11 @@
     "validate": "npm run lint && npm run prettier  -- --list-different",
     "test": "jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run validate"
+    }
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
@@ -45,6 +50,7 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-jest": "^22.5.1",
+    "husky": "^2.2.0",
     "jest": "^23.6.0",
     "prettier": "^1.17.0"
   }
