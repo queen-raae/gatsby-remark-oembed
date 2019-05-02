@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 
 const fetchOembed = async endpoint => {
   const response = await axios.get(endpoint.url, {
@@ -7,7 +7,7 @@ const fetchOembed = async endpoint => {
       ...endpoint.params
     }
   });
-  return response.data
+  return response.data;
 };
 
-module.exports = fetchOembed
+module.exports = fetchOembed;
