@@ -4,40 +4,35 @@ const {
   fetchOembed,
   getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,
-  tranformsLinkNodeToOembedNode
+  tranformsLinkNodeToOembedNode,
+  logResults
 } = require("./helpers");
 
 module.exports = async ({ markdownAST, cache, reporter }, rawOptions) => {
   try {
     const { usePrefix = false } = rawOptions;
-    const providers = await cache.get("remark-oembed-providers");
+    const providers = (await cache.get("remark-oembed-providers")) || [];
 
     const nodes = selectPossibleOembedLinkNodes(markdownAST, usePrefix);
-
-    await Promise.all(
+    const results = await Promise.all(
       nodes.map(node => processNode(node, providers, reporter))
     );
+    logResults(results, reporter);
   } catch (error) {
-    reporter.info(`Remark oembed plugin error: ${error.message}`);
+    reporter.error(`gatsby-remark-oembed: Error processing links`, error);
   }
 };
 
 // For each node this is the process
-const processNode = async (node, providers, reporter) => {
+const processNode = async (node, providers) => {
   try {
-    reporter.info(`Process node ${node.url}`);
-    // Check if url matched any of the oembed url schemes.
-    const endpoint = getProviderEndpointForLinkUrl(
-      node.url,
-      providers,
-      reporter
-    );
-    reporter.info(`With oembed request ${JSON.stringify(endpoint)}`);
-    // Fetch the oembed response from the oembed provider.
-    const oembedResponse = await fetchOembed(endpoint);
-    // Transform the link node into an html node.
-    tranformsLinkNodeToOembedNode(node, oembedResponse);
+    const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
+    if (endpoint.url) {
+      const oembedResponse = await fetchOembed(endpoint);
+      return tranformsLinkNodeToOembedNode(node, oembedResponse);
+    }
   } catch (error) {
-    reporter.error(error.message);
+    error.url = node.url;
+    return error;
   }
 };

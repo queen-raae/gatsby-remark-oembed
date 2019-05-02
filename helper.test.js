@@ -164,15 +164,13 @@ describe("#ammendProviders", () => {
 });
 
 describe("#getProviderEndpointForLinkUrl", () => {
-  test("only urls matching one of the providers schemes return an endpoint", () => {
-    expect(() => {
+  test("only urls matching one of the providers schemes return a valid endpoint", () => {
+    expect(
       getProviderEndpointForLinkUrl(
         "https://www.youtube.com/watch?v=b2H7fWhQcdE",
         PROVIDERS
-      );
-    }).toThrowError(
-      "No endpoint for https://www.youtube.com/watch?v=b2H7fWhQcdE"
-    );
+      )
+    ).toEqual({});
     expect(
       getProviderEndpointForLinkUrl(
         "https://www.instagram.com/p/BftIg_OFPFX/",
