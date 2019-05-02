@@ -20,7 +20,7 @@ const processInstagram = () => {
   }
 };
 
-exports.onRouteUpdate = (props) => {
-  loadTwitter()
+exports.onRouteUpdate = () => {
+  loadTwitter();
   processInstagram();
 };
