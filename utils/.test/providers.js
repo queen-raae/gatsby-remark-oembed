@@ -41,5 +41,8 @@ module.exports = [
         url: "https://publish.twitter.com/oembed"
       }
     ]
+  },
+  {
+    provider_name: "YouTube"
   }
 ];
