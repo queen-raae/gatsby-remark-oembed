@@ -6,7 +6,7 @@ const {
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
   logResults
-} = require("./helpers");
+} = require("./utils");
 
 module.exports = async ({ markdownAST, cache, reporter }, rawOptions) => {
   try {
