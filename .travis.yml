@@ -4,4 +4,3 @@ node_js:
   - "lts/*"
 script:
   - npm run validate
-  - npm test

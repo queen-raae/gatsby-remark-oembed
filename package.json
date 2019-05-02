@@ -34,7 +34,7 @@
     "lint": "eslint .",
     "prettier": "prettier \"**/*.+(js|json|yml)\"",
     "format": "npm run prettier -- --write",
-    "validate": "npm run lint && npm run prettier  -- --list-different",
+    "validate": "npm run lint && npm run prettier  -- --list-different && npm run test",
     "test": "jest"
   },
   "husky": {
