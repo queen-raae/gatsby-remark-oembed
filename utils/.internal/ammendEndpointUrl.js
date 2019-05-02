@@ -1,11 +1,11 @@
-const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"]
+const ADD_HTTPS_TO_ENDPOINT_URL = ["amCharts Live Editor"];
 
 const ammendEndpointUrl = (endpointUrl = "", providerName) => {
-  endpointUrl = endpointUrl.replace("{format}", "json")
+  endpointUrl = endpointUrl.replace("{format}", "json");
   if (ADD_HTTPS_TO_ENDPOINT_URL.includes(providerName)) {
-    endpointUrl = endpointUrl.replace("http", "https")
+    endpointUrl = endpointUrl.replace("http", "https");
   }
-  return endpointUrl
-}
+  return endpointUrl;
+};
 
-module.exports = ammendEndpointUrl
+module.exports = ammendEndpointUrl;

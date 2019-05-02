@@ -3,16 +3,16 @@ const ADD_HTTPS_TO_SCHEMES = [
   "YouTube",
   "Flickr",
   "MixCloud"
-]
+];
 
 const ammendSchemes = (schemes = [], providerName) => {
   if (ADD_HTTPS_TO_SCHEMES.includes(providerName)) {
     const httpsSchemes = [...schemes].map(scheme =>
       scheme.replace("http", "https")
-    )
-    schemes = schemes.concat(httpsSchemes)
+    );
+    schemes = schemes.concat(httpsSchemes);
   }
-  return schemes
-}
+  return schemes;
+};
 
-module.exports = ammendSchemes
+module.exports = ammendSchemes;

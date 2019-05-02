@@ -1,18 +1,18 @@
 const getProviderEndpointForLinkUrl = (linkUrl, providers, reporter) => {
-  let transformedEndpoint = {}
+  let transformedEndpoint = {};
 
   for (const provider of providers) {
     for (const endpoint of provider.endpoints) {
       for (let schema of endpoint.schemes) {
         try {
-          schema = schema.replace("*", ".*")
-          const regExp = new RegExp(schema)
+          schema = schema.replace("*", ".*");
+          const regExp = new RegExp(schema);
           if (regExp.test(linkUrl)) {
-            transformedEndpoint.url = endpoint.url
+            transformedEndpoint.url = endpoint.url;
             transformedEndpoint.params = {
               url: linkUrl,
               ...provider.params
-            }
+            };
           }
         } catch (error) {
           reporter.error(
@@ -20,17 +20,17 @@ const getProviderEndpointForLinkUrl = (linkUrl, providers, reporter) => {
             provider.provider_name,
             schema,
             error.message
-          )
+          );
         }
       }
     }
   }
 
   if (!transformedEndpoint.url) {
-    throw new Error(`No endpoint for ${linkUrl}`)
+    throw new Error(`No endpoint for ${linkUrl}`);
   }
 
-  return transformedEndpoint
-}
+  return transformedEndpoint;
+};
 
-module.exports = getProviderEndpointForLinkUrl
+module.exports = getProviderEndpointForLinkUrl;
