@@ -1,13 +1,14 @@
+const { defaultsDeep } = require("lodash");
+
 const DEFAULT_OPTIONS = {
   providers: {
     include: undefined,
     exclude: undefined,
     settings: []
-  }
+  },
+  usePrefix: false
 };
 
-const ammendOptions = options => ({
-  providers: { ...DEFAULT_OPTIONS.providers, ...options.providers }
-});
+const ammendOptions = options => defaultsDeep({}, options, DEFAULT_OPTIONS);
 
 module.exports = ammendOptions;
