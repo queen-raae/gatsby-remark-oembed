@@ -21,6 +21,6 @@ const processInstagram = () => {
 };
 
 exports.onRouteUpdate = () => {
-  loadTwitter();
+  loadTwitter()
   processInstagram();
 };
