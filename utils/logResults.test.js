@@ -3,9 +3,9 @@ const logResults = require("./logResults");
 describe("#logResults", () => {
   const results = [undefined, new Error("Test Error"), {}, {}, undefined, {}];
   const reporter = {
-    info: jest.fn(message => {}),
-    warn: jest.fn(message => {}),
-    error: jest.fn((message, error) => {})
+    info: jest.fn(),
+    warn: jest.fn(),
+    error: jest.fn()
   };
   logResults(results, reporter);
 

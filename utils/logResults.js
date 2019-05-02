@@ -4,14 +4,14 @@ const logResults = (results, reporter) => {
   let failedEmbedsCount = 0;
   let unconformingEmbedsCount = 0;
 
-  for (result of results) {
+  for (const result of results) {
     if (result instanceof Error) {
       failedEmbedsCount++;
       reporter.error(
         `gatsby-remark-oembed: Error embedding ${result.url}`,
         result
       );
-    } else if (!!result) {
+    } else if (result) {
       successfulEmbedsCount++;
     } else {
       unconformingEmbedsCount++;
