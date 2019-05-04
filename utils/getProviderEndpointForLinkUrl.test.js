@@ -18,5 +18,16 @@ describe("#getProviderEndpointForLinkUrl", () => {
       url: "https://api.instagram.com/oembed",
       params: { url: "https://www.instagram.com/p/BftIg_OFPFX/" }
     });
+
+    expect(
+      getProviderEndpointForLinkUrl(
+        "https://www.instagram.com/p/BftIg_OFPFX/",
+        []
+      )
+    ).toEqual({});
+  });
+
+  test("Empty providers and/or link: is accepted", () => {
+    expect(getProviderEndpointForLinkUrl()).toEqual({});
   });
 });
