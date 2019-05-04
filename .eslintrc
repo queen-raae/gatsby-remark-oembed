@@ -1,0 +1,16 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "commonjs": true,
+    "jest/globals": true
+  },
+  "plugins": ["jest"],
+  "parserOptions": {
+    "ecmaVersion": "2018"
+  },
+  "extends": ["eslint:recommended", "eslint-config-prettier"],
+  "rules": {
+    "valid-typeof": "error"
+  }
+}

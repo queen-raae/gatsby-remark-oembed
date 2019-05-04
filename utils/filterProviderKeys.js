@@ -1,4 +1,9 @@
-const filterFunc = require("./.internal/filterFuncProviderKeys");
+const filterFunc = (key, filter, exclude) => {
+  if (!filter) return true;
+
+  const filterIncludes = filter.includes(key);
+  return exclude ? !filterIncludes : filterIncludes;
+};
 
 const filterProviderKeys = (keys, filter) => {
   if (!filter) return keys;

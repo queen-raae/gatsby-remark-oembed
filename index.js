@@ -1,19 +1,20 @@
 const Promise = require("bluebird");
 
 const {
+  ammendOptions,
   fetchOembed,
   getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
   logResults
-} = require("./helpers");
+} = require("./utils");
 
 module.exports = async ({ markdownAST, cache, reporter }, rawOptions) => {
   try {
-    const { usePrefix = false } = rawOptions;
+    const options = ammendOptions(rawOptions);
     const providers = (await cache.get("remark-oembed-providers")) || [];
 
-    const nodes = selectPossibleOembedLinkNodes(markdownAST, usePrefix);
+    const nodes = selectPossibleOembedLinkNodes(markdownAST, options.usePrefix);
     const results = await Promise.all(
       nodes.map(node => processNode(node, providers, reporter))
     );

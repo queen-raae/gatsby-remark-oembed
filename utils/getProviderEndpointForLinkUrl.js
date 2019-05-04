@@ -1,9 +1,9 @@
 const getProviderEndpointForLinkUrl = (linkUrl, providers) => {
   let transformedEndpoint = {};
 
-  for (const provider of providers) {
-    for (const endpoint of provider.endpoints) {
-      for (let schema of endpoint.schemes) {
+  for (const provider of providers || []) {
+    for (const endpoint of provider.endpoints || []) {
+      for (let schema of endpoint.schemes || []) {
         schema = schema.replace("*", ".*");
         const regExp = new RegExp(schema);
         if (regExp.test(linkUrl)) {
