@@ -67,4 +67,8 @@ describe("#ammendProviders", () => {
   test("ammended YouTube has endpoints", () => {
     expect(ammendedYouTube.endpoints.length).toEqual(1);
   });
+
+  test("Empty providers and/or settings is accepted", () => {
+    expect(ammendProviders()).toEqual([]);
+  });
 });
