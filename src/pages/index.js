@@ -5,7 +5,6 @@ import Helmet from "react-helmet";
 
 import Bio from "../components/Bio";
 import Layout from "../components/layout";
-import { rhythm } from "../utils/typography";
 
 class BlogIndex extends React.Component {
   render() {
@@ -27,19 +26,14 @@ class BlogIndex extends React.Component {
         {posts.map(({ node }) => {
           const title = get(node, "frontmatter.title") || node.fields.slug;
           return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4)
-                }}
-              >
+            <article key={node.fields.slug}>
+              <h1>
                 <Link style={{ boxShadow: "none" }} to={node.fields.slug}>
                   {title}
                 </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
+              </h1>
+              <div dangerouslySetInnerHTML={{ __html: node.html }} />
+            </article>
           );
         })}
       </Layout>
@@ -60,12 +54,11 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
+          html
           frontmatter {
-            date(formatString: "DD MMMM, YYYY")
             title
           }
         }
