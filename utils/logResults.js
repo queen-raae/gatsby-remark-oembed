@@ -1,8 +1,8 @@
-const logResults = (results, reporter) => {
-  let possibleEmbedsCount = results.length;
+const logResults = (results, path, reporter) => {
   let successfulEmbedsCount = 0;
   let failedEmbedsCount = 0;
   let unconformingEmbedsCount = 0;
+  let message = "";
 
   for (const result of results) {
     if (result instanceof Error) {
@@ -18,24 +18,19 @@ const logResults = (results, reporter) => {
     }
   }
 
-  reporter.info(
-    `gatsby-remark-oembed: Found ${possibleEmbedsCount} possible link(s)`
-  );
-  reporter.info(
-    `gatsby-remark-oembed: Successfully embedded ${successfulEmbedsCount} link(s)`
-  );
+  message += `gatsby-remark-oembed:`;
+  message += ` Successfull embeds: ${successfulEmbedsCount}`;
 
   if (failedEmbedsCount > 0) {
-    reporter.warn(
-      `gatsby-remark-oembed: Failed at embedding ${failedEmbedsCount} link(s)`
-    );
+    message += ` | Failed embeds: ${failedEmbedsCount}`;
+  }
+  if (unconformingEmbedsCount > 0) {
+    message += ` | Links with no matching provider: ${unconformingEmbedsCount}`;
   }
 
-  if (unconformingEmbedsCount > 0) {
-    reporter.warn(
-      `gatsby-remark-oembed: ${unconformingEmbedsCount} link(s) did not match a provider`
-    );
-  }
+  message += ` | Path: ${path}`;
+
+  reporter.info(message);
 };
 
 module.exports = logResults;
