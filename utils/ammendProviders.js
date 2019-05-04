@@ -16,10 +16,7 @@ const ammendSchemes = (schemes = [], { addHttps }) => {
   return schemes;
 };
 
-const ammendEndpoint = (
-  endpoint = {},
-  { addHttpsToSchemes, forceHttpsInUrl }
-) => {
+const ammendEndpoint = (endpoint, { addHttpsToSchemes, forceHttpsInUrl }) => {
   return {
     ...endpoint,
     schemes: ammendSchemes(endpoint.schemes, { addHttps: addHttpsToSchemes }),
@@ -27,17 +24,14 @@ const ammendEndpoint = (
   };
 };
 
-const ammendParams = (params = {}, settingsParams = {}) => {
-  if (!settingsParams) return params;
-  if (!(settingsParams instanceof Object)) return params;
-
+const ammendParams = (params = {}, settingsParams) => {
   return {
     ...params,
     ...settingsParams
   };
 };
 
-const ammendProvider = (provider = {}, settings = {}) => {
+const ammendProvider = (provider, settings = {}) => {
   const endpoints = [
     ...(provider.endpoints || []),
     ...(settings.endpoints || [])

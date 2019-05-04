@@ -1,25 +1,39 @@
 const logResults = require("./logResults");
 
 describe("#logResults", () => {
-  const results = [undefined, new Error("Test Error"), {}, {}, undefined, {}];
-  const reporter = {
+  const results1 = [undefined, new Error("Test Error"), {}, {}, undefined, {}];
+  const reporter1 = {
     info: jest.fn(),
     error: jest.fn()
   };
-  logResults(results, "/test-path/", reporter);
+  const results2 = [{}, {}];
+  const reporter2 = {
+    info: jest.fn(),
+    error: jest.fn()
+  };
+  logResults(results1, "/test-path-1/", reporter1);
+  logResults(results2, "/test-path-2/", reporter2);
 
   test("Calls reporter.info correctly", () => {
-    expect(reporter.info.mock.calls.length).toBe(1);
-    expect(reporter.info.mock.calls[0][0]).toContain("Successfull embeds: 3");
-    expect(reporter.info.mock.calls[0][0]).toContain("Failed embeds: 1");
-    expect(reporter.info.mock.calls[0][0]).toContain(
+    expect(reporter1.info.mock.calls.length).toBe(1);
+    expect(reporter1.info.mock.calls[0][0]).toContain("Successfull embeds: 3");
+    expect(reporter1.info.mock.calls[0][0]).toContain("Failed embeds: 1");
+    expect(reporter1.info.mock.calls[0][0]).toContain(
       "Links with no matching provider: 2"
     );
-    expect(reporter.info.mock.calls[0][0]).toContain("Path: /test-path/");
+    expect(reporter1.info.mock.calls[0][0]).toContain("Path: /test-path-1/");
+
+    expect(reporter2.info.mock.calls.length).toBe(1);
+    expect(reporter2.info.mock.calls[0][0]).toContain("Successfull embeds: 2");
+    expect(reporter2.info.mock.calls[0][0]).not.toContain("Failed");
+    expect(reporter2.info.mock.calls[0][0]).not.toContain(
+      "Links with no matching provider"
+    );
+    expect(reporter2.info.mock.calls[0][0]).toContain("Path: /test-path-2/");
   });
 
   test("Calls reporter.error correctly", () => {
-    expect(reporter.error.mock.calls.length).toBe(1);
-    expect(reporter.error.mock.calls[0][1]).toEqual(new Error("Test Error"));
+    expect(reporter1.error.mock.calls.length).toBe(1);
+    expect(reporter1.error.mock.calls[0][1]).toEqual(new Error("Test Error"));
   });
 });

@@ -44,5 +44,9 @@ module.exports = [
   },
   {
     provider_name: "YouTube"
+  },
+  {
+    provider_name: "Test",
+    endpoints: [{}]
   }
 ];
