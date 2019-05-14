@@ -10,28 +10,20 @@ describe("#ammendProviders", () => {
       hidecaption: true,
       omitscript: true
     },
-    Kickstarter: {
-      addHttpsToEndpointsSchemes: true,
-      forceHttpsInEndpointUrl: true
-    },
-    YouTube: {
+    Test1: {
+      param1: "param1",
       endpoints: [
         {
-          schemes: [
-            "http://*.youtube.com/watch*",
-            "http://*.youtube.com/v/*",
-            "http://youtu.be/*"
-          ],
-          url: "https://www.youtube.com/oembed"
+          schemes: ["https://test1.no/*"]
         }
       ]
     },
-    Replit: {
-      provider_name: "Replit",
+    Test2: {
+      param2: "param2",
       endpoints: [
         {
-          schemes: ["https://repl.it/@*/*"],
-          url: "https://repl.it/data/oembed"
+          schemes: ["https://test2.com/*"],
+          url: "https://test2.com/oembed"
         }
       ]
     }
@@ -42,46 +34,66 @@ describe("#ammendProviders", () => {
   const ammendedTwitter = ammendedProviders.find(
     provider => provider.provider_name === "Twitter"
   );
+
   const ammendedInstagram = ammendedProviders.find(
     provider => provider.provider_name === "Instagram"
   );
-  const ammendedKickstarter = ammendedProviders.find(
-    provider => provider.provider_name === "Kickstarter"
+
+  const ammendedVimeo = ammendedProviders.find(
+    provider => provider.provider_name === "Vimeo"
   );
-  const ammendedYouTube = ammendedProviders.find(
-    provider => provider.provider_name === "YouTube"
+
+  const ammendedTest1 = ammendedProviders.find(
+    provider => provider.provider_name === "Test1"
   );
-  const addedReplit = ammendedProviders.find(
-    provider => provider.provider_name === "Replit"
+
+  const addedTest2 = ammendedProviders.find(
+    provider => provider.provider_name === "Test2"
   );
+
+  const untouchedTest3 = ammendedProviders.find(
+    provider => provider.provider_name === "Test3"
+  );
+
+  test("ammended providers list is expected length", () => {
+    expect(ammendedProviders.length).toEqual(6);
+  });
 
   test("ammended Twitter has added params", () => {
     expect(ammendedTwitter.params).toEqual(providerSettings["Twitter"]);
+    expect(ammendedTwitter.endpoints[0].schemes[0]).toEqual(
+      "https://twitter.com/*/status/*"
+    );
   });
 
   test("ammended Instagram has added params", () => {
     expect(ammendedInstagram.params).toEqual(providerSettings["Instagram"]);
   });
 
-  test("ammended Kickstarter has empty params", () => {
-    expect(ammendedKickstarter.params).toEqual({});
+  test("ammended Vimeo has correct format", () => {
+    expect(ammendedVimeo.endpoints[0].url).toEqual(
+      "https://vimeo.com/api/oembed.json"
+    );
   });
 
-  test("ammended Kickstarter has added https to schemes", () => {
-    expect(ammendedKickstarter.endpoints[0].schemes[0]).toContain("http://");
-    expect(ammendedKickstarter.endpoints[0].schemes[1]).toContain("https://");
+  test("ammended Test1 has changed schema and added params", () => {
+    expect(ammendedTest1.params).toEqual(providerSettings["Test1"]);
+    expect(ammendedTest1.endpoints[0].schemes[0]).toEqual("https://test1.no/*");
+    expect(ammendedTest1.endpoints[0].url).toEqual("https://test1.com/oembed");
   });
 
-  test("ammended Kickstarter forced https to endpoint url", () => {
-    expect(ammendedKickstarter.endpoints[0].url).toContain("https://");
+  test("added Test2 exists and is correct", () => {
+    expect(addedTest2.params).toEqual(providerSettings["Test2"]);
+    expect(addedTest2.endpoints[0].schemes[0]).toEqual("https://test2.com/*");
+    expect(addedTest2.endpoints[0].url).toEqual("https://test2.com/oembed");
   });
 
-  test("ammended YouTube has endpoints", () => {
-    expect(ammendedYouTube.endpoints.length).toEqual(1);
-  });
-
-  test("Replit is added and scheme ammened", () => {
-    expect(addedReplit.endpoints[0].schemes[0]).toContain("https://");
+  test("Test3 is untouched", () => {
+    expect(untouchedTest3.params).toEqual({});
+    expect(untouchedTest3.endpoints[0].schemes[0]).toEqual(
+      "https://test3.com/*"
+    );
+    expect(untouchedTest3.endpoints[0].url).toEqual("https://test3.com/oembed");
   });
 
   test("Empty providers and/or settings is accepted", () => {
