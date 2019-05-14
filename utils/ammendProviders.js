@@ -31,7 +31,7 @@ const ammendParams = (params = {}, settingsParams) => {
   };
 };
 
-const ammendProvider = (provider, settings = {}) => {
+const ammendProvider = (provider, settings = {}, providerKey) => {
   const endpoints = [
     ...(provider.endpoints || []),
     ...(settings.endpoints || [])
@@ -52,15 +52,22 @@ const ammendProvider = (provider, settings = {}) => {
 
   return {
     ...provider,
+    provider_name: providerKey ? providerKey : provider.provider_name,
     endpoints: ammendedEndpoints,
     params: ammendParams(provider.params, settingsParams)
   };
 };
 
 const ammendProviders = (providers = [], settings = {}) => {
-  return providers.map(provider => {
+  const ammendedProviders = providers.map(provider => {
     return ammendProvider(provider, settings[provider.provider_name]);
   });
+  Object.keys(settings).forEach(providerKey => {
+    ammendedProviders.push(
+      ammendProvider({}, settings[providerKey], providerKey)
+    );
+  });
+  return ammendedProviders;
 };
 
 module.exports = ammendProviders;

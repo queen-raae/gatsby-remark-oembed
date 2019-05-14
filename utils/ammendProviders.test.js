@@ -25,6 +25,15 @@ describe("#ammendProviders", () => {
           url: "https://www.youtube.com/oembed"
         }
       ]
+    },
+    Replit: {
+      provider_name: "Replit",
+      endpoints: [
+        {
+          schemes: ["https://repl.it/@*/*"],
+          url: "https://repl.it/data/oembed"
+        }
+      ]
     }
   };
 
@@ -41,6 +50,9 @@ describe("#ammendProviders", () => {
   );
   const ammendedYouTube = ammendedProviders.find(
     provider => provider.provider_name === "YouTube"
+  );
+  const addedReplit = ammendedProviders.find(
+    provider => provider.provider_name === "Replit"
   );
 
   test("ammended Twitter has added params", () => {
@@ -66,6 +78,10 @@ describe("#ammendProviders", () => {
 
   test("ammended YouTube has endpoints", () => {
     expect(ammendedYouTube.endpoints.length).toEqual(1);
+  });
+
+  test("Replit is added and scheme ammened", () => {
+    expect(addedReplit.endpoints[0].schemes[0]).toContain("https://");
   });
 
   test("Empty providers and/or settings is accepted", () => {
