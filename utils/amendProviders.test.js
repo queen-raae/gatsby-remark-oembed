@@ -1,7 +1,7 @@
-const ammendProviders = require("./ammendProviders");
+const amendProviders = require("./amendProviders");
 const PROVIDERS = require("./.test/providers");
 
-describe("#ammendProviders", () => {
+describe("#amendProviders", () => {
   const providerSettings = {
     Twitter: {
       theme: "dark"
@@ -29,57 +29,57 @@ describe("#ammendProviders", () => {
     }
   };
 
-  const ammendedProviders = ammendProviders(PROVIDERS, providerSettings);
+  const amendedProviders = amendProviders(PROVIDERS, providerSettings);
 
-  const ammendedTwitter = ammendedProviders.find(
+  const amendedTwitter = amendedProviders.find(
     provider => provider.provider_name === "Twitter"
   );
 
-  const ammendedInstagram = ammendedProviders.find(
+  const amendedInstagram = amendedProviders.find(
     provider => provider.provider_name === "Instagram"
   );
 
-  const ammendedVimeo = ammendedProviders.find(
+  const amendedVimeo = amendedProviders.find(
     provider => provider.provider_name === "Vimeo"
   );
 
-  const ammendedTest1 = ammendedProviders.find(
+  const amendedTest1 = amendedProviders.find(
     provider => provider.provider_name === "Test1"
   );
 
-  const addedTest2 = ammendedProviders.find(
+  const addedTest2 = amendedProviders.find(
     provider => provider.provider_name === "Test2"
   );
 
-  const untouchedTest3 = ammendedProviders.find(
+  const untouchedTest3 = amendedProviders.find(
     provider => provider.provider_name === "Test3"
   );
 
-  test("ammended providers list is expected length", () => {
-    expect(ammendedProviders.length).toEqual(8);
+  test("amended providers list is expected length", () => {
+    expect(amendedProviders.length).toEqual(8);
   });
 
-  test("ammended Twitter has added params", () => {
-    expect(ammendedTwitter.params).toEqual(providerSettings["Twitter"]);
-    expect(ammendedTwitter.endpoints[0].schemes[0]).toEqual(
+  test("amended Twitter has added params", () => {
+    expect(amendedTwitter.params).toEqual(providerSettings["Twitter"]);
+    expect(amendedTwitter.endpoints[0].schemes[0]).toEqual(
       "https://twitter.com/*/status/*"
     );
   });
 
-  test("ammended Instagram has added params", () => {
-    expect(ammendedInstagram.params).toEqual(providerSettings["Instagram"]);
+  test("amended Instagram has added params", () => {
+    expect(amendedInstagram.params).toEqual(providerSettings["Instagram"]);
   });
 
-  test("ammended Vimeo has correct format", () => {
-    expect(ammendedVimeo.endpoints[0].url).toEqual(
+  test("amended Vimeo has correct format", () => {
+    expect(amendedVimeo.endpoints[0].url).toEqual(
       "https://vimeo.com/api/oembed.json"
     );
   });
 
-  test("ammended Test1 has changed schema and added params", () => {
-    expect(ammendedTest1.params).toEqual(providerSettings["Test1"]);
-    expect(ammendedTest1.endpoints[0].schemes[0]).toEqual("https://test1.no/*");
-    expect(ammendedTest1.endpoints[0].url).toEqual("https://test1.com/oembed");
+  test("amended Test1 has changed schema and added params", () => {
+    expect(amendedTest1.params).toEqual(providerSettings["Test1"]);
+    expect(amendedTest1.endpoints[0].schemes[0]).toEqual("https://test1.no/*");
+    expect(amendedTest1.endpoints[0].url).toEqual("https://test1.com/oembed");
   });
 
   test("added Test2 exists and is correct", () => {
@@ -97,6 +97,6 @@ describe("#ammendProviders", () => {
   });
 
   test("Empty providers and/or settings is accepted", () => {
-    expect(ammendProviders()).toEqual([]);
+    expect(amendProviders()).toEqual([]);
   });
 });

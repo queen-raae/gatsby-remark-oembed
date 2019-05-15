@@ -2,7 +2,7 @@ const Promise = require("bluebird");
 const { createFilePath } = require("gatsby-source-filesystem");
 
 const {
-  ammendOptions,
+  amendOptions,
   fetchOembed,
   getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,
@@ -15,7 +15,7 @@ module.exports = async (
   rawOptions
 ) => {
   try {
-    const options = ammendOptions(rawOptions);
+    const options = amendOptions(rawOptions);
     const providers = (await cache.get("remark-oembed-providers")) || [];
 
     const nodes = selectPossibleOembedLinkNodes(markdownAST, options.usePrefix);

@@ -1,6 +1,6 @@
-const ammendOptions = require("./ammendOptions");
+const amendOptions = require("./amendOptions");
 
-test("options ammended correctly", () => {
+test("options amended correctly", () => {
   const rawOptions = {
     usePrefix: true,
     providers: {
@@ -16,7 +16,7 @@ test("options ammended correctly", () => {
     }
   };
 
-  const ammendedOptions = {
+  const amendedOptions = {
     usePrefix: true,
     providers: {
       include: ["Instagram"],
@@ -31,5 +31,5 @@ test("options ammended correctly", () => {
     }
   };
 
-  expect(ammendOptions(rawOptions)).toEqual(ammendedOptions);
+  expect(amendOptions(rawOptions)).toEqual(amendedOptions);
 });
