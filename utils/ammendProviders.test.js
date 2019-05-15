@@ -56,7 +56,7 @@ describe("#ammendProviders", () => {
   );
 
   test("ammended providers list is expected length", () => {
-    expect(ammendedProviders.length).toEqual(6);
+    expect(ammendedProviders.length).toEqual(8);
   });
 
   test("ammended Twitter has added params", () => {

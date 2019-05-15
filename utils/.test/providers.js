@@ -69,5 +69,12 @@ module.exports = [
         url: "https://test3.com/oembed"
       }
     ]
+  },
+  {
+    provider_name: "Test4"
+  },
+  {
+    provider_name: "Test4",
+    endpoints: [{}]
   }
 ];
