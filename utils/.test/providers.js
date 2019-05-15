@@ -20,16 +20,6 @@ module.exports = [
     ]
   },
   {
-    provider_name: "Kickstarter",
-    provider_url: "http://www.kickstarter.com",
-    endpoints: [
-      {
-        schemes: ["http://www.kickstarter.com/projects/*"],
-        url: "http://www.kickstarter.com/services/oembed"
-      }
-    ]
-  },
-  {
     provider_name: "Twitter",
     provider_url: "http://www.twitter.com/",
     endpoints: [
@@ -43,10 +33,48 @@ module.exports = [
     ]
   },
   {
-    provider_name: "YouTube"
+    provider_name: "Vimeo",
+    provider_url: "https://vimeo.com/",
+    endpoints: [
+      {
+        schemes: [
+          "https://vimeo.com/*",
+          "https://vimeo.com/album/*/video/*",
+          "https://vimeo.com/channels/*/*",
+          "https://vimeo.com/groups/*/videos/*",
+          "https://vimeo.com/ondemand/*/*",
+          "https://player.vimeo.com/video/*"
+        ],
+        url: "https://vimeo.com/api/oembed.{format}",
+        discovery: true
+      }
+    ]
   },
   {
-    provider_name: "Test",
+    provider_name: "Test1",
+    provider_url: "http://www.test1.com/",
+    endpoints: [
+      {
+        schemes: ["https://test1.com/*"],
+        url: "https://test1.com/oembed"
+      }
+    ]
+  },
+  {
+    provider_name: "Test3",
+    provider_url: "http://www.test3.com/",
+    endpoints: [
+      {
+        schemes: ["https://test3.com/*"],
+        url: "https://test3.com/oembed"
+      }
+    ]
+  },
+  {
+    provider_name: "Test4"
+  },
+  {
+    provider_name: "Test4",
     endpoints: [{}]
   }
 ];
