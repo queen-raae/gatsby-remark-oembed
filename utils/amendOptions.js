@@ -4,8 +4,8 @@ const DEFAULT_OPTIONS = {
   usePrefix: false
 };
 
-const ammendOptions = options => {
+const amendOptions = options => {
   return defaultsDeep({}, options, DEFAULT_OPTIONS);
 };
 
-module.exports = ammendOptions;
+module.exports = amendOptions;

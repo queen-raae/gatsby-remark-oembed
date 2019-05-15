@@ -1,5 +1,5 @@
 const React = require("react");
-const { ammendOptions, filterProviderKeys } = require("./utils");
+const { amendOptions, filterProviderKeys } = require("./utils");
 
 const SCRIPTS = {
   Twitter: "https://platform.twitter.com/widgets.js",
@@ -17,7 +17,7 @@ const createScriptTag = (key, scriptSrc) => {
 };
 
 exports.onRenderBody = ({ setPostBodyComponents }, options) => {
-  options = ammendOptions(options);
+  options = amendOptions(options);
 
   const scriptKeys = filterProviderKeys(
     Object.keys(SCRIPTS),

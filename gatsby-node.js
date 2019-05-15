@@ -1,13 +1,13 @@
 const {
-  ammendOptions,
-  ammendProviders,
+  amendOptions,
+  amendProviders,
   filterProviders,
   fetchOembedProviders
 } = require("./utils");
 
 exports.onPreBootstrap = async ({ cache, reporter }, rawOptions) => {
   try {
-    const options = ammendOptions(rawOptions);
+    const options = amendOptions(rawOptions);
     const rawProviders = await fetchOembedProviders();
     const providers = processProviders(rawProviders, options.providers);
     return await cache.set("remark-oembed-providers", providers);
@@ -20,6 +20,6 @@ exports.onPreBootstrap = async ({ cache, reporter }, rawOptions) => {
 };
 
 const processProviders = (providers, providerOptions = {}) => {
-  providers = ammendProviders(providers, providerOptions.settings);
+  providers = amendProviders(providers, providerOptions.settings);
   return filterProviders(providers, providerOptions);
 };

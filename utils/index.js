@@ -1,5 +1,5 @@
-const ammendOptions = require("./ammendOptions");
-const ammendProviders = require("./ammendProviders");
+const amendOptions = require("./amendOptions");
+const amendProviders = require("./amendProviders");
 const fetchOembed = require("./fetchOembed");
 const fetchOembedProviders = require("./fetchOembedProviders");
 const filterProviderKeys = require("./filterProviderKeys");
@@ -9,9 +9,9 @@ const selectPossibleOembedLinkNodes = require("./selectPossibleOembedLinkNodes")
 const tranformsLinkNodeToOembedNode = require("./tranformsLinkNodeToOembedNode");
 const logResults = require("./logResults");
 
-exports.ammendOptions = ammendOptions;
+exports.amendOptions = amendOptions;
 exports.fetchOembedProviders = fetchOembedProviders;
-exports.ammendProviders = ammendProviders;
+exports.amendProviders = amendProviders;
 exports.filterProviders = filterProviders;
 exports.filterProviderKeys = filterProviderKeys;
 exports.getProviderEndpointForLinkUrl = getProviderEndpointForLinkUrl;
