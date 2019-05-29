@@ -44,9 +44,9 @@ class Bio extends React.Component {
               marginBottom: 0
             }}
           >
-            You should follow her on{" "}
-            <a href="https://twitter.com/raae">Twitter</a> or{" "}
-            <a href="https://instagram.com/raae.codes">Instagram</a>
+            Find her on <a href="https://twitter.com/raae">Twitter</a>,{" "}
+            <a href="https://instagram.com/raae.codes">Instagram</a> or{" "}
+            <a href="https://raae.codes">raae.codes</a>.
           </p>
         </div>
       </div>
