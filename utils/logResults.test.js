@@ -16,7 +16,7 @@ describe("#logResults", () => {
 
   test("Calls reporter.info correctly", () => {
     expect(reporter1.info.mock.calls.length).toBe(1);
-    expect(reporter1.info.mock.calls[0][0]).toContain("Successfull embeds: 3");
+    expect(reporter1.info.mock.calls[0][0]).toContain("Successful embeds: 3");
     expect(reporter1.info.mock.calls[0][0]).toContain("Failed embeds: 1");
     expect(reporter1.info.mock.calls[0][0]).toContain(
       "Links with no matching provider: 2"
@@ -24,7 +24,7 @@ describe("#logResults", () => {
     expect(reporter1.info.mock.calls[0][0]).toContain("Path: /test-path-1/");
 
     expect(reporter2.info.mock.calls.length).toBe(1);
-    expect(reporter2.info.mock.calls[0][0]).toContain("Successfull embeds: 2");
+    expect(reporter2.info.mock.calls[0][0]).toContain("Successful embeds: 2");
     expect(reporter2.info.mock.calls[0][0]).not.toContain("Failed");
     expect(reporter2.info.mock.calls[0][0]).not.toContain(
       "Links with no matching provider"
