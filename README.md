@@ -16,7 +16,7 @@ This is an early version of the plugin. Let me know if you have problems or ques
 
 ## Oembed support
 
-Under the hood the oembed provider list from [oembed.com](https://oembed.com/) is used.
+Under the hood the oembed provider list from [oembed.com](https://oembed.com/#section7) is used.
 
 So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitch, Twitter, Vimeo, YouTube, SoundCloud.
 
