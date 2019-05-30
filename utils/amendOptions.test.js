@@ -2,7 +2,7 @@ const amendOptions = require("./amendOptions");
 
 test("options amended correctly", () => {
   const rawOptions = {
-    usePrefix: true,
+    usePrefix: ["oembed:", "video:"],
     providers: {
       include: ["Instagram"],
       settings: {
@@ -17,7 +17,7 @@ test("options amended correctly", () => {
   };
 
   const amendedOptions = {
-    usePrefix: true,
+    usePrefix: ["oembed:", "video:"],
     providers: {
       include: ["Instagram"],
       settings: {

@@ -143,7 +143,7 @@ module.exports = {
       children: [
         {
           type: "inlineCode",
-          value: "oembed:https://www.instagram.com/p/Bof9WhgBmY2",
+          value: "video:https://www.instagram.com/p/Bof9WhgBmY2",
           position: {
             start: { line: 10, column: 1, offset: 224 },
             end: { line: 10, column: 49, offset: 272 },
