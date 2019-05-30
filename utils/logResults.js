@@ -19,7 +19,7 @@ const logResults = (results, path, reporter) => {
   }
 
   message += `gatsby-remark-oembed:`;
-  message += ` Successfull embeds: ${successfulEmbedsCount}`;
+  message += ` Successful embeds: ${successfulEmbedsCount}`;
 
   if (failedEmbedsCount > 0) {
     message += ` | Failed embeds: ${failedEmbedsCount}`;
