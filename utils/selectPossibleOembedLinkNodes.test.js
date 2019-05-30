@@ -12,10 +12,10 @@ describe("#selectPossibleOembedLinkNodes", () => {
   });
 
   test("select only links that inline code and prefixed with 'oembed:' or 'video:'", () => {
-    const possibleOembedLinks = selectPossibleOembedLinkNodes(
-      MARKDOWN_AST,
-      ["oembed:", "video:"]
-    );
+    const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST, [
+      "oembed:",
+      "video:"
+    ]);
     expect(possibleOembedLinks).toHaveLength(2);
     // allow space after 'oembed:'
     expect(possibleOembedLinks[0]).toMatchObject({

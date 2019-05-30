@@ -1,7 +1,7 @@
 const { defaultsDeep } = require("lodash");
 
 const DEFAULT_OPTIONS = {
-  usePrefix: ['oembed:']
+  usePrefix: ["oembed:"]
 };
 
 const amendOptions = options => {
