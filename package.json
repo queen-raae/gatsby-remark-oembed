@@ -32,10 +32,11 @@
   "scripts": {
     "dev": "jest --watch",
     "lint": "eslint .",
-    "prettier": "prettier \"**/*.+(js|json|yml)\"",
+    "prettier": "prettier \"**/*.+(js|json|yml)\" -- --ignore-path \"./.prefetched-providers.json\"",
     "format": "npm run prettier -- --write",
     "validate": "npm run lint && npm run prettier  -- --list-different && npm run test",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "prepublish": "./prepublish.js"
   },
   "husky": {
     "hooks": {
