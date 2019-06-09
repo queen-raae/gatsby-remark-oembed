@@ -3,6 +3,6 @@ title: Instagram Embed
 date: "2018-10-04"
 ---
 
-Take a look at a day in my life as a web developer.
+Embedded Instagram post!
 
-https://www.instagram.com/p/Bof9WhgBmY2/
+https://www.instagram.com/p/BohahKdhVTO/
