@@ -1,9 +1,6 @@
 const select = require("unist-util-select");
 
-const selectPossibleOembedLinkNodes = (
-  markdownAST,
-  usePrefix = false
-) => {
+const selectPossibleOembedLinkNodes = (markdownAST, usePrefix = false) => {
   const nodes = select(markdownAST, "inlineCode");
   var res = [];
   nodes.map(node => {

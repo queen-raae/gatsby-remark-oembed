@@ -3,7 +3,10 @@ const MARKDOWN_AST = require("./.test/markdown");
 
 describe("#selectPossibleOembedLinkNodes", () => {
   test("select only links that are the only child of a paragraph", () => {
-    const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST, true);
+    const possibleOembedLinks = selectPossibleOembedLinkNodes(
+      MARKDOWN_AST,
+      true
+    );
     expect(possibleOembedLinks).toHaveLength(1);
     expect(possibleOembedLinks[0]).toMatchObject({
       type: "inlineCode",
