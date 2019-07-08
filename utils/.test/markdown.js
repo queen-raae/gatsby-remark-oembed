@@ -1,3 +1,8 @@
+// link - youtube
+// inlineCode with "oembed: " prefix - twitter
+// inlineCode with without prefix - instagram
+// inlineCode with "video:" - twitch
+
 module.exports = {
   type: "root",
   children: [
@@ -26,11 +31,11 @@ module.exports = {
         {
           type: "link",
           title: null,
-          url: "https://www.instagram.com/p/Bof9WhgBmY2",
+          url: "http://www.youtube.com/watch?v=iwGFalTRHDA",
           children: [
             {
               type: "text",
-              value: "https://www.instagram.com/p/Bof9WhgBmY2",
+              value: "http://www.youtube.com/watch?v=iwGFalTRHDA",
               position: {
                 start: { line: 4, column: 1, offset: 54 },
                 end: { line: 4, column: 40, offset: 93 },
@@ -124,7 +129,7 @@ module.exports = {
       children: [
         {
           type: "inlineCode",
-          value: "https://twitter.com/raae/status/1045394833001652225",
+          value: "https://www.instagram.com/p/Bof9WhgBmY2",
           position: {
             start: { line: 8, column: 1, offset: 161 },
             end: { line: 8, column: 62, offset: 222 },
@@ -143,7 +148,7 @@ module.exports = {
       children: [
         {
           type: "inlineCode",
-          value: "video:https://www.instagram.com/p/Bof9WhgBmY2",
+          value: "video:https://www.twitch.tv/videos/72749628",
           position: {
             start: { line: 10, column: 1, offset: 224 },
             end: { line: 10, column: 49, offset: 272 },
