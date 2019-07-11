@@ -16,7 +16,7 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions = {
-      usePrefix: ["oembed:"]
+      usePrefix: ["oembed"]
     };
 
     expect(amendOptions(rawOptions)).toEqual(amendedOptions);
@@ -24,19 +24,19 @@ describe("#amendProviders", () => {
 
   test("usePrefix = <array> amended correctly", () => {
     const rawOptions1 = {
-      usePrefix: ["oembed:", "video:"]
+      usePrefix: ["oembed", "video"]
     };
 
     const amendedOptions1 = {
-      usePrefix: ["oembed:", "video:"]
+      usePrefix: ["oembed", "video"]
     };
 
     const rawOptions2 = {
-      usePrefix: ["video:"]
+      usePrefix: ["video"]
     };
 
     const amendedOptions2 = {
-      usePrefix: ["video:"]
+      usePrefix: ["video"]
     };
 
     expect(amendOptions(rawOptions1)).toEqual(amendedOptions1);

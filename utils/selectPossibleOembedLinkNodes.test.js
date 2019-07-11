@@ -4,7 +4,7 @@ const MARKDOWN_AST = require("./.test/markdown");
 // link - youtube
 // inlineCode with "oembed: " prefix - twitter
 // inlineCode with without prefix - instagram
-// inlineCode with "video:" - twitch
+// inlineCode with "video" - twitch
 
 describe("#selectPossibleOembedLinkNodes", () => {
   test("select only links that are the only child of a paragraph", () => {
@@ -18,7 +18,7 @@ describe("#selectPossibleOembedLinkNodes", () => {
 
   test("select only links that inline code and prefixed with 'oembed:'", () => {
     const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST, [
-      "oembed:"
+      "oembed"
     ]);
     expect(possibleOembedLinks).toHaveLength(1);
     // allow space after 'oembed:'
@@ -30,7 +30,7 @@ describe("#selectPossibleOembedLinkNodes", () => {
 
   test("select only links that inline code and prefixed with 'video:'", () => {
     const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST, [
-      "video:"
+      "video"
     ]);
     expect(possibleOembedLinks).toHaveLength(1);
     expect(possibleOembedLinks[0]).toMatchObject({
@@ -41,8 +41,8 @@ describe("#selectPossibleOembedLinkNodes", () => {
 
   test("select only links that inline code and prefixed with 'oembed:' or 'video:'", () => {
     const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST, [
-      "oembed:",
-      "video:"
+      "oembed",
+      "video"
     ]);
     expect(possibleOembedLinks).toHaveLength(2);
     // allow space after 'oembed:'

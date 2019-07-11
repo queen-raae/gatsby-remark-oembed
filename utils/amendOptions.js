@@ -1,6 +1,6 @@
 const { defaultsDeep } = require("lodash");
 
-const DEFAULT_USE_PREFIX = ["oembed:"];
+const DEFAULT_USE_PREFIX = ["oembed"];
 
 const DEFAULT_OPTIONS = {
   usePrefix: false
