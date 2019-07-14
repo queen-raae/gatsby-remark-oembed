@@ -1,4 +1,4 @@
-const logResults = (results, path, reporter) => {
+const logResults = (results, node, reporter) => {
   let successfulEmbedsCount = 0;
   let failedEmbedsCount = 0;
   let unconformingEmbedsCount = 0;
@@ -28,7 +28,7 @@ const logResults = (results, path, reporter) => {
     message += ` | Links with no matching provider: ${unconformingEmbedsCount}`;
   }
 
-  message += ` | Path: ${path}`;
+  message += ` | Node: ${node.id}`;
 
   reporter.info(message);
 };

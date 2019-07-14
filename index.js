@@ -1,5 +1,4 @@
 const Promise = require("bluebird");
-const { createFilePath } = require("gatsby-source-filesystem");
 
 const {
   amendOptions,
@@ -11,7 +10,7 @@ const {
 } = require("./utils");
 
 module.exports = async (
-  { markdownAST, markdownNode, getNode, cache, reporter },
+  { markdownAST, markdownNode, cache, reporter },
   rawOptions
 ) => {
   try {
@@ -21,11 +20,10 @@ module.exports = async (
     const nodes = selectPossibleOembedLinkNodes(markdownAST, options.usePrefix);
 
     if (nodes.length > 0) {
-      const path = createFilePath({ node: markdownNode, getNode });
       const results = await Promise.all(
         nodes.map(node => processNode(node, providers, reporter))
       );
-      logResults(results, path, reporter);
+      logResults(results, markdownNode, reporter);
     }
   } catch (error) {
     reporter.error(`gatsby-remark-oembed: Error processing links`, error);
