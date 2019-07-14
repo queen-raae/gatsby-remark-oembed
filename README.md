@@ -40,8 +40,9 @@ plugins: [
         {
           resolve: `@raae/gatsby-remark-oembed`,
           options: {
-            // defaults to false
-            usePrefix: true,
+            // usePrefix defaults to false
+            // usePrefix: true is the same as ["oembed"]
+            usePrefix: ["oembed", "video"],
             providers: {
               // Important to exclude providers
               // that adds js to the page.
@@ -102,6 +103,30 @@ Its pretty cool :D
 
 Links must be surrounded by empty lines.
 
+#### With setting `usePrefix: array of prefixes`
+
+If you would like to use a prefix other than "oembed" or multiple prefixes you can set `usePrefix` to an array of custom prefixes. This can be beneficial when converting from other embed plugins.
+
+`usePrefix: ["embed", "video", "oembed"]`
+
+```md
+// In your markdown file
+
+Check it out! I can use the prefix "oembed:"
+
+`oembed: https://twitter.com/raae/status/1045394833001652225`
+
+Or I can use the prefix "embed:" if I like ;)
+
+`embed: https://www.instagram.com/p/Bof9WhgBmY2/`
+
+I can also use "video:" like I did before with `gatsby-remark-video`.
+
+`video: https://vimeo.com/42672205`
+```
+
+`usePrefix: true` in the section above is the same as `usePrefix: ["oembed"]`.
+
 #### With setting `usePrefix: false`
 
 ```md
@@ -122,7 +147,7 @@ Links must be surrounded by empty lines.
 
 | Name                 | Type                        | Description                                                 |
 | -------------------- | --------------------------- | ----------------------------------------------------------- |
-| `usePrefix`          | Boolean                     | See above section on content                                |
+| `usePrefix`          | Boolean / Array of prefixes | See above section on content                                |
 | `providers.include`  | Array of provider keys      | Only links from providers on this list will be transformed. |
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
