@@ -20,7 +20,10 @@ const processInstagram = () => {
   }
 };
 
-exports.onRouteUpdate = () => {
+const initScripts = () => {
   loadTwitter();
   processInstagram();
 };
+
+exports.onInitialClientRender = initScripts;
+exports.onRouteUpdate = initScripts;
