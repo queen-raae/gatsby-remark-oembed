@@ -4,7 +4,8 @@ describe("#amendProviders", () => {
   test("no change to default options", () => {
     const rawOptions = {};
     const amendedOptions = {
-      usePrefix: false
+      usePrefix: false,
+      useProxy: false
     };
 
     expect(amendOptions(rawOptions)).toEqual(amendedOptions);
@@ -16,7 +17,8 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions = {
-      usePrefix: ["oembed"]
+      usePrefix: ["oembed"],
+      useProxy: false
     };
 
     expect(amendOptions(rawOptions)).toEqual(amendedOptions);
@@ -28,7 +30,8 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions1 = {
-      usePrefix: ["oembed", "video"]
+      usePrefix: ["oembed", "video"],
+      useProxy: false
     };
 
     const rawOptions2 = {
@@ -36,11 +39,31 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions2 = {
-      usePrefix: ["video"]
+      usePrefix: ["video"],
+      useProxy: false
     };
 
     expect(amendOptions(rawOptions1)).toEqual(amendedOptions1);
     expect(amendOptions(rawOptions2)).toEqual(amendedOptions2);
+  });
+
+  test("useProxy = an Object", () => {
+    const rawOptions = {
+      useProxy: {
+        host: "1.1.1.1",
+        port: "1111",
+        useSocks5: false
+      }
+    };
+    const amendedOptions = {
+      usePrefix: false,
+      useProxy: {
+        host: "1.1.1.1",
+        port: "1111",
+        useSocks5: false
+      }
+    };
+    expect(amendOptions(rawOptions)).toEqual(amendedOptions);
   });
 
   test("other options amended correctly", () => {

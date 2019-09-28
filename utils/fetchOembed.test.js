@@ -1,5 +1,6 @@
 const axios = require("axios");
 const MockAdapter = require("axios-mock-adapter");
+const SocksProxyAgent = require("socks-proxy-agent");
 const fetchOembed = require("./fetchOembed");
 
 const mock = new MockAdapter(axios);
@@ -39,6 +40,41 @@ describe("#fetchOembed", () => {
     mock.onGet(endpoint.url).reply(200, response);
 
     fetchOembed(endpoint).then(() => {
+      expect(mock.history.get[0].params).toEqual({
+        url: "https://www.instagram.com/p/BftIg_OFPFX/",
+        format: "json"
+      });
+      done();
+    });
+  });
+
+  test("call axios with socks5 proxy", done => {
+    const socks5 = `socks5://127.0.0.1:9527`;
+    const socks5Proxy = new SocksProxyAgent(socks5);
+    const proxyAgent = {
+      useSocks5: true,
+      agent: socks5Proxy
+    };
+
+    mock.onGet(endpoint.url).reply(200, response);
+    fetchOembed(endpoint, proxyAgent).then(() => {
+      expect(mock.history.get[0].params).toEqual({
+        url: "https://www.instagram.com/p/BftIg_OFPFX/",
+        format: "json"
+      });
+      done();
+    });
+  });
+
+  test("call axios with normal proxy", done => {
+    const proxyAgent = {
+      host: "127.0.0.1",
+      port: "9528",
+      useSocks5: false
+    };
+
+    mock.onGet(endpoint.url).reply(200, response);
+    fetchOembed(endpoint, proxyAgent).then(() => {
       expect(mock.history.get[0].params).toEqual({
         url: "https://www.instagram.com/p/BftIg_OFPFX/",
         format: "json"

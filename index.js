@@ -4,6 +4,7 @@ const {
   amendOptions,
   fetchOembed,
   getProviderEndpointForLinkUrl,
+  getProxyAgent,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
   logResults
@@ -15,13 +16,14 @@ module.exports = async (
 ) => {
   try {
     const options = amendOptions(rawOptions);
+    const proxyAgent = getProxyAgent(options.useProxy, reporter);
     const providers = (await cache.get("remark-oembed-providers")) || [];
 
     const nodes = selectPossibleOembedLinkNodes(markdownAST, options.usePrefix);
 
     if (nodes.length > 0) {
       const results = await Promise.all(
-        nodes.map(node => processNode(node, providers, reporter))
+        nodes.map(node => processNode(node, providers, proxyAgent))
       );
       logResults(results, markdownNode, reporter);
     }
@@ -31,11 +33,11 @@ module.exports = async (
 };
 
 // For each node this is the process
-const processNode = async (node, providers) => {
+const processNode = async (node, providers, proxyAgent) => {
   try {
     const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
     if (endpoint.url) {
-      const oembedResponse = await fetchOembed(endpoint);
+      const oembedResponse = await fetchOembed(endpoint, proxyAgent);
       return tranformsLinkNodeToOembedNode(node, oembedResponse);
     }
   } catch (error) {
