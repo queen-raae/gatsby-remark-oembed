@@ -1,12 +1,15 @@
-const {
-  amendOptions,
-  amendProviders,
-  filterProviders,
-  fetchOembedProviders
-} = require("./utils");
+const amendOptions = require("./amendOptions");
+const amendProviders = require("./amendProviders");
+const filterProviders = require("./filterProviders");
+const fetchOembedProviders = require("./fetchOembedProviders");
 
-exports.getProviders = async ({ cache, reporter }, rawOptions) => {
-  console.log("PRE BOOTSTRAP");
+module.exports = async ({ cache, reporter }, rawOptions) => {
+  let providers = await cache.get("remark-oembed-providers");
+
+  return providers || (await fetchProviders({ cache, reporter }, rawOptions));
+};
+
+const fetchProviders = async ({ cache, reporter }, rawOptions) => {
   let rawProviders;
   try {
     rawProviders = await fetchOembedProviders();
@@ -15,10 +18,8 @@ exports.getProviders = async ({ cache, reporter }, rawOptions) => {
       "gatsby-remark-oembed: Failed to fetch list of providers - using prefetched list",
       error
     );
-    rawProviders = require("./.prefetched-providers.json");
+    rawProviders = require("../.prefetched-providers.json");
   }
-
-  console.log({ rawProviders });
 
   try {
     const options = amendOptions(rawOptions);

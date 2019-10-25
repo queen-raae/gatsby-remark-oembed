@@ -1,8 +1,6 @@
 const getProviderEndpointForLinkUrl = (linkUrl, providers) => {
   let transformedEndpoint = {};
 
-  console.log({ linkUrl, providers });
-
   for (const provider of providers || []) {
     for (const endpoint of provider.endpoints || []) {
       for (let schema of endpoint.schemes || []) {
