@@ -2,4 +2,4 @@ node_modules/
 .vscode
 coverage
 yarn.lock
-.prefetched-providers.json
+!.prefetched-providers.json
