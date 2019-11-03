@@ -1,5 +1,2 @@
-node_modules/
-.vscode
-coverage
-yarn.lock
+coverage/
 .prefetched-providers.json
