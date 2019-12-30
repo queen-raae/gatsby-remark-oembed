@@ -18,7 +18,7 @@ module.exports = async ({ cache, reporter }, rawOptions) => {
 
   if (!rawProviders) {
     reporter.error(
-      "gatsby-remark-oembed: No providers fetched, oembed links will not be embedded"
+      `gatsby-remark-oembed: No providers fetched, oembed links will not be embedded`
     );
   }
 
@@ -36,13 +36,13 @@ module.exports = async ({ cache, reporter }, rawOptions) => {
 const fetchFromGatsbyCache = async ({ cache, reporter }) => {
   const providers = await cache.get("remark-oembed-providers");
   if (!providers) {
-    reporter.info("gatsby-remark-oembed: No providers in cache");
+    reporter.info(`gatsby-remark-oembed: No providers in cache`);
   }
   return providers;
 };
 
 const fetchFromOembed = async ({ reporter }) => {
-  reporter.info("gatsby-remark-oembed: Fetching providers from oembed.com");
+  reporter.info(`gatsby-remark-oembed: Fetching providers from oembed.com`);
 
   try {
     return await fetchOembedProviders();
@@ -55,7 +55,7 @@ const fetchFromOembed = async ({ reporter }) => {
 
 const fetchFromPreFetchedFile = async ({ reporter }) => {
   reporter.info(
-    "gatsby-remark-oembed: Fetching providers from pre fetched list"
+    `gatsby-remark-oembed: Fetching providers from pre fetched list`
   );
 
   try {
