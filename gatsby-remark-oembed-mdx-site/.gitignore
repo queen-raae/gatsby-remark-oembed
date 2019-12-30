@@ -1,0 +1,4 @@
+public/
+.gatsby-context.js
+.intermediate-representation/
+.cache/

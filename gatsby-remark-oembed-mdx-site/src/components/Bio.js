@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 
 // Import typefaces
 import "typeface-montserrat";
@@ -24,7 +25,8 @@ class Bio extends React.Component {
             marginRight: rhythm(1 / 2),
             marginBottom: 0,
             width: rhythm(4),
-            height: rhythm(4)
+            height: rhythm(4),
+            flexShrink: 0
           }}
         />
         <div>
@@ -33,18 +35,18 @@ class Bio extends React.Component {
               marginBottom: rhythm(0.4)
             }}
           >
-            Example site created by <strong>Benedicte Raae</strong> to
-            demonstrate the{" "}
-            <a href="https://github.com/raae/gatsby-remark-oembed">
-              gatsby-remark-oembed plugin.
+            Example site for the{" "}
+            <a href="https://www.npmjs.com/package/@raae/gatsby-remark-oembed">
+              gatsby-remark-oembed plugin
             </a>{" "}
+            with MDX content.
           </p>
           <p
             style={{
               marginBottom: 0
             }}
           >
-            Find her on <a href="https://twitter.com/raae">Twitter</a>,{" "}
+            Created by @raae: <a href="https://twitter.com/raae">Twitter</a>,{" "}
             <a href="https://instagram.com/raae.codes">Instagram</a> or{" "}
             <a href="https://raae.codes">raae.codes</a>.
           </p>
