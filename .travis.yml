@@ -3,4 +3,4 @@ os: linux
 node_js:
   - "lts/*"
 script:
-  - npm run validate
+  - yarn workspace @raae/gatsby-remark-oembed validate

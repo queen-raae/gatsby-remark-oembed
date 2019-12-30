@@ -1,5 +1,3 @@
 node_modules/
-.vscode
-coverage
-yarn.lock
-.prefetched-providers.json
+.vscode/
+.DS_Store/
