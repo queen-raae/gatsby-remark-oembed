@@ -8,6 +8,10 @@ This is an early version of the plugin. Let me know if you have problems or ques
 
 `npm install @raae/gatsby-remark-oembed`
 
+or
+
+`yarn add @raae/gatsby-remark-oembed`
+
 ## Requirements
 
 - Node version 8 and up.
@@ -24,7 +28,7 @@ Twitter, Flickr, Instagram and Reddit requires external javascript to be added t
 
 ## Example site
 
-Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in [packages/gatsby-remark-oembed-example-site](packages/gatsby-remark-oembed-example-site).
+Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in [gatsby-remark-oembed-example-site](/gatsby-remark-oembed-example-site).
 
 ## How to use
 
@@ -156,7 +160,7 @@ Links must be surrounded by empty lines.
 
 Make sure you have checked out and updated master.
 
-Change directory to `packages/gatsby-remark-oembed`.
+Change directory to `gatsby-remark-oembed`.
 
 - Run `npm version patch|minor|major`
 - Run `npm publish`

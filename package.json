@@ -1,7 +1,9 @@
 {
   "name": "gatsby-remark-oembed-monorepo",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "gatsby-*"
+  ],
   "scripts": {
     "gatsby-remark-oembed": "yarn workspace @raae/gatsby-remark-oembed dev",
     "gatsby-remark-omebed-example-site": "yarn workspace gatsby-remark-omebed-example-site dev",
