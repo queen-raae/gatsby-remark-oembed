@@ -8,6 +8,7 @@ const getProviderEndpointForLinkUrl = require("./getProviderEndpointForLinkUrl")
 const selectPossibleOembedLinkNodes = require("./selectPossibleOembedLinkNodes");
 const tranformsLinkNodeToOembedNode = require("./tranformsLinkNodeToOembedNode");
 const logResults = require("./logResults");
+const getProviders = require('./getProviders')
 
 exports.amendOptions = amendOptions;
 exports.fetchOembedProviders = fetchOembedProviders;
@@ -19,3 +20,4 @@ exports.fetchOembed = fetchOembed;
 exports.selectPossibleOembedLinkNodes = selectPossibleOembedLinkNodes;
 exports.tranformsLinkNodeToOembedNode = tranformsLinkNodeToOembedNode;
 exports.logResults = logResults;
+exports.getProviders = getProviders;
