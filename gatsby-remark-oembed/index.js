@@ -6,7 +6,8 @@ const {
   getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
-  logResults
+  logResults,
+  getProviders
 } = require("./utils");
 
 module.exports = async (
@@ -15,7 +16,8 @@ module.exports = async (
 ) => {
   try {
     const options = amendOptions(rawOptions);
-    const providers = (await cache.get("remark-oembed-providers")) || [];
+    const providers =
+      (await getProviders({ cache, reporter }, rawOptions)) || [];
 
     const nodes = selectPossibleOembedLinkNodes(markdownAST, options.usePrefix);
 
