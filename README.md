@@ -77,7 +77,7 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
       include: [
         'Twitter',
         'Instagram',
-      ]
+      ],
       settings: {
         // Ex. Show all Twitter embeds with the dark theme
         Twitter: { theme: 'dark' },
