@@ -16,7 +16,10 @@ const EMBED_ELEMENT = {
 
 const addScript = (d, src, id, callback) => {
   const fjs = d.getElementsByTagName("script")[0];
-  if (d.getElementById(id)) return;
+  if (d.getElementById(id)) {
+    callback();
+    return;
+  }
   const js = d.createElement("script");
   js.id = id;
   js.src = src;
