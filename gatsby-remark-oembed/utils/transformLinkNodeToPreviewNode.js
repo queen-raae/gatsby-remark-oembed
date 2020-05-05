@@ -8,6 +8,7 @@ const transformLinkNodeToPreviewNode = (node, metaData) => {
             width="100%"
             title="${metaData.open_graph.title}"
           />
+          <p class="gatsby-remark-oembed-preview-url">${metaData.open_graph.url}</p>
           <h3 class="gatsby-remark-oembed-preview-title">${metaData.open_graph.title}</h3>
           <p class="gatsby-remark-oembed-preview-description">${metaData.open_graph.description}</p>
         </a>

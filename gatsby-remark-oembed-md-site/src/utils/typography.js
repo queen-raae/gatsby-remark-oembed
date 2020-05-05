@@ -16,6 +16,9 @@ Wordpress2016.overrideThemeStyles = () => ({
   "p.gatsby-remark-oembed-preview-description": {
     padding: "0 20px"
   },
+  "p.gatsby-remark-oembed-preview-url": {
+    padding: "0 20px"
+  },
   ".gatsby-remark-oembed-preview-wrapper": {
     border: "1px solid #007acc"
   }
