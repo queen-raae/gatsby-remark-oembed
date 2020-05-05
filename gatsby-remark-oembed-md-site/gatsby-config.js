@@ -21,6 +21,7 @@ module.exports = {
           {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
+              unfurl: true,
               providers: {
                 settings: {
                   Twitter: {

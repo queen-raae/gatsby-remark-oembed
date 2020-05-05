@@ -1,14 +1,16 @@
 const amendOptions = require("./amendOptions");
 const amendProviders = require("./amendProviders");
 const fetchOembed = require("./fetchOembed");
+const fetchPreview = require("./fetchPreview");
 const fetchOembedProviders = require("./fetchOembedProviders");
 const filterProviderKeys = require("./filterProviderKeys");
 const filterProviders = require("./filterProviders");
 const getProviderEndpointForLinkUrl = require("./getProviderEndpointForLinkUrl");
 const selectPossibleOembedLinkNodes = require("./selectPossibleOembedLinkNodes");
 const tranformsLinkNodeToOembedNode = require("./tranformsLinkNodeToOembedNode");
+const transformLinkNodeToPreviewNode = require("./transformLinkNodeToPreviewNode");
 const logResults = require("./logResults");
-const getProviders = require('./getProviders')
+const getProviders = require("./getProviders");
 
 exports.amendOptions = amendOptions;
 exports.fetchOembedProviders = fetchOembedProviders;
@@ -17,7 +19,9 @@ exports.filterProviders = filterProviders;
 exports.filterProviderKeys = filterProviderKeys;
 exports.getProviderEndpointForLinkUrl = getProviderEndpointForLinkUrl;
 exports.fetchOembed = fetchOembed;
+exports.fetchPreview = fetchPreview;
 exports.selectPossibleOembedLinkNodes = selectPossibleOembedLinkNodes;
 exports.tranformsLinkNodeToOembedNode = tranformsLinkNodeToOembedNode;
+exports.transformLinkNodeToPreviewNode = transformLinkNodeToPreviewNode;
 exports.logResults = logResults;
 exports.getProviders = getProviders;
