@@ -4,7 +4,8 @@ describe("#amendProviders", () => {
   test("no change to default options", () => {
     const rawOptions = {};
     const amendedOptions = {
-      usePrefix: false
+      usePrefix: false,
+      unfurl: false
     };
 
     expect(amendOptions(rawOptions)).toEqual(amendedOptions);
@@ -16,7 +17,8 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions = {
-      usePrefix: ["oembed"]
+      usePrefix: ["oembed"],
+      unfurl: false
     };
 
     expect(amendOptions(rawOptions)).toEqual(amendedOptions);
@@ -28,7 +30,8 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions1 = {
-      usePrefix: ["oembed", "video"]
+      usePrefix: ["oembed", "video"],
+      unfurl: false
     };
 
     const rawOptions2 = {
@@ -36,7 +39,8 @@ describe("#amendProviders", () => {
     };
 
     const amendedOptions2 = {
-      usePrefix: ["video"]
+      usePrefix: ["video"],
+      unfurl: false
     };
 
     expect(amendOptions(rawOptions1)).toEqual(amendedOptions1);
