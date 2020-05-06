@@ -45,7 +45,9 @@ const processNode = async (node, providers, reporter, unfurl) => {
       return tranformsLinkNodeToOembedNode(node, oembedResponse);
     } else if (unfurl) {
       const metaData = await fetchPreview(node.url);
-      return transformLinkNodeToPreviewNode(node, metaData);
+      if (metaData.open_graph) {
+        return transformLinkNodeToPreviewNode(node, metaData);
+      }
     }
   } catch (error) {
     error.url = node.url;

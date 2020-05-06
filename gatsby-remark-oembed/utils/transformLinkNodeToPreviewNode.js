@@ -1,4 +1,8 @@
+var url = require("url");
+
 const transformLinkNodeToPreviewNode = (node, metaData) => {
+  const host = url.parse(metaData.open_graph.url).host;
+
   node.type = "html";
   node.value = `
       <div class="gatsby-remark-oembed-preview-wrapper">
@@ -8,7 +12,7 @@ const transformLinkNodeToPreviewNode = (node, metaData) => {
             width="100%"
             title="${metaData.open_graph.title}"
           />
-          <p class="gatsby-remark-oembed-preview-url">${metaData.open_graph.url}</p>
+          <p class="gatsby-remark-oembed-preview-host">${host}</p>
           <h3 class="gatsby-remark-oembed-preview-title">${metaData.open_graph.title}</h3>
           <p class="gatsby-remark-oembed-preview-description">${metaData.open_graph.description}</p>
         </a>
