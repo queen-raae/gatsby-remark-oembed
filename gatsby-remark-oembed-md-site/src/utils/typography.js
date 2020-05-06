@@ -9,15 +9,14 @@ Wordpress2016.overrideThemeStyles = () => ({
     textDecoration: "none",
     boxShadow: "none"
   },
-  "h3.gatsby-remark-oembed-preview-title": {
-    marginTop: "0",
-    padding: "0 20px"
-  },
-  "p.gatsby-remark-oembed-preview-description": {
-    padding: "0 20px"
+  "h3.gatsby-remark-oembed-preview-title, p.gatsby-remark-oembed-preview-description": {
+    margin: "10px 10px"
   },
   "p.gatsby-remark-oembed-preview-host": {
-    padding: "0 20px"
+    margin: "5px 10px"
+  },
+  "img.gatsby-remark-oembed-preview-image": {
+    margin: "0"
   },
   ".gatsby-remark-oembed-preview-wrapper": {
     border: "1px solid #007acc"
