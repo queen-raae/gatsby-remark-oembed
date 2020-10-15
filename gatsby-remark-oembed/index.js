@@ -3,9 +3,11 @@ const Promise = require("bluebird");
 const {
   amendOptions,
   fetchOembed,
+  fetchPreview,
   getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,
   tranformsLinkNodeToOembedNode,
+  transformLinkNodeToPreviewNode,
   logResults,
   getProviders
 } = require("./utils");
@@ -23,7 +25,9 @@ module.exports = async (
 
     if (nodes.length > 0) {
       const results = await Promise.all(
-        nodes.map(node => processNode(node, providers, reporter))
+        nodes.map(node =>
+          processNode(node, providers, reporter, options.unfurl)
+        )
       );
       logResults(results, markdownNode, reporter);
     }
@@ -33,12 +37,17 @@ module.exports = async (
 };
 
 // For each node this is the process
-const processNode = async (node, providers) => {
+const processNode = async (node, providers, reporter, unfurl) => {
   try {
     const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
     if (endpoint.url) {
       const oembedResponse = await fetchOembed(endpoint);
       return tranformsLinkNodeToOembedNode(node, oembedResponse);
+    } else if (unfurl) {
+      const metaData = await fetchPreview(node.url);
+      if (metaData.open_graph) {
+        return transformLinkNodeToPreviewNode(node, metaData);
+      }
     }
   } catch (error) {
     error.url = node.url;
