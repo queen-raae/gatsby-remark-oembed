@@ -28,7 +28,7 @@ describe("#tranformsLinkNodeToOembedNode", () => {
 
   test("set value to omebed result html", () => {
     expect(transformedNode.value).toBe(
-      '<iframe width="480" height="270" src="https://www.youtube.com/embed/b2H7fWhQcdE?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
+      '<iframe loading="lazy" width="480" height="270" src="https://www.youtube.com/embed/b2H7fWhQcdE?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
     );
   });
 });
