@@ -1,7 +1,11 @@
 const tranformsLinkNodeToOembedNode = (node, oembedResult) => {
   if (oembedResult.html) {
     node.type = "html";
-    node.value = oembedResult.html;
+    node.value = oembedResult.html.replace(
+      "<iframe ",
+      '<iframe loading="lazy" '
+    );
+
     delete node.children;
   } else if (oembedResult.type === "photo") {
     node.type = "html";

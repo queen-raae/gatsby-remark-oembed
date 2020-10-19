@@ -1,6 +1,6 @@
-# Gatsby Remark Oembed Plugin
+# Gatsby Remark oEmbed Plugin
 
-> This GatsbyJS Remark Sub-Plugin transforms oembed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
+> This GatsbyJS Remark Sub-Plugin transforms oEmbed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
 
 This is an early version of the plugin. Let me know if you have problems or questions by submitting an issue.
 
@@ -18,9 +18,9 @@ or
 - Gatsby version >=2.0.88
 - Gatsby Transformer Remark Plugin >=2.0.0
 
-## Oembed support
+## oEmbed support
 
-Under the hood the oembed provider list from [oembed.com](https://oembed.com/#section7) is used.
+Under the hood the oEmbed provider list from [oembed.com](https://oembed.com/#section7) is used.
 
 So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitch, Twitter, Vimeo, YouTube, SoundCloud.
 
@@ -65,7 +65,7 @@ plugins: [
 
 Many oEmbed providers offer additional options for configure the display of the embed.
 
-For example, for Instagram see [Instagram – Embedding for Developers](https://www.instagram.com/developer/embedding/), which describes the additional oEmbed parameters you might want to change for the embed.
+For example, for Twitter see [Embedded Tweet parameter reference](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference), which describes the additional oEmbed parameters you might want to change for the embed. 
 
 ```js
 // …
@@ -79,15 +79,17 @@ For example, for Instagram see [Instagram – Embedding for Developers](https://
         'Instagram',
       ],
       settings: {
-        // Ex. Show all Twitter embeds with the dark theme
-        Twitter: { theme: 'dark' },
+        // Ex. Show all Twitter embeds with the dark theme, and disables ad tracking
+        Twitter: { theme: 'dark', dnt: true },
         // Ex. Hide all Instagram comments by default
-        Instagram: { hidecaption: true },
+        Instagram: { hidecaption: true, access_token: 'a-facebook-access-token' },
       },
     },
   },
 }
 ```
+
+> **Warning:** From October 2020 the Instagram oEmbed API requires access tokens. You'll need a Facebook Developer account, a Facebook App, and an App Access Token. [More information here](https://developers.facebook.com/docs/instagram/oembed), or take a look at this [tutorial for setting it all up in Gatsby with Environment Variables](https://phil.tech/2020/gatsby-instagram-oembed-failures/).
 
 ### Content
 
