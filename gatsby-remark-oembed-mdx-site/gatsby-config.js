@@ -24,13 +24,12 @@ module.exports = {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               providers: {
-                exclude: ["Twitter"],
                 settings: {
                   Twitter: {
-                    theme: "light" // Use the Twitter dark theme
+                    theme: "light" // Use the Twitter light theme
                   },
                   Instagram: {
-                    hidecaption: true
+                    hidecaption: false
                   }
                 }
               }
