@@ -16,7 +16,7 @@ describe("#getProviderEndpointForLinkUrl", () => {
       )
     ).toEqual({
       url: "https://api.instagram.com/oembed",
-      params: { url: "https://www.instagram.com/p/BftIg_OFPFX/" },
+      params: { url: "https://www.instagram.com/p/BftIg_OFPFX/" }
     });
 
     expect(

@@ -1,6 +1,6 @@
 ---
 title: CodeSandbox Embed
-date: "2018-10-04"
+date: '2018-10-04'
 ---
 
 Embedded Sandbox!

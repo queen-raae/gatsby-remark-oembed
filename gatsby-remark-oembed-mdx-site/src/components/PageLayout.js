@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react'
+import { Link } from 'gatsby'
 
-import { rhythm, scale } from "../utils/typography";
+import { rhythm, scale } from '../utils/typography'
 
-import Bio from "./Bio";
+import Bio from './Bio'
 
 const PageLayout = ({ children, title }) => {
   return (
     <div
       style={{
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginLeft: 'auto',
+        marginRight: 'auto',
         maxWidth: rhythm(24),
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
@@ -24,11 +24,11 @@ const PageLayout = ({ children, title }) => {
       >
         <Link
           style={{
-            boxShadow: "none",
-            textDecoration: "none",
-            color: "inherit",
+            boxShadow: 'none',
+            textDecoration: 'none',
+            color: 'inherit',
           }}
-          to={"/"}
+          to={'/'}
         >
           {title}
         </Link>
@@ -36,7 +36,7 @@ const PageLayout = ({ children, title }) => {
       <Bio />
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default PageLayout;
+export default PageLayout
