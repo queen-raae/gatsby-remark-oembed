@@ -12,23 +12,23 @@ const PostLayout = ({ children, next, previous, slug }) => {
         marginLeft: "auto",
         marginRight: "auto",
         maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
       }}
     >
       <h3
         style={{
           fontFamily: "Montserrat, sans-serif",
           marginTop: 0,
-          marginBottom: rhythm(-1),
+          marginBottom: rhythm(-1)
         }}
       >
         <Link
           style={{
-            boxShadow: "none",
+            boxShadow: "none"
           }}
           to={"/"}
         >
-          gatsby-remark-oembed example
+          gatsby-remark-oembed MDX example
         </Link>
       </h3>
       {children}
@@ -38,7 +38,7 @@ const PostLayout = ({ children, next, previous, slug }) => {
           flexWrap: "wrap",
           justifyContent: "space-between",
           listStyle: "none",
-          padding: 0,
+          padding: 0
         }}
       >
         <li>
