@@ -28,7 +28,7 @@ const PostLayout = ({ children, next, previous, slug }) => {
           }}
           to={'/'}
         >
-          gatsby-remark-oembed example
+          gatsby-remark-oembed MDX example
         </Link>
       </h3>
       {children}

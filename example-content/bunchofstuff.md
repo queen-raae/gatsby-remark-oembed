@@ -1,9 +1,9 @@
 ---
 title: Bunch of stuff
-date: '2015-05-06T23:46:37.121Z'
+date: "2015-05-06T23:46:37.121Z"
 ---
 
-This is my first post on my new fake blog! How exciting!
+This is not used by the example sites, but I think this is a fairly complete list of oEmbeds.
 
 <!-- https://reports.zoho.com/ZDBDataSheetView.cc?OBJID=1432535000000003002 -->
 
@@ -280,24 +280,24 @@ https://www.audiomack.com/playlist/audiomack/just-chillin
 http://public.chartblocks.com/c/53f7702dc9a61d7935942613/
 
 http://chirb.it/OBnAr1 -->
-
+<!--
 ## Code Pen
 
-https://codepen.io/gingerdude/pen/JXwgdK
+https://codepen.io/tarynewens/pen/VBeaPL
 
 ## You Tube
 
-https://www.youtube.com/watch?v=0jvt8Js0OU0
+https://youtu.be/fpFY82efGPI
 
 I'm sure I'll write a lot more interesting things in the future.
 
 ## Vimeo
 
-https://vimeo.com/42672205
+https://vimeo.com/42672205 -->
 
-## Sound Cloud
+<!-- ## Sound Cloud
 
-https://soundcloud.com/thenumbersmagazine/jay-z-100-bill-great-gatsby
+https://soundcloud.com/thenumbersmagazine/jay-z-100-bill-great-gatsby -->
 
 ## Spotify
 
@@ -305,13 +305,13 @@ https://open.spotify.com/track/799ZgLjMxH6f0ef57BKg0c?si=4K0Wu1RWTGmlo9_tFx3W1g
 
 I'm sure I'll write a lot more interesting things in the future.
 
-## Flickr
+<!-- ## Flickr
 
 https://flic.kr/p/b9snd2
 
-I'm sure I'll write a lot more interesting things in the future.
+I'm sure I'll write a lot more interesting things in the future. -->
 
-## Instagram
+<!-- ## Instagram
 
 https://www.instagram.com/p/Bof9WhgBmY2/
 
@@ -319,4 +319,4 @@ https://www.instagram.com/p/Bof9WhgBmY2/
 
 I'm sure I'll write a lot more interesting things in the future.
 
-https://twitter.com/raae/status/1047849320865775617
+https://twitter.com/raae/status/1047849320865775617 -->

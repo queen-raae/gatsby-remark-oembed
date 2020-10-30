@@ -47,8 +47,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         slug: node.fields.slug,
         previous,
-        next
-      }
+        next,
+      },
     });
   });
 };
@@ -61,7 +61,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: `/${relativeFilePath}`
+      value: `/${relativeFilePath}`,
     });
   }
 };

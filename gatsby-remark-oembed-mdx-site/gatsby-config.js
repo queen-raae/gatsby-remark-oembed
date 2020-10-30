@@ -1,16 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: "gatsby-remark-oembed plugin example site",
+    title: "gatsby-remark-oembed plugin MDX example site",
     author: "raae.codes",
-    description: "A site demonstrating the gatsby-remark-oembed plugin",
-    siteUrl: "https://gatsby-remark-oembed.netlify.com/"
+    description:
+      "A site demonstrating the gatsby-remark-oembed plugin used with gatsby-plugin-mdx",
+    siteUrl: "https://gatsby-remark-oembed-mdx.netlify.com/"
   },
   pathPrefix: "/",
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/posts`,
+        path: `${__dirname}/../example-content/posts`,
         name: "posts"
       }
     },
@@ -23,13 +24,12 @@ module.exports = {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               providers: {
-                exclude: ["Twitter"],
                 settings: {
                   Twitter: {
-                    theme: "light" // Use the Twitter dark theme
+                    theme: "light" // Use the Twitter light theme
                   },
                   Instagram: {
-                    hidecaption: true
+                    hidecaption: false
                   }
                 }
               }
