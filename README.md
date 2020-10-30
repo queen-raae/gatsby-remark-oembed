@@ -65,7 +65,7 @@ plugins: [
 
 Many oEmbed providers offer additional options for configure the display of the embed.
 
-For example, for Twitter see [Embedded Tweet parameter reference](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference), which describes the additional oEmbed parameters you might want to change for the embed. 
+For example, for Twitter see [Embedded Tweet parameter reference](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference), which describes the additional oEmbed parameters you might want to change for the embed.
 
 ```js
 // …
@@ -158,14 +158,28 @@ Links must be surrounded by empty lines.
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
+## Dev routines
+
+This is a monorepo consisting of the plugin, and two example sites:
+
+- `/gatsby-remark-oembed-md-site` - the markdown example site
+- `/gatsby-remark-oembed-mdx-site` - the mdx example site
+
+And the plugin `/gatsby-remark-oembed`.
+
+By running `yarn dev` in the monorepo root you will spin up both sites.
+
+- `/gatsby-remark-oembed-md-site` on [localhost:8000](http://localhost:8000/)
+- `/gatsby-remark-oembed-mdx-site` on [localhost:8080](http://localhost:8080/)
+
 ## Release routines
 
 Make sure you have checked out and updated master.
 
 Change directory to `gatsby-remark-oembed`.
 
-- Run `npm version patch|minor|major`
-- Run `npm publish`
+- Run `yarn version patch|minor|major`
+- Run `yarn publish`
 - Create a [release on Github](https://github.com/raae/gatsby-remark-oembed/releases/new).
 
 ## Buy me a coffee?
