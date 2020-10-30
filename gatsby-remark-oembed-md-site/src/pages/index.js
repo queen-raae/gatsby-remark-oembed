@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Layout from '../components/PageLayout'
+import Layout from "../components/PageLayout";
 
 const BlogIndex = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout title="gatsby-remark-oembed example">
@@ -12,19 +12,19 @@ const BlogIndex = ({ data }) => {
         return (
           <article key={node.fields.slug}>
             <h1>
-              <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+              <Link style={{ boxShadow: "none" }} to={node.fields.slug}>
                 {node.frontmatter.title}
               </Link>
             </h1>
             <div dangerouslySetInnerHTML={{ __html: node.html }} />
           </article>
-        )
+        );
       })}
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
@@ -42,4 +42,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
