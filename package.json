@@ -6,9 +6,11 @@
   ],
   "scripts": {
     "gatsby-remark-oembed": "yarn workspace @raae/gatsby-remark-oembed dev",
-    "md-site": "yarn workspace gatsby-remark-oembed-md-site dev",
-    "mdx-site": "yarn workspace gatsby-remark-oembed-mdx-site dev",
-    "dev": "concurrently --kill-others-on-fail \"yarn gatsby-remark-oembed\" \"yarn md-site\" \"yarn mdx-site\""
+    "md-site-dev": "yarn workspace gatsby-remark-oembed-md-site dev",
+    "md-site-build": "yarn workspace gatsby-remark-oembed-md-site build",
+    "mdx-site-dev": "yarn workspace gatsby-remark-oembed-mdx-site dev",
+    "mdx-site-build": "yarn workspace gatsby-remark-oembed-mdx-site build",
+    "dev": "concurrently --kill-others-on-fail \"yarn gatsby-remark-oembed\" \"yarn md-site-dev\" \"yarn mdx-site-dev\""
   },
   "dependencies": {
     "concurrently": "^5.0.0"
