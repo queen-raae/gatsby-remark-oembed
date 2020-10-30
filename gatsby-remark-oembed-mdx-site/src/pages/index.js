@@ -8,7 +8,7 @@ const BlogMdxIndex = ({ data, pageContext, location }) => {
   const posts = data.allMdx.edges
 
   return (
-    <Layout title="gatsby-remark-oembed example">
+    <Layout title="gatsby-remark-oembed MDX example">
       {posts.map(({ node }) => {
         return (
           <article key={node.fields.slug}>
