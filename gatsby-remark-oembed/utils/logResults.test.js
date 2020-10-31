@@ -34,6 +34,6 @@ describe("#logResults", () => {
 
   test("Calls reporter.error correctly", () => {
     expect(reporter1.error.mock.calls.length).toBe(1);
-    expect(reporter1.error.mock.calls[0][1]).toEqual(new Error("Test Error"));
+    expect(reporter1.error.mock.calls[0][0]).toContain("Test Error");
   });
 });

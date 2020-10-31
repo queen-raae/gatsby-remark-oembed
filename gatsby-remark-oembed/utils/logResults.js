@@ -8,8 +8,7 @@ const logResults = (results, node, reporter) => {
     if (result instanceof Error) {
       failedEmbedsCount++;
       reporter.error(
-        `gatsby-remark-oembed: Error embedding ${result.url}`,
-        result
+        `gatsby-remark-oembed: Error embedding ${result.url} - ${result.message}`
       );
     } else if (result) {
       successfulEmbedsCount++;
