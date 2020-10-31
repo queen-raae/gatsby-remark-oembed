@@ -1,6 +1,6 @@
 ---
 title: Twitter Embed
-date: '2018-10-03'
+date: "2018-10-03"
 ---
 
 Embedded tweet!

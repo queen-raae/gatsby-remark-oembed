@@ -1,13 +1,13 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React from "react";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Bio from '../components/Bio'
-import Layout from '../components/PostLayout'
-import { rhythm } from '../utils/typography'
+import Bio from "../components/Bio";
+import Layout from "../components/PostLayout";
+import { rhythm } from "../utils/typography";
 
 const MdxPostTemplate = ({ data, pageContext }) => {
-  const post = data.mdx
+  const post = data.mdx;
 
   return (
     <Layout {...pageContext}>
@@ -15,15 +15,15 @@ const MdxPostTemplate = ({ data, pageContext }) => {
       <MDXRenderer>{post.body}</MDXRenderer>
       <hr
         style={{
-          marginBottom: rhythm(1),
+          marginBottom: rhythm(1)
         }}
       />
       <Bio />
     </Layout>
-  )
-}
+  );
+};
 
-export default MdxPostTemplate
+export default MdxPostTemplate;
 
 export const pageQuery = graphql`
   query MdxPostBySlug($slug: String!) {
@@ -43,4 +43,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

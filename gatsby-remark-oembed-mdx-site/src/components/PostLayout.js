@@ -1,32 +1,32 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react";
+import { Link } from "gatsby";
 
-import { rhythm } from '../utils/typography'
+import { rhythm } from "../utils/typography";
 
-import Bio from './Bio'
+import Bio from "./Bio";
 
 const PostLayout = ({ children, next, previous, slug }) => {
   return (
     <div
       style={{
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        marginLeft: "auto",
+        marginRight: "auto",
         maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
       }}
     >
       <h3
         style={{
-          fontFamily: 'Montserrat, sans-serif',
+          fontFamily: "Montserrat, sans-serif",
           marginTop: 0,
-          marginBottom: rhythm(-1),
+          marginBottom: rhythm(-1)
         }}
       >
         <Link
           style={{
-            boxShadow: 'none',
+            boxShadow: "none"
           }}
-          to={'/'}
+          to={"/"}
         >
           gatsby-remark-oembed MDX example
         </Link>
@@ -34,11 +34,11 @@ const PostLayout = ({ children, next, previous, slug }) => {
       {children}
       <ul
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          listStyle: 'none',
-          padding: 0,
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          listStyle: "none",
+          padding: 0
         }}
       >
         <li>
@@ -58,7 +58,7 @@ const PostLayout = ({ children, next, previous, slug }) => {
       </ul>
       <Bio />
     </div>
-  )
-}
+  );
+};
 
-export default PostLayout
+export default PostLayout;
