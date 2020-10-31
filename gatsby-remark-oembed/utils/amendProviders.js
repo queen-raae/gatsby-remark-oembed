@@ -31,22 +31,6 @@ const amendProvider = (provider, settings = {}, providerKey) => {
 
 const amendProviders = (providers = [], settings = {}) => {
   const amendedProviders = providers.map(provider => {
-    if (provider.provider_name === "Instagram") {
-      if (!settings.Instagram) {
-        throw new Error(
-          "it seems you tried using `Instagram` provider but didn't pass any settings for it"
-        );
-      }
-
-      const { access_token } = settings.Instagram;
-
-      if (typeof access_token === "undefined" || access_token === "") {
-        throw new Error(
-          "it seems that you tried using the `Instagram` provider but didn't pass an access_token to the settings"
-        );
-      }
-    }
-
     return amendProvider(provider, settings[provider.provider_name]);
   });
 

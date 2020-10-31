@@ -7,6 +7,14 @@ const getProviderEndpointForLinkUrl = (linkUrl, providers) => {
         schema = schema.replace("*", ".*");
         const regExp = new RegExp(schema);
         if (regExp.test(linkUrl)) {
+          if (provider.provider_name === "Instagram") {
+            if (!provider.params || !provider.params.access_token) {
+              throw new Error(
+                "Instagram require you to configure an access_token, check docs."
+              );
+            }
+          }
+
           transformedEndpoint.url = endpoint.url;
           transformedEndpoint.params = {
             url: linkUrl,

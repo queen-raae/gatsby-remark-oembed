@@ -16,7 +16,10 @@ describe("#getProviderEndpointForLinkUrl", () => {
       )
     ).toEqual({
       url: "https://api.instagram.com/oembed",
-      params: { url: "https://www.instagram.com/p/BftIg_OFPFX/" }
+      params: {
+        url: "https://www.instagram.com/p/BftIg_OFPFX/",
+        access_token: "valid_token"
+      }
     });
 
     expect(
@@ -25,6 +28,39 @@ describe("#getProviderEndpointForLinkUrl", () => {
         []
       )
     ).toEqual({});
+  });
+
+  test("throw error when Instagram does not have access_token", () => {
+    const NO_INSTA_TOKEN_PROVIDERS = [
+      {
+        provider_name: "Instagram",
+        provider_url: "https://instagram.com",
+        endpoints: [
+          {
+            schemes: [
+              "http://instagram.com/p/*",
+              "http://instagr.am/p/*",
+              "http://www.instagram.com/p/*",
+              "http://www.instagr.am/p/*",
+              "https://instagram.com/p/*",
+              "https://instagr.am/p/*",
+              "https://www.instagram.com/p/*",
+              "https://www.instagr.am/p/*"
+            ],
+            url: "https://api.instagram.com/oembed",
+            formats: ["json"]
+          }
+        ]
+      }
+    ];
+    expect(() =>
+      getProviderEndpointForLinkUrl(
+        "https://www.instagram.com/p/BftIg_OFPFX/",
+        NO_INSTA_TOKEN_PROVIDERS
+      )
+    ).toThrowError(
+      "Instagram require you to configure an access_token, check docs."
+    );
   });
 
   test("Empty providers and/or link: is accepted", () => {

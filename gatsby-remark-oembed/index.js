@@ -34,6 +34,7 @@ module.exports = async (
 const processNode = async (node, providers) => {
   try {
     const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
+
     if (endpoint.url) {
       const oembedResponse = await fetchOembed(endpoint);
       return tranformsLinkNodeToOembedNode(node, oembedResponse);

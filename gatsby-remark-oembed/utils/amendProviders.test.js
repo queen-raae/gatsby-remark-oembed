@@ -8,8 +8,7 @@ describe("#amendProviders", () => {
     },
     Instagram: {
       hidecaption: true,
-      omitscript: true,
-      access_token: "this_should_be_a_valid_token"
+      omitscript: true
     },
     Test1: {
       param1: "param1",
@@ -71,12 +70,6 @@ describe("#amendProviders", () => {
     expect(amendedInstagram.params).toEqual(providerSettings["Instagram"]);
   });
 
-  test("amended Instagram should have a valid access_token", () => {
-    expect(amendedInstagram.params.access_token).toEqual(
-      providerSettings.Instagram.access_token
-    );
-  });
-
   test("amended Vimeo has correct format", () => {
     expect(amendedVimeo.endpoints[0].url).toEqual(
       "https://vimeo.com/api/oembed.json"
@@ -101,25 +94,6 @@ describe("#amendProviders", () => {
       "https://test3.com/*"
     );
     expect(untouchedTest3.endpoints[0].url).toEqual("https://test3.com/oembed");
-  });
-
-  test("amend providers with no providerSettings for Instagram should throw an error", () => {
-    expect(() => amendProviders(PROVIDERS)).toThrowError(
-      "it seems you tried using `Instagram` provider but didn't pass any settings for it"
-    );
-  });
-
-  test("amend providers with no access_token for Instagram should throw an error", () => {
-    const providerSettings = {
-      Instagram: {
-        hidecaption: true,
-        omitscript: true
-      }
-    };
-
-    expect(() => amendProviders(PROVIDERS, providerSettings)).toThrowError(
-      "it seems that you tried using the `Instagram` provider but didn't pass an access_token"
-    );
   });
 
   test("Empty providers and/or settings is accepted", () => {
