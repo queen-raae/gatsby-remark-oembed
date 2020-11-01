@@ -5,7 +5,7 @@
     "browser": true,
     "jest/globals": true
   },
-  "plugins": ["jest"],
+  "plugins": ["jest", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2018
   },
