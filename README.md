@@ -22,9 +22,13 @@ or
 
 Under the hood the oEmbed provider list from [oembed.com](https://oembed.com/#section7) is used.
 
-So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitch, Twitter, Vimeo, YouTube, SoundCloud.
+So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitter, Vimeo, YouTube, SoundCloud.
 
 Twitter, Flickr, Instagram and Reddit requires external javascript to be added to every page. So make sure to exclude the ones you do not need.
+
+> **Warning:** The Instagram oEmbed API requires an access token. You'll need a Facebook Developer account, a Facebook App, and an App Access Token. [More information here](https://developers.facebook.com/docs/instagram/oembed), or take a look at this [tutorial for setting it all up in Gatsby with Environment Variables](https://phil.tech/2020/gatsby-instagram-oembed-failures/).
+
+> **Update:** Twitch removed oEmbed support in 2020 when deprecating their v5 API. It seems they are not planning to support oEmbed again. Unfortunately this means Twitch urls are no longer being transformed. Let them know how you feel about this [on their forum](https://discuss.dev.twitch.tv/t/oembed-deprecation/24424/2).
 
 ## Example site
 
@@ -51,17 +55,17 @@ plugins: [
               // Important to exclude providers
               // that adds js to the page.
               // If you do not need them.
-              exclude: ["Reddit"]
-            }
-          }
-        }
-      ]
-    }
-  }
+              exclude: ["Reddit"],
+            },
+          },
+        },
+      ],
+    },
+  },
 ];
 ```
 
-#### Optional `settings` for providers
+#### Settings per provider
 
 Many oEmbed providers offer additional options for configure the display of the embed.
 
@@ -80,16 +84,21 @@ For example, for Twitter see [Embedded Tweet parameter reference](https://develo
       ],
       settings: {
         // Ex. Show all Twitter embeds with the dark theme, and disables ad tracking
-        Twitter: { theme: 'dark', dnt: true },
-        // Ex. Hide all Instagram comments by default
-        Instagram: { hidecaption: true, access_token: 'a-facebook-access-token' },
+        Twitter: {
+          theme: 'dark',
+          dnt: true
+        },
+        // Ex. Hide all Instagram comments by default, and
+        // add a facebook access token
+        Instagram: {
+           hidecaption: true,
+           access_token: 'a-facebook-access-token'
+        },
       },
     },
   },
 }
 ```
-
-> **Warning:** From October 2020 the Instagram oEmbed API requires access tokens. You'll need a Facebook Developer account, a Facebook App, and an App Access Token. [More information here](https://developers.facebook.com/docs/instagram/oembed), or take a look at this [tutorial for setting it all up in Gatsby with Environment Variables](https://phil.tech/2020/gatsby-instagram-oembed-failures/).
 
 ### Content
 
