@@ -37,16 +37,7 @@ describe("#getProviderEndpointForLinkUrl", () => {
         provider_url: "https://instagram.com",
         endpoints: [
           {
-            schemes: [
-              "http://instagram.com/p/*",
-              "http://instagr.am/p/*",
-              "http://www.instagram.com/p/*",
-              "http://www.instagr.am/p/*",
-              "https://instagram.com/p/*",
-              "https://instagr.am/p/*",
-              "https://www.instagram.com/p/*",
-              "https://www.instagr.am/p/*"
-            ],
+            schemes: ["http://instagram.com/p/*"],
             url: "https://api.instagram.com/oembed",
             formats: ["json"]
           }
@@ -59,7 +50,7 @@ describe("#getProviderEndpointForLinkUrl", () => {
         NO_INSTA_TOKEN_PROVIDERS
       )
     ).toThrowError(
-      "Instagram require you to configure an access_token, check docs."
+      "Instagram require you to configure an access_token. For more information, visit https://developers.facebook.com/docs/instagram/oembed/."
     );
   });
 
