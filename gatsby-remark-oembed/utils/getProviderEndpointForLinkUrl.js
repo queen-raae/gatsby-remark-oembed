@@ -3,18 +3,19 @@ const getProviderEndpointForLinkUrl = (linkUrl, providers) => {
 
   for (const provider of providers || []) {
     for (const endpoint of provider.endpoints || []) {
+      const isInstagram = provider.provider_name === "Instagram";
+      const hasAccessToken = provider.params && provider.params.access_token;
+
       for (let schema of endpoint.schemes || []) {
         schema = schema.replace("*", ".*");
         const regExp = new RegExp(schema);
-        if (regExp.test(linkUrl)) {
-          if (provider.provider_name === "Instagram") {
-            if (!provider.params || !provider.params.access_token) {
-              throw new Error(
-                "Instagram require you to configure an access_token. For more information, visit https://developers.facebook.com/docs/instagram/oembed/."
-              );
-            }
-          }
+        const isMatchingSchema = regExp.test(linkUrl);
 
+        if (isMatchingSchema && isInstagram && !hasAccessToken) {
+          throw new Error(
+            "Instagram require you to configure an access_token. For more information, visit https://developers.facebook.com/docs/instagram/oembed/."
+          );
+        } else if (isMatchingSchema) {
           transformedEndpoint.url = endpoint.url;
           transformedEndpoint.params = {
             url: linkUrl,
