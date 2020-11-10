@@ -10,7 +10,7 @@ const getProviderEndpointForLinkUrl = (linkUrl, providers) => {
           if (provider.provider_name === "Instagram") {
             if (!provider.params || !provider.params.access_token) {
               throw new Error(
-                "Instagram require you to configure an access_token, check docs."
+                "Instagram require you to configure an access_token. For more information, visit https://developers.facebook.com/docs/instagram/oembed/."
               );
             }
           }
