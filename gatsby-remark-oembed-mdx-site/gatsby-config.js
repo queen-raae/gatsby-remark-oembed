@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: "gatsby-remark-oembed plugin MDX example site",
@@ -29,7 +31,8 @@ module.exports = {
                     theme: "light" // Use the Twitter light theme
                   },
                   Instagram: {
-                    hidecaption: false
+                    hidecaption: false,
+                    access_token: process.env.INSTAGRAM_ACCESS_TOKEN
                   }
                 }
               }
