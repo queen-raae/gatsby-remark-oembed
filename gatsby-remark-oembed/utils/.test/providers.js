@@ -2,6 +2,9 @@ module.exports = [
   {
     provider_name: "Instagram",
     provider_url: "https://instagram.com",
+    params: {
+      access_token: "valid_token"
+    },
     endpoints: [
       {
         schemes: [
