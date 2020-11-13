@@ -7,6 +7,7 @@
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.5.3",
     "@raae/gatsby-remark-oembed": "0.1.1",
+    "dotenv": "8.2.0",
     "gatsby": "^2.0.91",
     "gatsby-plugin-mdx": "^1.0.64",
     "gatsby-plugin-sharp": "^2.0.5",
