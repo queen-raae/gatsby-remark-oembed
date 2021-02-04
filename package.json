@@ -5,23 +5,25 @@
     "gatsby-*"
   ],
   "scripts": {
-    "plugin:develop": "yarn workspace @raae/gatsby-remark-oembed dev",
+    "plugin:test": "yarn workspace @raae/gatsby-remark-oembed test:coverage",
     "md-site:develop": "yarn workspace gatsby-remark-oembed-md-site dev",
     "md-site:build": "yarn workspace gatsby-remark-oembed-md-site build",
     "mdx-site:develop": "yarn workspace gatsby-remark-oembed-mdx-site dev",
     "mdx-site:build": "yarn workspace gatsby-remark-oembed-mdx-site build",
     "lint": "yarn workspace @raae/gatsby-remark-oembed lint",
+    "test": "yarn workspace @raae/gatsby-remark-oembed test:coverage",
     "prettier": "prettier --write ."
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run prettier"
+      "pre-commit": "npm run prettier"
     }
   },
   "lint-staged": {
     "*": [
       "yarn prettier",
-      "yarn lint"
+      "yarn lint",
+      "yarn test"
     ]
   },
   "devDependencies": {
