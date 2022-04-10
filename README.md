@@ -176,7 +176,7 @@ This is a monorepo consisting of the plugin, and two example sites:
 
 And the plugin `/gatsby-remark-oembed`.
 
-By running `yarn dev` in the monorepo root you will spin up both sites.
+By running `yarn develop` in the monorepo root you will spin up both sites.
 
 - `/gatsby-remark-oembed-md-site` on [localhost:8000](http://localhost:8000/)
 - `/gatsby-remark-oembed-mdx-site` on [localhost:8080](http://localhost:8080/)

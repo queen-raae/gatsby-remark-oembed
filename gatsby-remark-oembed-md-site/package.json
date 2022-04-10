@@ -1,8 +1,17 @@
 {
   "name": "gatsby-remark-oembed-md-site",
+  "author": "@raae (queen.raae.codes)",
   "description": "Gatsby Remark Oembed Example (Markdown)",
   "version": "1.0.0",
-  "author": "Benedicte Raae (raae.codes)",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write 'src/**/*.js' 'src/**/*.md'",
+    "develop": "gatsby develop -p 8000",
+    "build": "rm -r -f .cache && gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.5.3",
@@ -41,15 +50,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/raae/gatsby-remark-oembed-example-site"
-  },
-  "scripts": {
-    "dev": "rm -r -f .cache && gatsby develop",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write 'src/**/*.js' 'src/**/*.md'",
-    "develop": "gatsby develop",
-    "build": "rm -r -f .cache && gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   }
 }
