@@ -1,34 +1,10 @@
 {
   "name": "@raae/gatsby-remark-oembed",
-  "version": "0.1.1",
   "description": "> A GatsbyJS Plugin that transforms oembed links into its corresponding embed code.",
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "oembed",
-    "remark",
-    "youtube",
-    "twitter",
-    "codepen",
-    "vimeo",
-    "soundcloud",
-    "instagram"
-  ],
-  "author": "Benedicte Raae (raae.codes)",
+  "author": "@raae (queen.raae.codes)",
+  "version": "0.1.1",
   "license": "MIT",
   "homepage": "https://github.com/lillylabs/gatsby-remark-oembed#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
-  },
-  "main": "index.js",
-  "jest": {
-    "verbose": true,
-    "testEnvironment": "node"
-  },
   "scripts": {
     "lint": "eslint --fix",
     "test:watch": "jest --watch",
@@ -46,5 +22,29 @@
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-jest": "24.1.3",
     "jest": "^23.6.0"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "oembed",
+    "remark",
+    "youtube",
+    "twitter",
+    "codepen",
+    "vimeo",
+    "soundcloud",
+    "instagram"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
+  },
+  "main": "index.js",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
   }
 }

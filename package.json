@@ -6,9 +6,9 @@
   ],
   "scripts": {
     "plugin:test": "yarn workspace @raae/gatsby-remark-oembed test:coverage",
-    "md-site:develop": "yarn workspace gatsby-remark-oembed-md-site dev",
+    "md-site:develop": "yarn workspace gatsby-remark-oembed-md-site develop",
     "md-site:build": "yarn workspace gatsby-remark-oembed-md-site build",
-    "mdx-site:develop": "yarn workspace gatsby-remark-oembed-mdx-site dev",
+    "mdx-site:develop": "yarn workspace gatsby-remark-oembed-mdx-site develop",
     "mdx-site:build": "yarn workspace gatsby-remark-oembed-mdx-site build",
     "lint": "yarn workspace @raae/gatsby-remark-oembed lint",
     "test": "yarn workspace @raae/gatsby-remark-oembed test:coverage",
