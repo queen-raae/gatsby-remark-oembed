@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 
 // Import typefaces
 import "typeface-montserrat";
@@ -39,16 +38,15 @@ class Bio extends React.Component {
             <a href="https://www.npmjs.com/package/@raae/gatsby-remark-oembed">
               gatsby-remark-oembed plugin
             </a>{" "}
-            with MDX content.
+            with markdown content.
           </p>
           <p
             style={{
               marginBottom: 0,
             }}
           >
-            Created by @raae: <a href="https://twitter.com/raae">Twitter</a>,{" "}
-            <a href="https://instagram.com/raae.codes">Instagram</a> or{" "}
-            <a href="https://raae.codes">raae.codes</a>.
+            Created by <a href="https://twitter.com/raae">@raae</a>:{" "}
+            <a href="https://queen.raae.codes">queen.raae.codes</a>.
           </p>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 
 // Import typefaces
 import "typeface-montserrat";
@@ -46,9 +45,8 @@ class Bio extends React.Component {
               marginBottom: 0,
             }}
           >
-            Created by @raae: <a href="https://twitter.com/raae">Twitter</a>,{" "}
-            <a href="https://instagram.com/raae.codes">Instagram</a> or{" "}
-            <a href="https://raae.codes">raae.codes</a>.
+            Created by <a href="https://twitter.com/raae">@raae</a>:{" "}
+            <a href="https://queen.raae.codes">queen.raae.codes</a>.
           </p>
         </div>
       </div>
