@@ -1,8 +1,16 @@
 {
   "name": "gatsby-remark-oembed-md-site",
   "description": "Gatsby Remark Oembed Example (Markdown)",
+  "author": "@raae (queen.raae.codes)",
   "version": "1.0.0",
-  "author": "Benedicte Raae (raae.codes)",
+  "license": "MIT",
+  "homepage": "https://github.com/raae/gatsby-remark-oembed-example-site#readme",
+  "scripts": {
+    "develop": "gatsby develop -p 8000",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.5.3",
@@ -26,23 +34,9 @@
     "typography": "^0.16.17",
     "typography-theme-wordpress-2016": "^0.15.10"
   },
-  "homepage": "https://github.com/raae/gatsby-remark-oembed-example-site#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
     "url": "https://github.com/raae/gatsby-remark-oembed-example-site"
-  },
-  "scripts": {
-    "dev": "rm -r -f .cache && gatsby develop",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "develop": "gatsby develop",
-    "build": "rm -r -f .cache && gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   }
 }
