@@ -27,6 +27,8 @@
   "keywords": [
     "gatsby",
     "gatsby-plugin",
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-remark",
     "oembed",
     "remark",
     "youtube",
