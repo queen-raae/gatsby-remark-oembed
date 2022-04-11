@@ -2,6 +2,8 @@
 
 > This GatsbyJS Remark Sub-Plugin transforms oEmbed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
 
+Works with both `gatsby-transformer-remark` and `gatsby-plugin-mdx`.
+
 Let me know if you have problems or questions by submitting an issue.
 
 ## Install
