@@ -4,7 +4,7 @@
   "author": "@raae (queen.raae.codes)",
   "version": "1.0.0",
   "license": "MIT",
-  "homepage": "https://github.com/raae/gatsby-remark-oembed-example-site#readme",
+  "homepage": "https://gatsby-remark-oembed-mdx.netlify.app/",
   "scripts": {
     "develop": "gatsby develop -p 8080",
     "build": "gatsby build",
@@ -38,10 +38,5 @@
   "devDependencies": {
     "eslint": "^8.13.0",
     "eslint-plugin-react": "^7.11.1"
-  },
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/raae/gatsby-remark-oembed-example-site"
   }
 }

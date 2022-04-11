@@ -32,9 +32,10 @@ Twitter, Flickr, Instagram and Reddit requires external javascript to be added t
 
 > **Update:** Twitch removed oEmbed support in 2020 when deprecating their v5 API. It seems they are not planning to support oEmbed again. Unfortunately this means Twitch urls are no longer being transformed. Let them know how you feel about this [on their forum](https://discuss.dev.twitch.tv/t/oembed-deprecation/24424/2).
 
-## Example site
+## Demo sites
 
-Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in [gatsby-remark-oembed-example-site](/gatsby-remark-oembed-example-site).
+- [Markdown Demo Site](https://gatsby-remark-oembed.netlify.com/)
+- [Mdx Demo Site](https://gatsby-remark-oembed-mdx.netlify.app)
 
 ## How to use
 
