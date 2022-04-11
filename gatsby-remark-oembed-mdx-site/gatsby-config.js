@@ -28,7 +28,7 @@ module.exports = {
               providers: {
                 settings: {
                   Twitter: {
-                    theme: "light", // Use the Twitter light theme
+                    theme: "dark", // Use the Twitter light theme
                   },
                   Instagram: {
                     hidecaption: false,

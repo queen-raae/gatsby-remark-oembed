@@ -2,7 +2,7 @@
 
 > This GatsbyJS Remark Sub-Plugin transforms oEmbed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
 
-This is an early version of the plugin. Let me know if you have problems or questions by submitting an issue.
+Let me know if you have problems or questions by submitting an issue.
 
 ## Install
 
@@ -36,7 +36,7 @@ Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netli
 
 ## How to use
 
-### Configuration
+### Configuration example for gatsby-transformer-remark
 
 ```js
 // In your gatsby-config.js
@@ -56,6 +56,42 @@ plugins: [
               // that adds js to the page.
               // If you do not need them.
               exclude: ["Reddit"],
+            },
+          },
+        },
+      ],
+    },
+  },
+];
+```
+
+### Configuration example for gatsby-plugin-mdx
+
+```js
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-plugin-mdx`,
+    options: {
+      gatsbyRemarkPlugins: [
+        {
+          resolve: `@raae/gatsby-remark-oembed`,
+          options: {
+            // usePrefix defaults to false
+            // usePrefix: true is the same as ["oembed"]
+            usePrefix: ["oembed", "video"],
+            providers: {
+              // Important to exclude providers
+              // that adds js to the page.
+              // If you do not need them.
+              exclude: ["Reddit"],
+            },
+            providers: {
+              settings: {
+                Twitter: {
+                  theme: "dark", // Use the Twitter light theme
+                },
+              },
             },
           },
         },
@@ -175,11 +211,6 @@ This is a monorepo consisting of the plugin, and two example sites:
 - `/gatsby-remark-oembed-mdx-site` - the mdx example site
 
 And the plugin `/gatsby-remark-oembed`.
-
-By running `yarn dev` in the monorepo root you will spin up both sites.
-
-- `/gatsby-remark-oembed-md-site` on [localhost:8000](http://localhost:8000/)
-- `/gatsby-remark-oembed-mdx-site` on [localhost:8080](http://localhost:8080/)
 
 ## Release routines
 
