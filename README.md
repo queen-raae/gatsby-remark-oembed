@@ -222,7 +222,7 @@ Change directory to `gatsby-remark-oembed`.
 
 - Run `yarn version patch|minor|major`
 - Run `yarn publish`
-- Create a [release on Github](https://github.com/raae/gatsby-remark-oembed/releases/new).
+- Create a [release on Github](https://github.com/queen-raae/gatsby-remark-oembed/releases/new).
 
 ## Buy me a coffee?
 

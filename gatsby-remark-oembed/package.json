@@ -4,7 +4,7 @@
   "author": "@raae (queen.raae.codes)",
   "version": "0.2.0-0",
   "license": "MIT",
-  "homepage": "https://github.com/lillylabs/gatsby-remark-oembed#readme",
+  "homepage": "https://github.com/queen-raae/gatsby-remark-oembed#readme",
   "scripts": {
     "lint": "eslint --fix",
     "test:watch": "jest --watch",
@@ -39,10 +39,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
+    "url": "git+https://github.com/queen-raae/gatsby-remark-oembed.git"
   },
   "bugs": {
-    "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
+    "url": "https://github.com/queen-raae/gatsby-remark-oembed/issues"
   },
   "main": "index.js",
   "jest": {
