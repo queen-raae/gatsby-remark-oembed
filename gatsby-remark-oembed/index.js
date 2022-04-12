@@ -1,5 +1,5 @@
+const { amendOptions } = require("./src/pluginOptions");
 const {
-  amendOptions,
   fetchOembed,
   getProviderEndpointForLinkUrl,
   selectPossibleOembedLinkNodes,

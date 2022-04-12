@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const util = require("util");
-const amendOptions = require("./amendOptions");
+const { amendOptions } = require("../src/pluginOptions");
 const amendProviders = require("./amendProviders");
 const filterProviders = require("./filterProviders");
 const fetchOembedProviders = require("./fetchOembedProviders");

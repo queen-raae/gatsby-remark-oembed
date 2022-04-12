@@ -1,5 +1,6 @@
 const React = require("react");
-const { amendOptions, filterProviderKeys } = require("./utils");
+const { amendOptions } = require("./src/pluginOptions");
+const { filterProviderKeys } = require("./utils");
 
 const SCRIPTS = {
   Twitter: "https://platform.twitter.com/widgets.js",
