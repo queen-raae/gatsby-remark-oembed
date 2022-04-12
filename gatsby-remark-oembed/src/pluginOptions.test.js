@@ -127,6 +127,12 @@ describe("#amendProviders", () => {
     expect(amendOptions(rawOptions)).toEqual(amendedOptions);
   });
 
+  test("allows unknown keys", () => {
+    const rawOptions = { plugins: [] };
+
+    expect(amendOptions(rawOptions)).toMatchObject(rawOptions);
+  });
+
   test("usePrefix = 'true' amends correctly", () => {
     const rawOptions = {
       usePrefix: true,
@@ -160,7 +166,7 @@ describe("#amendProviders", () => {
     expect(amendOptions(rawOptions2)).toMatchObject(amendedOptions2);
   });
 
-  test("other options passed untouched", () => {
+  test("other provider options passed untouched", () => {
     const rawOptions = {
       providers: {
         include: ["Instagram"],

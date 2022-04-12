@@ -25,7 +25,11 @@ const amendOptions = (pluginOptions) => {
   // Older versions of Gatsby does not run gatsby-node.js -> pluginOptionsSchema,
   // therefore we must make sure to do so before using the pluginOptions
   const schema = createPluginOptionsSchema({ Joi: Joi });
-  const { value, error } = schema.validate(pluginOptions);
+  const { value, error } = schema.validate(pluginOptions, {
+    // Gatsby adds plugins: [],
+    // and user may add unknown keys as well
+    allowUnknown: true,
+  });
   if (error) {
     throw error;
   } else {
