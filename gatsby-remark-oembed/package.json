@@ -15,7 +15,8 @@
   "dependencies": {
     "axios": "0.26.1",
     "lodash": "4.17.21",
-    "unist-util-select": "^1.5.0"
+    "unist-util-select": "^1.5.0",
+    "joi": "^17.0.0"
   },
   "devDependencies": {
     "axios-mock-adapter": "1.20.0",
