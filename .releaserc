@@ -6,7 +6,6 @@
       "prerelease": true
     }
   ],
-  "repositoryUrl": "https://github.com/queen-raae/gatsby-remark-oembed.git",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
