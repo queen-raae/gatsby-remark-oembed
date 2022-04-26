@@ -13,7 +13,8 @@
     "mdx-site:build": "yarn workspace gatsby-remark-oembed-mdx-site build",
     "lint": "yarn workspace @raae/gatsby-remark-oembed lint",
     "test": "yarn workspace @raae/gatsby-remark-oembed test:coverage",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "semantic-release": "yarn workspace @raae/gatsby-remark-oembed test && semantic-release"
   },
   "husky": {
     "hooks": {
@@ -28,8 +29,11 @@
     ]
   },
   "devDependencies": {
+    "@semantic-release/changelog": "6.0.1",
+    "@semantic-release/git": "10.0.1",
     "husky": "7.0.4",
     "lint-staged": "12.3.7",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "semantic-release": "19.0.2"
   }
 }

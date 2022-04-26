@@ -24,7 +24,7 @@ describe("prepublish", () => {
     mock.onGet(url).reply(200, response);
     prepublish().then(() => {
       expect(fs.writeFileSync).toHaveBeenCalledWith(
-        ".prefetched-providers.json",
+        "prefetched-providers.json",
         JSON.stringify(response)
       );
       done();

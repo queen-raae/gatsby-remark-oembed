@@ -2,15 +2,17 @@
   "name": "@raae/gatsby-remark-oembed",
   "description": "> A GatsbyJS Plugin that transforms oembed links into its corresponding embed code.",
   "author": "@raae (queen.raae.codes)",
-  "version": "0.1.1",
+  "version": "0.2.0-next.3",
   "license": "MIT",
-  "homepage": "https://github.com/lillylabs/gatsby-remark-oembed#readme",
+  "homepage": "https://github.com/queen-raae/gatsby-remark-oembed#readme",
   "scripts": {
     "develop": "yarn test:watch",
     "lint": "eslint --fix",
+    "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prepublish": "./prepublish.js"
+    "prepack": "./prepublish.js",
+    "postversion": "cp ../README.md ./README.md"
   },
   "dependencies": {
     "axios": "0.26.1",
@@ -27,6 +29,8 @@
   "keywords": [
     "gatsby",
     "gatsby-plugin",
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-remark",
     "oembed",
     "remark",
     "youtube",
@@ -38,10 +42,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lillylabs/gatsby-remark-oembed.git"
+    "url": "git+https://github.com/queen-raae/gatsby-remark-oembed.git"
   },
   "bugs": {
-    "url": "https://github.com/lillylabs/gatsby-remark-oembed/issues"
+    "url": "https://github.com/queen-raae/gatsby-remark-oembed/issues"
   },
   "main": "index.js",
   "jest": {

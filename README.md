@@ -2,7 +2,9 @@
 
 > This GatsbyJS Remark Sub-Plugin transforms oEmbed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
 
-This is an early version of the plugin. Let me know if you have problems or questions by submitting an issue.
+Works with both `gatsby-transformer-remark` and `gatsby-plugin-mdx`.
+
+Let me know if you have problems or questions by submitting an issue.
 
 ## Install
 
@@ -30,13 +32,14 @@ Twitter, Flickr, Instagram and Reddit requires external javascript to be added t
 
 > **Update:** Twitch removed oEmbed support in 2020 when deprecating their v5 API. It seems they are not planning to support oEmbed again. Unfortunately this means Twitch urls are no longer being transformed. Let them know how you feel about this [on their forum](https://discuss.dev.twitch.tv/t/oembed-deprecation/24424/2).
 
-## Example site
+## Demo sites
 
-Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in [gatsby-remark-oembed-example-site](/gatsby-remark-oembed-example-site).
+- [Markdown Demo Site](https://gatsby-remark-oembed.netlify.com/)
+- [Mdx Demo Site](https://gatsby-remark-oembed-mdx.netlify.app)
 
 ## How to use
 
-### Configuration
+### Configuration example for gatsby-transformer-remark
 
 ```js
 // In your gatsby-config.js
@@ -56,6 +59,42 @@ plugins: [
               // that adds js to the page.
               // If you do not need them.
               exclude: ["Reddit"],
+            },
+          },
+        },
+      ],
+    },
+  },
+];
+```
+
+### Configuration example for gatsby-plugin-mdx
+
+```js
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-plugin-mdx`,
+    options: {
+      gatsbyRemarkPlugins: [
+        {
+          resolve: `@raae/gatsby-remark-oembed`,
+          options: {
+            // usePrefix defaults to false
+            // usePrefix: true is the same as ["oembed"]
+            usePrefix: ["oembed", "video"],
+            providers: {
+              // Important to exclude providers
+              // that adds js to the page.
+              // If you do not need them.
+              exclude: ["Reddit"],
+            },
+            providers: {
+              settings: {
+                Twitter: {
+                  theme: "dark", // Use the Twitter light theme
+                },
+              },
             },
           },
         },
@@ -176,11 +215,6 @@ This is a monorepo consisting of the plugin, and two example sites:
 
 And the plugin `/gatsby-remark-oembed`.
 
-By running `yarn dev` in the monorepo root you will spin up both sites.
-
-- `/gatsby-remark-oembed-md-site` on [localhost:8000](http://localhost:8000/)
-- `/gatsby-remark-oembed-mdx-site` on [localhost:8080](http://localhost:8080/)
-
 ## Release routines
 
 Make sure you have checked out and updated master.
@@ -189,7 +223,7 @@ Change directory to `gatsby-remark-oembed`.
 
 - Run `yarn version patch|minor|major`
 - Run `yarn publish`
-- Create a [release on Github](https://github.com/raae/gatsby-remark-oembed/releases/new).
+- Create a [release on Github](https://github.com/queen-raae/gatsby-remark-oembed/releases/new).
 
 ## Buy me a coffee?
 
