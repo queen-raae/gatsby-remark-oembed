@@ -2,7 +2,7 @@
   "name": "@raae/gatsby-remark-oembed",
   "description": "> A GatsbyJS Plugin that transforms oembed links into its corresponding embed code.",
   "author": "@raae (queen.raae.codes)",
-  "version": "0.2.0-1",
+  "version": "0.2.0-next.1",
   "license": "MIT",
   "homepage": "https://github.com/queen-raae/gatsby-remark-oembed#readme",
   "scripts": {
