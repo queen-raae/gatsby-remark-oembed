@@ -8,15 +8,12 @@ const {
   getProviders,
 } = require("./utils");
 
-module.exports = async (
-  { markdownAST, markdownNode, cache, reporter },
-  rawOptions
-) => {
+module.exports = async (gatsbyUtils, rawOptions) => {
+  const { markdownAST, markdownNode, reporter } = gatsbyUtils;
+
   try {
     const options = amendOptions(rawOptions);
-    const providers =
-      (await getProviders({ cache, reporter }, rawOptions)) || [];
-
+    const providers = await getProviders(gatsbyUtils, options);
     const nodes = selectPossibleOembedLinkNodes(markdownAST, options.usePrefix);
 
     if (nodes.length > 0) {
