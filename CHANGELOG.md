@@ -1,3 +1,10 @@
+# [0.2.0-next.3](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.2.0-next.2...v0.2.0-next.3) (2022-04-26)
+
+
+### Bug Fixes
+
+* use prepack to download provider list ([d421b84](https://github.com/queen-raae/gatsby-remark-oembed/commit/d421b849289dc6c23bb0246b4873f6daf31e4f06))
+
 # [0.2.0-next.2](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.2.0-next.1...v0.2.0-next.2) (2022-04-26)
 
 
