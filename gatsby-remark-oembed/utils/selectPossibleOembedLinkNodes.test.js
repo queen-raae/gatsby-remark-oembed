@@ -23,6 +23,10 @@ Does not find links that are in a list:
 - http://www.youtube.com/watch?v=iwGFalTRHDA
 - [YouTube](http://www.youtube.com/watch?v=iwGFalTRHDA)
 
+Does not find links that are also an image:
+
+[![Tweet](https://queen.raae.codes/testimonials/gatsby-plugin-starter-ash.png)](https://twitter.com/Ash_Hitchcock/status/1471048277747548163?s=20&t=YKN2khQAbqaLSSccqculsw)
+
 ## Prefix links
 
 Does find standalone inline code links when prefix set to "oembed":
