@@ -3,6 +3,9 @@ const remarkGfm = require("remark-gfm");
 const selectPossibleOembedLinkNodes = require("./selectPossibleOembedLinkNodes");
 
 const sourceMarkdown = `
+
+## Non prefix links
+
 Finds standalone links when no prefix set:
 
 http://www.youtube.com/watch?v=iwGFalTRHDA
@@ -13,7 +16,14 @@ Does not find standalone inline code links when no prefix set:
 
 \`https://www.instagram.com/p/Bof9WhgBmY2\`
 
-Does not find [inline links](http://example.com)
+Does not find [inline links](http://example.com).
+
+Does not find links that are in a list:
+
+- http://www.youtube.com/watch?v=iwGFalTRHDA
+- [YouTube](http://www.youtube.com/watch?v=iwGFalTRHDA)
+
+## Prefix links
 
 Does find standalone inline code links when prefix set to "oembed":
 
