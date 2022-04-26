@@ -5,5 +5,5 @@ node_modules/
 public/
 .cache/
 coverage/
-.prefetched-providers.json
+prefetched-providers.json
 *.log
