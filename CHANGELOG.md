@@ -1,3 +1,10 @@
+# [0.2.0-next.2](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.2.0-next.1...v0.2.0-next.2) (2022-04-26)
+
+
+### Bug Fixes
+
+* npm unignore prefetched-providers.json ([2dde20d](https://github.com/queen-raae/gatsby-remark-oembed/commit/2dde20d9628d29550e6798b4fbdabfa6a61069db))
+
 # [0.2.0-next.1](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.1.1...v0.2.0-next.1) (2022-04-26)
 
 
