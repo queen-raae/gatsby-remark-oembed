@@ -15,9 +15,6 @@ const selectPossibleOembedLinkNodes = (markdownAST, usePrefix = false) => {
         node.children.length === 1 &&
         node.children[0].type === "text"
       ) {
-        const { url } = node;
-        console.log("Found possible oEmbed url", url);
-
         possibleOembedLinkNodes.push(node);
       }
     });
