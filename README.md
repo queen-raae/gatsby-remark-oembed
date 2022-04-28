@@ -187,3 +187,19 @@ Links must be surrounded by empty lines.
 | `providers.include`  | Array of provider keys      | Only links from providers on this list will be transformed. |
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
+
+&nbsp;
+
+## How to contribute
+
+If you would like to contribute with code, check out `CONTRIBUTING.md`.
+
+### Questions, Feedback and Suggestions
+
+Do not be shy!
+
+If you have any questions, feedback or suggestions head on over to [discussions](https://github.com/queen-raae/gatsby-plugin-let-it-snow/discussions).
+
+### Bugs
+
+If you find a bug please open an [issue](https://github.com/raae/gatsby-plugin-let-it-snow/issues) and/or create a pull request to fix it.
