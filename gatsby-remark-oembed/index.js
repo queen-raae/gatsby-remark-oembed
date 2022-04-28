@@ -31,13 +31,13 @@ module.exports = async (
 };
 
 // For each node this is the process
-const processNode = async (node, providers) => {
+const processNode = async ({ node, url }, providers) => {
   try {
-    const endpoint = getProviderEndpointForLinkUrl(node.url, providers);
+    const endpoint = getProviderEndpointForLinkUrl(url, providers);
 
     if (endpoint.url) {
       const oembedResponse = await fetchOembed(endpoint);
-      return tranformsLinkNodeToOembedNode(node, oembedResponse);
+      return tranformsLinkNodeToOembedNode({ node, url }, oembedResponse);
     }
   } catch (error) {
     error.url = node.url;

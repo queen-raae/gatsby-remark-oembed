@@ -1,4 +1,4 @@
-const tranformsLinkNodeToOembedNode = (node, oembedResult) => {
+const tranformsLinkNodeToOembedNode = ({ node }, oembedResult) => {
   if (oembedResult.html) {
     node.type = "html";
     node.value = oembedResult.html.replace(

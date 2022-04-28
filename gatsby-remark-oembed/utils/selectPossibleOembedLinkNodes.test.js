@@ -45,14 +45,18 @@ describe("#selectPossibleOembedLinkNodes", () => {
   test("select only links that are the only child of a paragraph", () => {
     const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST);
     expect(possibleOembedLinks).toHaveLength(2);
-    expect(possibleOembedLinks[0]).toMatchObject({
-      type: "link",
-      url: "http://www.youtube.com/watch?v=iwGFalTRHDA",
+    expect(possibleOembedLinks[0].node).toMatchObject({
+      type: "paragraph",
     });
-    expect(possibleOembedLinks[1]).toMatchObject({
-      type: "link",
-      url: "http://www.youtube.com/watch?v=iwGFalTRHDA",
+    expect(possibleOembedLinks[0].url).toBe(
+      "http://www.youtube.com/watch?v=iwGFalTRHDA"
+    );
+    expect(possibleOembedLinks[1].node).toMatchObject({
+      type: "paragraph",
     });
+    expect(possibleOembedLinks[1].url).toBe(
+      "http://www.youtube.com/watch?v=iwGFalTRHDA"
+    );
   });
 
   test("select only links that inline code and prefixed with 'oembed:'", () => {
@@ -61,10 +65,12 @@ describe("#selectPossibleOembedLinkNodes", () => {
     ]);
     expect(possibleOembedLinks).toHaveLength(1);
     // allow space after 'oembed:'
-    expect(possibleOembedLinks[0]).toMatchObject({
+    expect(possibleOembedLinks[0].node).toMatchObject({
       type: "inlineCode",
-      url: "https://twitter.com/raae/status/1045394833001652225",
     });
+    expect(possibleOembedLinks[0].url).toBe(
+      "https://twitter.com/raae/status/1045394833001652225"
+    );
   });
 
   test("select only links that inline code and prefixed with 'video:'", () => {
@@ -72,10 +78,12 @@ describe("#selectPossibleOembedLinkNodes", () => {
       "video",
     ]);
     expect(possibleOembedLinks).toHaveLength(1);
-    expect(possibleOembedLinks[0]).toMatchObject({
+    expect(possibleOembedLinks[0].node).toMatchObject({
       type: "inlineCode",
-      url: "https://www.twitch.tv/videos/72749628",
     });
+    expect(possibleOembedLinks[0].url).toBe(
+      "https://www.twitch.tv/videos/72749628"
+    );
   });
 
   test("select only links that inline code and prefixed with 'oembed:' or 'video:'", () => {
@@ -85,13 +93,17 @@ describe("#selectPossibleOembedLinkNodes", () => {
     ]);
     expect(possibleOembedLinks).toHaveLength(2);
     // allow space after 'oembed:'
-    expect(possibleOembedLinks[0]).toMatchObject({
+    expect(possibleOembedLinks[0].node).toMatchObject({
       type: "inlineCode",
-      url: "https://twitter.com/raae/status/1045394833001652225",
     });
-    expect(possibleOembedLinks[1]).toMatchObject({
+    expect(possibleOembedLinks[0].url).toBe(
+      "https://twitter.com/raae/status/1045394833001652225"
+    );
+    expect(possibleOembedLinks[1].node).toMatchObject({
       type: "inlineCode",
-      url: "https://www.twitch.tv/videos/72749628",
     });
+    expect(possibleOembedLinks[1].url).toBe(
+      "https://www.twitch.tv/videos/72749628"
+    );
   });
 });

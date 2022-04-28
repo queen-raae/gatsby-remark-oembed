@@ -15,15 +15,20 @@ const selectPossibleOembedLinkNodes = (markdownAST, usePrefix = false) => {
         node.children.length === 1 &&
         node.children[0].type === "text"
       ) {
-        possibleOembedLinkNodes.push(node);
+        possibleOembedLinkNodes.push({
+          node: ancestors[1],
+          url: node.url,
+        });
       }
     });
   } else {
     visitParents(markdownAST, "inlineCode", (node) => {
       const [prefix, ...rest] = node.value.split(":");
       if (usePrefix.includes(prefix.trim())) {
-        node.url = rest.join(":").trim();
-        possibleOembedLinkNodes.push(node);
+        possibleOembedLinkNodes.push({
+          node: node,
+          url: rest.join(":").trim(),
+        });
       }
     });
   }
