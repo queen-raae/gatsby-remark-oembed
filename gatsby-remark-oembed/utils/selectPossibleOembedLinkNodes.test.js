@@ -1,16 +1,55 @@
+const Remark = require("remark");
+const remarkGfm = require("remark-gfm");
 const selectPossibleOembedLinkNodes = require("./selectPossibleOembedLinkNodes");
-const MARKDOWN_AST = require("./.test/markdown");
 
-// link - youtube
-// inlineCode with "oembed: " prefix - twitter
-// inlineCode with without prefix - instagram
-// inlineCode with "video" - twitch
+const sourceMarkdown = `
 
-describe("#selectPossibleOembedLinkNodes", () => {
+## Non prefix links
+
+Finds standalone links when no prefix set:
+
+http://www.youtube.com/watch?v=iwGFalTRHDA
+
+[YouTube](http://www.youtube.com/watch?v=iwGFalTRHDA)
+
+Does not find standalone inline code links when no prefix set:
+
+\`https://www.instagram.com/p/Bof9WhgBmY2\`
+
+Does not find [inline links](http://example.com).
+
+Does not find links that are in a list:
+
+- http://www.youtube.com/watch?v=iwGFalTRHDA
+- [YouTube](http://www.youtube.com/watch?v=iwGFalTRHDA)
+
+Does not find links that are also an image:
+
+[![Tweet](https://queen.raae.codes/testimonials/gatsby-plugin-starter-ash.png)](https://twitter.com/Ash_Hitchcock/status/1471048277747548163?s=20&t=YKN2khQAbqaLSSccqculsw)
+
+## Prefix links
+
+Does find standalone inline code links when prefix set to "oembed":
+
+\`oembed: https://twitter.com/raae/status/1045394833001652225\`
+
+Does find standalone inline code links when prefix set to "video" and no space between:
+
+\`video:https://www.twitch.tv/videos/72749628\`
+`;
+
+describe("#selectPossibleOembedLinkNodes", async () => {
+  const remark = new Remark();
+  const MARKDOWN_AST = remark.use(remarkGfm).parse(sourceMarkdown);
+
   test("select only links that are the only child of a paragraph", () => {
     const possibleOembedLinks = selectPossibleOembedLinkNodes(MARKDOWN_AST);
-    expect(possibleOembedLinks).toHaveLength(1);
+    expect(possibleOembedLinks).toHaveLength(2);
     expect(possibleOembedLinks[0]).toMatchObject({
+      type: "link",
+      url: "http://www.youtube.com/watch?v=iwGFalTRHDA",
+    });
+    expect(possibleOembedLinks[1]).toMatchObject({
       type: "link",
       url: "http://www.youtube.com/watch?v=iwGFalTRHDA",
     });
