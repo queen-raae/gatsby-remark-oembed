@@ -38,7 +38,7 @@ Does find standalone inline code links when prefix set to "video" and no space b
 \`video:https://www.twitch.tv/videos/72749628\`
 `;
 
-describe("#selectPossibleOembedLinkNodes", async () => {
+describe("#selectPossibleOembedLinkNodes", () => {
   const remark = new Remark();
   const MARKDOWN_AST = remark.use(remarkGfm).parse(sourceMarkdown);
 
