@@ -1,8 +1,9 @@
 # Gatsby Remark oEmbed Plugin
 
-> This GatsbyJS Remark Sub-Plugin transforms oEmbed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
+_Drop a link to oEmbed content (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) and see it transform into proper embed html._
 
-🚨 The plugin does not work with gatsby-plugin-mdx due to problems with Gatsby Cache in sub-plugins.
+&nbsp;  
+🚨 gatsby-plugin-mdx support is lacking due to problems with Gatsby Cache in sub-plugins.
 
 &nbsp;
 
@@ -16,7 +17,29 @@ Are you stuck on a reef in the sharky waters around the Gatsby islands? Check ou
 
 Learn how to get the most out of Gatsby and **stay updated** on the plugin by [subscribing](https://queen.raae.codes/emails/?utm_source=readme&utm_campaign=remark-oembed) to daily emails from Queen Raae and Cap'n Ola.
 
-## Install
+&nbsp;
+
+## A note on oEmbed
+
+> oEmbed is a format for allowing an embedded representation of a URL on third party sites. The simple API allows a website to display embedded content (such as photos or videos) when a user posts a link to that resource, without having to parse the resource directly.
+
+Learn more by checking out [oembed.com](https://oembed.com].
+
+Links dropped into your markdown content is checked against the oEmbed provider list from [oembed.com](https://oembed.com/#section7). If there is a match a call is made to the provider's oEmbed endpoint and the link is swapped for the embed html.
+
+The provider list is downloaded on every build so that oEmbed support stays up to date.
+
+So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitter, Vimeo, YouTube, SoundCloud.
+
+Twitter, Flickr, Instagram and Reddit requires external javascript to be added to every page. So make sure to exclude the ones you do not need.
+
+> **Warning:** The Instagram oEmbed API requires an access token. You'll need a Facebook Developer account, a Facebook App, and an App Access Token. [More information here](https://developers.facebook.com/docs/instagram/oembed), or take a look at this [tutorial for setting it all up in Gatsby with Environment Variables](https://phil.tech/2020/gatsby-instagram-oembed-failures/).
+
+> **Update:** Twitch removed oEmbed support in 2020 when deprecating their v5 API. It seems they are not planning to support oEmbed again. Unfortunately this means Twitch urls are no longer being transformed. Let them know how you feel about this [on their forum](https://discuss.dev.twitch.tv/t/oembed-deprecation/24424/2).
+
+&nbsp;
+
+## How to install
 
 `npm install @raae/gatsby-remark-oembed`
 
@@ -30,21 +53,7 @@ or
 - Gatsby version >=2.0.88
 - Gatsby Transformer Remark Plugin >=2.0.0
 
-## oEmbed support
-
-Under the hood the oEmbed provider list from [oembed.com](https://oembed.com/#section7) is used. It is downloaded on every build so oEmbed support stays current.
-
-So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitter, Vimeo, YouTube, SoundCloud.
-
-Twitter, Flickr, Instagram and Reddit requires external javascript to be added to every page. So make sure to exclude the ones you do not need.
-
-> **Warning:** The Instagram oEmbed API requires an access token. You'll need a Facebook Developer account, a Facebook App, and an App Access Token. [More information here](https://developers.facebook.com/docs/instagram/oembed), or take a look at this [tutorial for setting it all up in Gatsby with Environment Variables](https://phil.tech/2020/gatsby-instagram-oembed-failures/).
-
-> **Update:** Twitch removed oEmbed support in 2020 when deprecating their v5 API. It seems they are not planning to support oEmbed again. Unfortunately this means Twitch urls are no longer being transformed. Let them know how you feel about this [on their forum](https://discuss.dev.twitch.tv/t/oembed-deprecation/24424/2).
-
-## Example site
-
-Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in `/gatsby-remark-oembed-md-site` folder.
+&nbsp;
 
 ## How to use
 
@@ -179,13 +188,18 @@ Links must be surrounded by empty lines.
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
-## Develop
+&nbsp;
 
-This is a monorepo consisting of the plugin:
+## How to contribute
 
-- `/gatsby-remark-oembed`
+If you would like to contribute with code, check out `CONTRIBUTING.md`.
 
-and two example sites:
+### Questions, Feedback and Suggestions
 
-- `/gatsby-remark-oembed-md-site` - the markdown example site
-- `/gatsby-remark-oembed-mdx-site` - the mdx example site
+Do not be shy!
+
+If you have any questions, feedback or suggestions head on over to [discussions](https://github.com/queen-raae/gatsby-plugin-let-it-snow/discussions).
+
+### Bugs
+
+If you find a bug please open an [issue](https://github.com/raae/gatsby-plugin-let-it-snow/issues) and/or create a pull request to fix it.
