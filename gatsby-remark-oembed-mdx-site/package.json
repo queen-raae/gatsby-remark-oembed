@@ -15,7 +15,7 @@
   "dependencies": {
     "@mdx-js/mdx": "v1",
     "@mdx-js/react": "v1",
-    "@raae/gatsby-remark-oembed": "0.1.1",
+    "@raae/gatsby-remark-oembed": "*",
     "dotenv": "16.0.0",
     "gatsby": "^4.11.2",
     "gatsby-plugin-mdx": "^3.11.1",
