@@ -4,7 +4,7 @@
   "author": "@raae (queen.raae.codes)",
   "version": "1.0.0",
   "license": "MIT",
-  "homepage": "https://github.com/raae/gatsby-remark-oembed-example-site#readme",
+  "homepage": "https://gatsby-remark-oembed.netlify.app/",
   "scripts": {
     "develop": "gatsby develop -p 8000",
     "build": "gatsby build",
