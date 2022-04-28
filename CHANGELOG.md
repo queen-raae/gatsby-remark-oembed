@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.3.0...v0.3.1) (2022-04-28)
+
+
+### Bug Fixes
+
+*  remove console.log ([3bd216b](https://github.com/queen-raae/gatsby-remark-oembed/commit/3bd216b9a88d37d12d81ce26bf5cf43dde75bb9b))
+
 # [0.3.0](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.2.1...v0.3.0) (2022-04-28)
 
 
