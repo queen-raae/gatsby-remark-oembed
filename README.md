@@ -4,6 +4,18 @@
 
 This is an early version of the plugin. Let me know if you have problems or questions by submitting an issue.
 
+&nbsp;
+
+## A message or two from Queen Raae 👑
+
+### 1-on-1 Emergency Gatsby Call
+
+Are you stuck on a reef in the sharky waters around the Gatsby islands? Check out [1-on-1 Emergency Gatsby Call](https://queen.raae.codes/gatsby-emergency/) with Queen Raae to get friendly advice you can put into action immediately from a seasoned Gatsby developer.
+
+### Stay updated and get the most out of Gatsby
+
+Learn how to get the most out of Gatsby and **stay updated** on the plugin by [subscribing](https://queen.raae.codes/emails/?utm_source=readme&utm_campaign=remark-oembed) to daily emails from Queen Raae and Cap'n Ola.
+
 ## Install
 
 `npm install @raae/gatsby-remark-oembed`
@@ -20,7 +32,7 @@ or
 
 ## oEmbed support
 
-Under the hood the oEmbed provider list from [oembed.com](https://oembed.com/#section7) is used.
+Under the hood the oEmbed provider list from [oembed.com](https://oembed.com/#section7) is used. It is downloaded on every build so oEmbed support stays current.
 
 So far these providers are confirmed to be working: CodePen, Flickr, Instagram, Reddit, Twitter, Vimeo, YouTube, SoundCloud.
 
@@ -167,32 +179,13 @@ Links must be surrounded by empty lines.
 | `providers.exclude`  | Array of provider keys      | Links from providers on this list will not be transformed.  |
 | `providers.settings` | Object of provider settings | Optional configuration unique to each provider.             |
 
-## Dev routines
+## Develop
 
-This is a monorepo consisting of the plugin, and two example sites:
+This is a monorepo consisting of the plugin:
+
+- `/gatsby-remark-oembed`
+
+and two example sites:
 
 - `/gatsby-remark-oembed-md-site` - the markdown example site
 - `/gatsby-remark-oembed-mdx-site` - the mdx example site
-
-And the plugin `/gatsby-remark-oembed`.
-
-By running `yarn dev` in the monorepo root you will spin up both sites.
-
-- `/gatsby-remark-oembed-md-site` on [localhost:8000](http://localhost:8000/)
-- `/gatsby-remark-oembed-mdx-site` on [localhost:8080](http://localhost:8080/)
-
-## Release routines
-
-Make sure you have checked out and updated master.
-
-Change directory to `gatsby-remark-oembed`.
-
-- Run `yarn version patch|minor|major`
-- Run `yarn publish`
-- Create a [release on Github](https://github.com/raae/gatsby-remark-oembed/releases/new).
-
-## Buy me a coffee?
-
-It will encourage me to keep it going, fix whatever bugs you find and spend time making it better :D
-
-[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/P5P4OZVX)
