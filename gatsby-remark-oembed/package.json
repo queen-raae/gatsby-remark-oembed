@@ -8,9 +8,11 @@
   "scripts": {
     "develop": "yarn test:watch",
     "lint": "eslint --fix",
+    "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prepublish": "./prepublish.js"
+    "prepack": "./prepublish.js",
+    "postversion": "cp ../README.md ./README.md"
   },
   "dependencies": {
     "axios": "0.26.1",
