@@ -2475,16 +2475,6 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@raae/gatsby-remark-oembed@0.1.1", "@raae/gatsby-remark-oembed@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@raae/gatsby-remark-oembed/-/gatsby-remark-oembed-0.1.1.tgz#50b72bb3042058ae1a8e8c3cf8a5de0ffdae047a"
-  integrity sha512-UlkaPvyUsg+mCMe38O1+DElDmNtxB7stKrjANEHizvek5wiuseYDEwOE9ZjWNx+SoOVFMOBjUr2/pGhtiAuGEw==
-  dependencies:
-    axios "^0.19.0"
-    bluebird "^3.5.1"
-    lodash "^4.17.14"
-    unist-util-select "^1.5.0"
-
 "@semantic-release/changelog@6.0.1":
   version "6.0.1"
   resolved "https://registry.npmjs.org/@semantic-release/changelog/-/changelog-6.0.1.tgz"
@@ -3742,13 +3732,6 @@ axios@0.26.1:
   dependencies:
     follow-redirects "^1.14.8"
 
-axios@^0.19.0:
-  version "0.19.2"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.19.2.tgz"
-  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
-  dependencies:
-    follow-redirects "1.5.10"
-
 axios@^0.21.1:
   version "0.21.4"
   resolved "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
@@ -4144,7 +4127,7 @@ bl@^4.0.0, bl@^4.0.3:
     inherits "^2.0.4"
     readable-stream "^3.4.0"
 
-bluebird@^3.0.5, bluebird@^3.5.1, bluebird@^3.7.2:
+bluebird@^3.0.5, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -5395,7 +5378,7 @@ css-select@~1.2.0:
     domutils "1.5.1"
     nth-check "~1.0.1"
 
-css-selector-parser@^1.0.0, css-selector-parser@^1.1.0:
+css-selector-parser@^1.0.0:
   version "1.4.1"
   resolved "https://registry.npmjs.org/css-selector-parser/-/css-selector-parser-1.4.1.tgz"
   integrity sha512-HYPSb7y/Z7BNDCOrakL4raGO2zltZkbeXyAd6Tg9obzix6QhzxCotdBl6VT0Dv4vZfJGVz3WL/xaEI9Ly3ul0g==
@@ -5581,13 +5564,6 @@ debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, d
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
   dependencies:
     ms "2.1.2"
-
-debug@=3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/debug/-/debug-3.1.0.tgz"
-  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
-  dependencies:
-    ms "2.0.0"
 
 debug@^3.0.0, debug@^3.1.0, debug@^3.2.6, debug@^3.2.7:
   version "3.2.7"
@@ -7146,13 +7122,6 @@ flatted@^3.1.0:
   version "3.2.5"
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
-
-follow-redirects@1.5.10:
-  version "1.5.10"
-  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.5.10.tgz"
-  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
-  dependencies:
-    debug "=3.1.0"
 
 follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.8:
   version "1.14.9"
@@ -12079,7 +12048,7 @@ npmlog@^6.0.0, npmlog@^6.0.1, npmlog@^6.0.2:
     gauge "^4.0.3"
     set-blocking "^2.0.0"
 
-nth-check@^1.0.1, nth-check@^1.0.2, nth-check@~1.0.1:
+nth-check@^1.0.2, nth-check@~1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/nth-check/-/nth-check-1.0.2.tgz"
   integrity sha512-WeBOdju8SnzPN5vTUJYxYUxLeXpCaVP5i5e0LF8fg7WORF2Wd7wFX/pk0tYZk7s8T+J7VLy0Da6J1+wCT0AtHg==
@@ -16157,15 +16126,6 @@ unist-util-remove@^2.0.0:
   dependencies:
     unist-util-is "^4.0.0"
 
-unist-util-select@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/unist-util-select/-/unist-util-select-1.5.0.tgz"
-  integrity sha1-qTwr6MD2U4J4A7gTMa3sKqJM2TM=
-  dependencies:
-    css-selector-parser "^1.1.0"
-    debug "^2.2.0"
-    nth-check "^1.0.1"
-
 unist-util-select@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/unist-util-select/-/unist-util-select-3.0.4.tgz"
@@ -16201,20 +16161,20 @@ unist-util-visit-children@^1.0.0:
   resolved "https://registry.npmjs.org/unist-util-visit-children/-/unist-util-visit-children-1.1.4.tgz"
   integrity sha512-sA/nXwYRCQVRwZU2/tQWUqJ9JSFM1X3x7JIOsIgSzrFHcfVt6NkzDtKzyxg2cZWkCwGF9CO8x4QNZRJRMK8FeQ==
 
-unist-util-visit-parents@^2.0.0:
-  version "2.1.2"
-  resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-2.1.2.tgz"
-  integrity sha512-DyN5vD4NE3aSeB+PXYNKxzGsfocxp6asDc2XXE3b0ekO2BaRUpBicbbUygfSvYfUz1IkmjFR1YF7dPklraMZ2g==
-  dependencies:
-    unist-util-is "^3.0.0"
-
-unist-util-visit-parents@^3.0.0, unist-util-visit-parents@^3.1.1:
+unist-util-visit-parents@3.1.1, unist-util-visit-parents@^3.0.0, unist-util-visit-parents@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-3.1.1.tgz"
   integrity sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==
   dependencies:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
+
+unist-util-visit-parents@^2.0.0:
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/unist-util-visit-parents/-/unist-util-visit-parents-2.1.2.tgz"
+  integrity sha512-DyN5vD4NE3aSeB+PXYNKxzGsfocxp6asDc2XXE3b0ekO2BaRUpBicbbUygfSvYfUz1IkmjFR1YF7dPklraMZ2g==
+  dependencies:
+    unist-util-is "^3.0.0"
 
 unist-util-visit@2.0.3, unist-util-visit@^2.0.0, unist-util-visit@^2.0.3:
   version "2.0.3"
