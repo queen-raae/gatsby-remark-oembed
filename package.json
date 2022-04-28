@@ -32,8 +32,8 @@
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "husky": "7.0.4",
-    "lint-staged": "12.3.7",
-    "prettier": "^2.6.2",
+    "lint-staged": "12.4.1",
+    "prettier": "2.6.2",
     "semantic-release": "19.0.2"
   }
 }
