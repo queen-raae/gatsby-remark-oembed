@@ -2,7 +2,7 @@
 
 > This GatsbyJS Remark Sub-Plugin transforms oEmbed links (Twitter, Instagram, YouTube, Vimeo, SoundCloud, CodePen etc.) into its corresponding embed code.
 
-This is an early version of the plugin. Let me know if you have problems or questions by submitting an issue.
+🚨 The plugin does not work with gatsby-plugin-mdx due to problems with Gatsby Cache in sub-plugins.
 
 &nbsp;
 
@@ -44,7 +44,7 @@ Twitter, Flickr, Instagram and Reddit requires external javascript to be added t
 
 ## Example site
 
-Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in [gatsby-remark-oembed-example-site](/gatsby-remark-oembed-example-site).
+Check out [gatsby-remark-oembed.netlify.com/](https://gatsby-remark-oembed.netlify.com/). Its source code can be found in `/gatsby-remark-oembed-md-site` folder.
 
 ## How to use
 
