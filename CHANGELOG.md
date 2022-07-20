@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.3.1...v0.3.2) (2022-07-20)
+
+
+### Bug Fixes
+
+* transform paragraph parent node for standalone link nodes ([#170](https://github.com/queen-raae/gatsby-remark-oembed/issues/170)) ([193547e](https://github.com/queen-raae/gatsby-remark-oembed/commit/193547e81d4d90a78d612070aa9b69196ceda1cd)), closes [#102](https://github.com/queen-raae/gatsby-remark-oembed/issues/102)
+
 ## [0.3.1](https://github.com/queen-raae/gatsby-remark-oembed/compare/v0.3.0...v0.3.1) (2022-04-28)
 
 
