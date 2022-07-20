@@ -1,6 +1,6 @@
-# gatsby-remark-oembed-example-site
+# gatsby-remark-oembed-md-site
 
-This is an example site for the [gatsby-remark-oembed](https://github.com/raae/gatsby-remark-oembed) plugin.
+This is the example site for the [gatsby-remark-oembed](https://github.com/raae/gatsby-remark-oembed) plugin using `gatsby-transformer-remark`.
 
 Based of the [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog).
 
