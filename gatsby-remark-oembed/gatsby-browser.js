@@ -29,22 +29,7 @@ const loadTikTok = () => {
   const script = document.createElement(`script`)
 
   script.type = `text/javascript`
-  script.innerText = `
-    window.tiktok = (function(d, s, id) {
-      var js,
-        fjs = d.getElementsByTagName(s)[0],
-        t = window.tiktok || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://www.tiktok.com/embed.js";
-      fjs.parentNode.insertBefore(js, fjs);
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      };
-      return t;
-    })(document, "script", "tiktok-wjs");`
+  script.innerText = `window.tiktok=function(e,t,n){var o,i=e.getElementsByTagName(t)[0],r=window.tiktok||{};return e.getElementById(n)||((o=e.createElement(t)).id=n,o.src="https://www.tiktok.com/embed.js",i.parentNode.insertBefore(o,i),r._e=[],r.ready=function(e){r._e.push(e)}),r}(document,"script","tiktok-wjs");`
 
   document.getElementsByTagName('head')[0].appendChild(script);
 }
