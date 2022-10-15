@@ -14,7 +14,7 @@ To be able to have both the demo and plugin in the same repo we use [yarn worksp
 
 ### Do your thing
 
-Solve an [issue](https://github.com/queen-raae/gatsby-plugin-let-it-snow/issues) or do something else!
+Solve an [issue](https://github.com/queen-raae/gatsby-remark-oembed/issues) or do something else!
 
 ### Create a Pull Request
 

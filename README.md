@@ -198,8 +198,8 @@ If you would like to contribute with code, check out `CONTRIBUTING.md`.
 
 Do not be shy!
 
-If you have any questions, feedback or suggestions head on over to [discussions](https://github.com/queen-raae/gatsby-plugin-let-it-snow/discussions).
+If you have any questions, feedback or suggestions head on over to [discussions](https://github.com/queen-raae/gatsby-remark-oembed/discussions).
 
 ### Bugs
 
-If you find a bug please open an [issue](https://github.com/raae/gatsby-plugin-let-it-snow/issues) and/or create a pull request to fix it.
+If you find a bug please open an [issue](https://github.com/raae/gatsby-remark-oembed/issues) and/or create a pull request to fix it.
