@@ -4,8 +4,12 @@
 
 - Fork the repo
 - Clone your fork
-- Install the packages: `yarn install`
-- Run the demo: `yarn develop`
+- Install the packages: `npx yarn install`
+- Run the commands:
+  - Demo site: `npx yarn md-site:develop`
+  - Demo site: `npx yarn md-site:build`
+  - Plugin develop: `npx yarn plugin:develop`
+  - Plugin test: `npx yarn plugin:test`
 
 To be able to have both the demo and plugin in the same repo we use [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/).
 
