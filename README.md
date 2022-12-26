@@ -23,7 +23,7 @@ Learn how to get the most out of Gatsby and **stay updated** on the plugin by [s
 
 > oEmbed is a format for allowing an embedded representation of a URL on third party sites. The simple API allows a website to display embedded content (such as photos or videos) when a user posts a link to that resource, without having to parse the resource directly.
 
-Learn more by checking out [oembed.com](https://oembed.com].
+Learn more by checking out [oembed.com](https://oembed.com).
 
 Links dropped into your markdown content is checked against the oEmbed provider list from [oembed.com](https://oembed.com/#section7). If there is a match a call is made to the provider's oEmbed endpoint and the link is swapped for the embed html.
 
