@@ -2864,7 +2864,7 @@
 
 "@raae/gatsby-remark-oembed@*", "@raae/gatsby-remark-oembed@file:/home/runner/work/gatsby-remark-oembed/gatsby-remark-oembed/gatsby-remark-oembed":
   "resolved" "file:gatsby-remark-oembed"
-  "version" "0.3.2"
+  "version" "0.3.3"
   dependencies:
     "axios" "0.27.2"
     "lodash" "4.17.21"
